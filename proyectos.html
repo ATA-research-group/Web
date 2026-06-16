@@ -1,0 +1,1187 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos | Research Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --black:       #111111;
+            --navy:        #0A2540;
+            --cyan:        #00B4D8;
+            --white:       #FFFFFF;
+            --gray-bg:     #F7F9FC;
+            --gray-border: #E2E8F0;
+            --gray-text:   #64748B;
+            --t: all 0.25s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--navy);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HEADER ─────────────────────────────── */
+        header {
+            background: var(--black);
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,180,216,0.18);
+        }
+        .header-inner {
+            max-width: 1240px; margin: 0 auto;
+            padding: 0 32px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+        .logo-hex {
+            width: 42px; height: 42px; background: var(--cyan);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .logo-hex span { color: #000; font-weight: 900; font-size: 12px; letter-spacing: -0.5px; }
+        .logo-text { display: flex; flex-direction: column; gap: 3px; line-height: 1; }
+        .logo-name { color: var(--white); font-size: 14.5px; font-weight: 700; }
+        .logo-sub  { color: var(--cyan); font-size: 9.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; }
+        .header-logos-container { display: flex; align-items: center; gap: 16px; }
+        .logo-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.15); }
+
+        .main-nav { display: flex; align-items: center; gap: 4px; }
+        .main-nav a {
+            color: rgba(255,255,255,0.62); text-decoration: none;
+            font-size: 13.5px; font-weight: 500;
+            padding: 7px 15px; border-radius: 7px; transition: var(--t);
+        }
+        .main-nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+        .main-nav a.active { color: var(--cyan); background: rgba(0,180,216,0.1); }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; padding: 6px; background: none; border: none;
+        }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--t); }
+
+        .mobile-nav {
+            display: none; flex-direction: column;
+            background: #0D0D0D;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 8px 24px 16px;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            color: rgba(255,255,255,0.62); text-decoration: none;
+            font-size: 14px; font-weight: 500;
+            padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.04); transition: var(--t);
+        }
+        .mobile-nav a:last-child { border-bottom: none; }
+        .mobile-nav a:hover, .mobile-nav a.active { color: var(--cyan); }
+
+        /* ─── PAGE HERO ───────────────────────────── */
+        .page-hero {
+            background: var(--black);
+            padding: 72px 32px 64px;
+            position: relative; overflow: hidden;
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 80% at 100% 50%, rgba(0,180,216,0.07) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .ph-inner {
+            max-width: 1240px; margin: 0 auto;
+            position: relative; z-index: 1;
+            display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 28px;
+        }
+        .breadcrumb {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.38);
+            margin-bottom: 24px; letter-spacing: 0.5px;
+        }
+        .breadcrumb a { color: rgba(255,255,255,0.38); text-decoration: none; transition: var(--t); }
+        .breadcrumb a:hover { color: var(--cyan); }
+        .breadcrumb span { color: rgba(0,180,216,0.6); }
+        .breadcrumb .sep { color: rgba(255,255,255,0.2); }
+        .page-hero h1 {
+            font-size: clamp(30px, 4.5vw, 56px);
+            font-weight: 900; color: var(--white);
+            line-height: 1.08; letter-spacing: -2px; margin-bottom: 12px;
+        }
+        .page-hero h1 span { color: var(--cyan); }
+        .page-hero .hero-sub {
+            font-size: 15.5px; color: rgba(255,255,255,0.48);
+            font-weight: 400; max-width: 460px;
+        }
+        .active-badge {
+            flex-shrink: 0;
+            background: rgba(0,180,216,0.1);
+            border: 1px solid rgba(0,180,216,0.3);
+            border-radius: 14px; padding: 20px 28px;
+            text-align: center;
+        }
+        .active-badge .ab-num {
+            display: block; font-size: 42px; font-weight: 900;
+            color: var(--cyan); letter-spacing: -2px; line-height: 1;
+        }
+        .active-badge .ab-lbl {
+            display: block; font-size: 12px; font-weight: 600;
+            color: rgba(255,255,255,0.5); margin-top: 6px; letter-spacing: 0.5px;
+        }
+
+        /* ─── PORTFOLIO SECTIONS ──────────────────── */
+        .portfolio-section { padding: 88px 32px; }
+        .portfolio-section.bg-white { background: var(--white); }
+        .portfolio-section.bg-gray  { background: var(--gray-bg); }
+        .portfolio-inner { max-width: 1240px; margin: 0 auto; }
+
+        .section-intro { margin-bottom: 52px; }
+        .eyebrow {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--cyan); margin-bottom: 10px;
+        }
+        .eyebrow-done { color: var(--gray-text); }
+        .sec-title {
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 800; color: var(--navy);
+            line-height: 1.14; letter-spacing: -1.2px;
+        }
+        .sec-title-row {
+            display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+        }
+        .title-badge {
+            font-size: 13px; font-weight: 600; padding: 4px 14px;
+            border-radius: 100px; letter-spacing: 0.5px; white-space: nowrap;
+        }
+        .badge-active {
+            color: var(--cyan);
+            background: rgba(0,180,216,0.1);
+            border: 1px solid rgba(0,180,216,0.3);
+        }
+        .badge-done {
+            color: var(--gray-text);
+            background: rgba(100,116,139,0.1);
+            border: 1px solid rgba(100,116,139,0.25);
+        }
+
+        /* ─── PORTFOLIO GRID ──────────────────────── */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+        }
+        .portfolio-grid-single {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+            max-width: 560px;
+        }
+
+        /* ─── CARD ────────────────────────────────── */
+        .pf-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 20px; overflow: hidden;
+            transition: var(--t);
+            display: flex; flex-direction: column;
+        }
+        .pf-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 60px rgba(0,0,0,0.1);
+            border-color: rgba(0,180,216,0.2);
+        }
+        .pf-card.card-done:hover {
+            border-color: rgba(100,116,139,0.3);
+            box-shadow: 0 22px 60px rgba(0,0,0,0.07);
+        }
+
+        /* Card visual/placeholder */
+        .pf-visual {
+            height: 210px; position: relative; overflow: hidden;
+            flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+        }
+        .visual-carbon  { background: linear-gradient(145deg, #1a0535 0%, #0A2540 55%, #0d1040 100%); }
+        .visual-cadmio  { background: linear-gradient(145deg, #0A2010 0%, #0A2540 55%, #0a3020 100%); }
+        .visual-volcano { background: linear-gradient(145deg, #1c1a2e 0%, #0A2540 55%, #0f1a30 100%); }
+
+        .pf-visual-deco {
+            position: absolute; inset: 0; pointer-events: none;
+        }
+        .vdeco-hex {
+            position: absolute;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(255,255,255,0.025);
+        }
+        .pf-visual-inner {
+            position: relative; z-index: 2;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 12px;
+        }
+        .pf-hex {
+            width: 88px; height: 88px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .pf-card:hover .pf-hex { transform: scale(1.08); }
+        .hex-carbon  { background: rgba(168,85,247,0.15); border: 2px solid rgba(168,85,247,0.35); }
+        .hex-cadmio  { background: rgba(34,197,94,0.15);  border: 2px solid rgba(34,197,94,0.35); }
+        .hex-volcano { background: rgba(0,180,216,0.15);  border: 2px solid rgba(0,180,216,0.35); }
+        .hex-volcano-done { background: rgba(100,116,139,0.15); border: 2px solid rgba(100,116,139,0.35); }
+
+        .pf-hex svg { width: 40px; height: 40px; }
+        .pf-visual-code {
+            font-size: 10px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: rgba(255,255,255,0.3);
+        }
+
+        /* Card body */
+        .pf-body {
+            padding: 26px 28px 28px;
+            display: flex; flex-direction: column; flex-grow: 1;
+        }
+        .pf-status {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .pf-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .pf-status-active { color: var(--cyan); }
+        .pf-status-active .pf-dot { background: var(--cyan); }
+        .pf-status-done { color: var(--gray-text); }
+        .pf-status-done .pf-dot { background: var(--gray-text); }
+
+        .pf-id {
+            font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px;
+            color: var(--gray-text); text-transform: uppercase; margin-bottom: 9px;
+        }
+        .pf-title {
+            font-size: 18px; font-weight: 800; color: var(--navy);
+            line-height: 1.28; letter-spacing: -0.5px; margin-bottom: 10px;
+        }
+        .pf-desc {
+            font-size: 13.5px; color: var(--gray-text);
+            line-height: 1.72; margin-bottom: 24px;
+            display: -webkit-box; -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .btn-ver {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: var(--cyan); color: var(--black);
+            font-size: 12.5px; font-weight: 700;
+            padding: 11px 22px; border-radius: 8px;
+            text-decoration: none; transition: var(--t);
+            letter-spacing: 0.3px; align-self: flex-start;
+        }
+        .btn-ver:hover {
+            background: #22cdf0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,180,216,0.38);
+        }
+        .btn-ver svg { width: 13px; height: 13px; }
+
+        .btn-ver-done {
+            background: transparent; color: var(--gray-text);
+            border: 1px solid var(--gray-border);
+        }
+        .btn-ver-done:hover {
+            background: var(--cyan); color: var(--black);
+            border-color: var(--cyan);
+        }
+
+        /* ─── ACTIVE STRIP ────────────────────────── */
+        .active-strip { background: var(--navy); padding: 56px 32px; }
+        .strip-inner {
+            max-width: 1240px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 24px;
+        }
+        .strip-left .eyebrow { color: rgba(0,180,216,0.85); }
+        .strip-title {
+            font-size: clamp(22px, 2.5vw, 30px);
+            font-weight: 800; color: var(--white);
+            letter-spacing: -0.8px; margin-top: 6px;
+        }
+        .strip-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+        .strip-pill {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.75);
+            font-size: 12.5px; font-weight: 500;
+            padding: 9px 18px; border-radius: 100px; transition: var(--t);
+        }
+        .strip-pill:hover { background: rgba(0,180,216,0.15); border-color: rgba(0,180,216,0.35); color: var(--cyan); }
+        .strip-pill strong { font-weight: 700; color: var(--cyan); margin-right: 6px; }
+
+        /* ─── FOOTER ──────────────────────────────── */
+        footer {
+            background: var(--black);
+            padding: 64px 32px 28px;
+            border-top: 1px solid rgba(0,180,216,0.1);
+        }
+        .footer-inner { max-width: 1240px; margin: 0 auto; }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 28px;
+        }
+        .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
+        .footer-about p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.78; max-width: 290px; }
+        .footer-col h5 {
+            color: rgba(255,255,255,0.88); font-size: 11px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+        .footer-links a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 13px; transition: var(--t); }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-bottom {
+            display: flex; align-items: center;
+            justify-content: space-between; flex-wrap: wrap; gap: 12px;
+        }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.24); }
+        .footer-bottom p span { color: var(--cyan); }
+        .footer-tag {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+            color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+        }
+
+        /* ─── TITULACIÓN CARD VISUALS ────────────── */
+        .visual-flight   { background: linear-gradient(145deg, #071428 0%, #0A2540 55%, #031828 100%); }
+        .visual-fire     { background: linear-gradient(145deg, #1a0a04 0%, #0A2540 55%, #180806 100%); }
+        .visual-wing     { background: linear-gradient(145deg, #031820 0%, #0A2540 55%, #021c28 100%); }
+        .visual-mesh     { background: linear-gradient(145deg, #0d0528 0%, #0A2540 55%, #0a0430 100%); }
+        .visual-hybrid   { background: linear-gradient(145deg, #031a08 0%, #0A2540 55%, #041808 100%); }
+        .visual-cfd      { background: linear-gradient(145deg, #04101e 0%, #0A2540 55%, #030e20 100%); }
+        .visual-materials{ background: linear-gradient(145deg, #0d1014 0%, #0A2540 55%, #0a1018 100%); }
+        .visual-landing  { background: linear-gradient(145deg, #1a0e04 0%, #0A2540 55%, #180c04 100%); }
+
+        .hex-flight    { background: rgba(0,180,216,0.15);   border: 2px solid rgba(0,180,216,0.4); }
+        .hex-fire      { background: rgba(251,146,60,0.15);  border: 2px solid rgba(251,146,60,0.4); }
+        .hex-wing      { background: rgba(34,211,238,0.15);  border: 2px solid rgba(34,211,238,0.4); }
+        .hex-mesh      { background: rgba(167,139,250,0.15); border: 2px solid rgba(167,139,250,0.4); }
+        .hex-hybrid    { background: rgba(74,222,128,0.15);  border: 2px solid rgba(74,222,128,0.4); }
+        .hex-cfd       { background: rgba(96,165,250,0.15);  border: 2px solid rgba(96,165,250,0.4); }
+        .hex-materials { background: rgba(148,163,184,0.15); border: 2px solid rgba(148,163,184,0.4); }
+        .hex-landing   { background: rgba(251,191,36,0.15);  border: 2px solid rgba(251,191,36,0.4); }
+
+        /* ─── RESPONSIVE ──────────────────────────── */
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hamburger { display: flex; }
+            .header-inner { padding: 0 20px; }
+            .page-hero { padding: 52px 20px 48px; }
+            .ph-inner { flex-direction: column; align-items: flex-start; }
+            .portfolio-section { padding: 64px 20px; }
+            .active-strip { padding: 48px 20px; }
+            footer { padding-left: 20px; padding-right: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-grid-single { grid-template-columns: 1fr; max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .btn-ver { width: 100%; justify-content: center; }
+            .strip-pills { gap: 8px; }
+        }
+
+        /* ─── HEADER CONTROLS ─────────────────────────── */
+        .header-right { display: flex; align-items: center; gap: 8px; }
+        .header-controls { display: flex; align-items: center; gap: 4px; }
+        .ctrl-btn {
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 7px;
+            color: rgba(255,255,255,0.65);
+            cursor: pointer; transition: var(--t);
+            font-family: inherit; line-height: 1;
+        }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.22); }
+        .lang-btn { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; padding: 6px 11px; height: 32px; text-transform: uppercase; }
+        .theme-btn { width: 32px; height: 32px; }
+        .theme-btn svg { width: 16px; height: 16px; display: block; }
+        .icon-sun { display: none; }
+        .icon-moon { display: block; }
+        .dark-theme .icon-sun { display: block; }
+        .dark-theme .icon-moon { display: none; }
+        /* ─── DARK THEME ─────────────────────────────── */
+        body.dark-theme {
+            --gray-bg: #1E1E1E; --gray-border: #2A2A2A; --gray-text: #8FA5BB;
+            background: #121212; color: #C4D4E0;
+        }
+        body.dark-theme .mission-section,
+        body.dark-theme .team-section,
+        body.dark-theme .pub-section,
+        body.dark-theme .contact-section,
+        body.dark-theme .portfolio-section { background: #121212; }
+        body.dark-theme .team-section:nth-child(even),
+        body.dark-theme .portfolio-section.bg-gray { background: #181818; }
+        body.dark-theme .sec-title,
+        body.dark-theme .category-title,
+        body.dark-theme .wp-section h2,
+        body.dark-theme .pub-title,
+        body.dark-theme .pillar h4,
+        body.dark-theme .pf-card h3,
+        body.dark-theme .member-name { color: #E4EEF8; }
+        body.dark-theme .pub-card,
+        body.dark-theme .pf-card,
+        body.dark-theme .member-card { background: #1E1E1E; border-color: #2A2A2A; }
+        body.dark-theme .wp-highlight { color: #C4D4E0; }
+        body.dark-theme .sidebar-nav a:hover,
+        body.dark-theme .sidebar-back:hover { color: #C4D4E0; }
+        body.dark-theme .badge-eng { color: #90AAC0; border-color: rgba(144,170,192,0.3); background: rgba(144,170,192,0.08); }
+        body.dark-theme .badge-student { color: #8FA5BB; border-color: rgba(143,165,187,0.3); }
+        body.dark-theme .pub-authors strong,
+        body.dark-theme .pub-year { color: #C4D4E0; }
+        body.dark-theme .contact-card,
+        body.dark-theme .info-item { background: #1E1E1E; border-color: #2A2A2A; }
+        body.dark-theme .form-group input,
+        body.dark-theme .form-group textarea { background: #121212; border-color: #2A2A2A; color: #C4D4E0; }
+
+        /* ─── ODS SECTION ──────────────────────────────────── */
+        .ods-section { padding: 72px 32px 80px; background: var(--gray-bg); }
+        body.dark-theme .ods-section { background: #181818; }
+        .ods-inner { max-width: 1100px; margin: 0 auto; }
+        .ods-header { text-align: center; margin-bottom: 52px; }
+        .ods-eyebrow {
+            display: block; font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--cyan); margin-bottom: 10px;
+        }
+        .ods-title {
+            font-size: clamp(22px, 2.8vw, 34px); font-weight: 800;
+            color: var(--navy); letter-spacing: -1px; margin-bottom: 8px;
+        }
+        body.dark-theme .ods-title { color: #E4EEF8; }
+        .ods-subtitle { font-size: 14px; color: var(--gray-text); max-width: 540px; margin: 0 auto; }
+        .ods-chart-row {
+            display: flex; align-items: center; justify-content: center;
+            gap: 52px; flex-wrap: wrap;
+        }
+        .ods-chart-wrapper { position: relative; width: 100%; max-width: 700px; flex-shrink: 0; }
+        .ods-chart-wrapper svg { width: 100%; height: auto; display: block; }
+        .ods-center-text {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44%; text-align: center;
+            pointer-events: none; user-select: none;
+        }
+        .ods-center-headline {
+            display: block; font-size: 16px; font-weight: 800;
+            color: var(--navy); line-height: 1.3; letter-spacing: -0.2px;
+        }
+        body.dark-theme .ods-center-headline { color: #E4EEF8; }
+        .ods-center-sub {
+            display: block; font-size: 13px; font-weight: 500;
+            color: var(--gray-text); margin-top: 3px;
+        }
+        body.dark-theme .ods-center-sub { color: #8FA5BB; }
+        #ods-hover-panel { display: none; }
+        .ods-hover-num {
+            display: block; font-size: 12px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px;
+        }
+        .ods-hover-name {
+            display: block; font-size: 14px; font-weight: 700;
+            color: var(--navy); line-height: 1.3; margin-bottom: 4px;
+        }
+        body.dark-theme .ods-hover-name { color: #E4EEF8; }
+        .ods-hover-proj {
+            display: block; font-size: 11.5px; font-style: italic;
+            color: var(--gray-text); line-height: 1.4;
+        }
+        body.dark-theme .ods-hover-proj { color: #8FA5BB; }
+        .ods-legend {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 5px 12px; max-width: 260px;
+            display:none;
+        }
+        .ods-legend-item {
+            display: flex; align-items: center; gap: 6px;
+            padding: 3px 5px; border-radius: 5px; cursor: default; transition: background 0.2s;
+        }
+        .ods-legend-item:hover { background: rgba(0,0,0,0.05); }
+        body.dark-theme .ods-legend-item:hover { background: rgba(255,255,255,0.07); }
+        .ods-legend-dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+        .ods-legend-label { font-size: 9.5px; font-weight: 600; color: var(--gray-text); }
+        .ods-center-bg { fill: var(--gray-bg); }
+        body.dark-theme .ods-center-bg { fill: #181818; }
+        .ods-g-sector { cursor: pointer; transition: transform 0.25s ease, opacity 0.2s ease; }
+        @media (max-width: 768px) {
+            .ods-section { padding: 52px 20px 60px; }
+            .ods-chart-row { gap: 28px; }
+            .ods-chart-wrapper { max-width: 500px; }
+            .ods-legend { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .ods-chart-wrapper { max-width: 340px; }
+            .ods-legend { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════ -->
+<header>
+    <div class="header-inner">
+        <div class="header-logos-container">
+            <img src="logo-epn.png" alt="Logo Institucional" style="max-height: 48px; width: auto; object-fit: contain;">
+            <div class="logo-divider"></div>
+            <a href="index.html" class="logo">
+            <img src="logo.png" alt="ATA Research Group" style="max-height:50px;width:auto;">
+            <div class="logo-text">
+                <span class="logo-name">Research Group</span>
+                <span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span>
+            </div>
+        </a>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="nosotros.html" data-i18n="nav_about">About Us</a>
+            <a href="proyectos.html" class="active" data-i18n="nav_projects">Projects</a>
+            <a href="publicaciones.html" data-i18n="nav_publications">Publications</a>
+            <a href="galeria.html" data-i18n="nav_gallery">Gallery</a>
+            <a href="contacto.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header-right">
+            <div class="header-controls">
+                <button class="ctrl-btn lang-btn" onclick="switchLanguage()" aria-label="Cambiar idioma">EN</button>
+                <button id="theme-toggle" class="ctrl-btn theme-btn" onclick="toggleTheme()" aria-label="Modo oscuro">
+                    <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+            <button class="hamburger" onclick="toggleNav()" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="nosotros.html" data-i18n="nav_about">About Us</a>
+        <a href="proyectos.html" class="active" data-i18n="nav_projects">Projects</a>
+        <a href="publicaciones.html" data-i18n="nav_publications">Publications</a>
+        <a href="galeria.html" data-i18n="nav_gallery">Gallery</a>
+        <a href="contacto.html" data-i18n="nav_contact">Contact</a>
+    </div>
+</header>
+
+<!-- ═══ PAGE HERO ════════════════════════════════════ -->
+<section class="page-hero">
+    <div class="ph-inner">
+        <div>
+            <div class="breadcrumb">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <span class="sep">›</span>
+                <span data-i18n="proy_page_name">Projects</span>
+            </div>
+            <h1 data-i18n="proy_hero_title">Research<br>&amp; <span>Development</span></h1>
+            <p class="hero-sub" data-i18n="proy_hero_sub">Portfolio of active and completed projects in aeronautics, precision agriculture, and advanced materials.</p>
+        </div>
+        <div class="active-badge">
+            <span class="ab-num">8</span>
+            <span class="ab-lbl" data-i18n="active_badge_lbl">Thesis projects<br>in development</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ODS SECTION ════════════════════════════════════ -->
+<section class="ods-section">
+    <div class="ods-inner">
+        <div class="ods-header">
+            <span class="ods-eyebrow" data-i18n="ods_eyebrow">Agenda 2030 · United Nations</span>
+            <h2 class="ods-title" data-i18n="ods_title">Research Aligned with the SDGs</h2>
+            <p class="ods-subtitle" data-i18n="ods_subtitle">Our projects directly contribute to the Sustainable Development Goals. Hover over each sector to explore.</p>
+        </div>
+        <div class="ods-chart-row">
+            <div class="ods-chart-wrapper">
+                <svg id="ods-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;" aria-label="Rueda interactiva de los 17 ODS"></svg>
+                <div class="ods-center-text">
+                    <div id="ods-center-default">
+                        <span class="ods-center-headline" data-i18n="ods_center_headline">Our&nbsp;Projects</span>
+                        <span class="ods-center-sub" data-i18n="ods_center_sub">and&nbsp;the&nbsp;SDGs</span>
+                    </div>
+                    <div id="ods-hover-panel" style="display:none;">
+                        <span class="ods-hover-num" id="ods-hover-num"></span>
+                        <span class="ods-hover-name" id="ods-hover-name"></span>
+                        <span class="ods-hover-proj" id="ods-hover-proj"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ods-legend" id="ods-legend"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PROYECTOS EN DESARROLLO ═══════════════════════ -->
+<section class="portfolio-section bg-white">
+    <div class="portfolio-inner">
+        <div class="section-intro">
+            <p class="eyebrow" data-i18n="eyebrow_active">Status · Active</p>
+            <div class="sec-title-row">
+                <h2 class="sec-title" data-i18n="section_active_title">In Development</h2>
+                <span class="title-badge badge-active" data-i18n="badge_ongoing">Ongoing</span>
+            </div>
+        </div>
+
+        <div class="portfolio-grid">
+
+            <!-- TARJETA 1: PIGR-24-01 ──────────────── -->
+            <div class="pf-card">
+                <div class="pf-visual visual-carbon">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:260px;height:260px;top:-60px;right:-70px;"></div>
+                        <div class="vdeco-hex" style="width:140px;height:140px;bottom:-30px;left:-35px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-carbon">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(168,85,247,0.9)" stroke-width="1.5">
+                                <circle cx="24" cy="24" r="3" fill="rgba(168,85,247,0.5)" stroke-width="2"/>
+                                <ellipse cx="24" cy="24" rx="18" ry="7" stroke-width="1.2"/>
+                                <ellipse cx="24" cy="24" rx="18" ry="7" stroke-width="1.2" transform="rotate(60 24 24)"/>
+                                <ellipse cx="24" cy="24" rx="18" ry="7" stroke-width="1.2" transform="rotate(120 24 24)"/>
+                                <circle cx="24" cy="17" r="2" fill="rgba(168,85,247,0.4)"/>
+                                <circle cx="24" cy="31" r="2" fill="rgba(168,85,247,0.4)"/>
+                                <circle cx="9" cy="24" r="2" fill="rgba(168,85,247,0.4)"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PIGR-24-01</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_national">National</span></div>
+                    <p class="pf-id">PIGR-24-01</p>
+                    <h3 class="pf-title" data-i18n="pf_pigr_title">Sustainable Reuse of Carbon Fiber</h3>
+                    <p class="pf-desc" data-i18n="pf_pigr_desc">Research, experimental evaluation and simulation for the efficient recycling of carbon fiber.</p>
+                    <a href="proyecto-pigr-24-01.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: PIM-24-01 ────────────────── -->
+            <div class="pf-card">
+                <div class="pf-visual visual-cadmio">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:240px;height:240px;bottom:-50px;left:-60px;"></div>
+                        <div class="vdeco-hex" style="width:130px;height:130px;top:-25px;right:-30px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-cadmio">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(34,197,94,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 40V28"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 28c0-8 8-14 14-12-2 8-8 12-14 12z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 33c0-7-7-12-13-10 2 7 7 11 13 10z"/>
+                                <circle cx="24" cy="10" r="3" stroke-width="1.2"/>
+                                <path stroke-linecap="round" d="M24 13v6" stroke-width="1.2"/>
+                                <path stroke-linecap="round" d="M18 8l-3-4M30 8l3-4" stroke-width="1.2" stroke-dasharray="2 2"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PIM-24-01</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_national">National</span></div>
+                    <p class="pf-id">PIM-24-01</p>
+                    <h3 class="pf-title" data-i18n="pf_pim24_title">Cadmium Analysis in Cacao</h3>
+                    <p class="pf-desc" data-i18n="pf_pim24_desc">Use of remote monitoring and multispectral imaging to estimate cadmium content in crops.</p>
+                    <a href="proyecto-pim-24-01.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PROYECTOS DE TITULACIÓN EN DESARROLLO ═════════ -->
+<template id="titulacion-activos-hidden">
+<section class="portfolio-section bg-gray">
+    <div class="portfolio-inner">
+        <div class="section-intro">
+            <p class="eyebrow" data-i18n="eyebrow_thesis">Thesis · Active</p>
+            <div class="sec-title-row">
+                <h2 class="sec-title" data-i18n="section_thesis_title">Thesis Projects</h2>
+                <span class="title-badge badge-active" data-i18n="badge_ongoing">Ongoing</span>
+            </div>
+        </div>
+
+        <div class="portfolio-grid">
+
+            <!-- PT-24-01: Control de vuelo autónomo -->
+            <div class="pf-card">
+                <div class="pf-visual visual-flight">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:240px;height:240px;top:-55px;right:-60px;"></div>
+                        <div class="vdeco-hex" style="width:130px;height:130px;bottom:-28px;left:-32px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-flight">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(0,180,216,0.9)" stroke-width="1.5">
+                                <circle cx="24" cy="24" r="10" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M24 8v6M24 34v6M8 24h6M34 24h6"/>
+                                <circle cx="24" cy="24" r="3" fill="rgba(0,180,216,0.5)" stroke-width="2"/>
+                                <path stroke-linecap="round" d="M24 14v4M24 30v4M14 24h4M30 24h4" stroke-width="1" opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-01</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-01</p>
+                    <h3 class="pf-title" data-i18n="pf_pt01_title">Autonomous Flight Control for Fixed-Wing UAVs</h3>
+                    <p class="pf-desc" data-i18n="pf_pt01_desc">Design and implementation of autonomous control algorithms for fixed-wing aircraft operating in Andean environments.</p>
+                    <a href="proyecto-pt-24-01.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PT-24-02: Detección de incendios forestales -->
+            <div class="pf-card">
+                <div class="pf-visual visual-fire">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:250px;height:250px;bottom:-60px;left:-55px;"></div>
+                        <div class="vdeco-hex" style="width:130px;height:130px;top:-25px;right:-28px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-fire">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(251,146,60,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 40c-7 0-13-5-13-12 0-5 3-9 7-11-1 3 0 6 3 8 1-4 4-8 4-12 3 3 4 7 4 10 2-2 3-5 2-8 4 3 6 8 6 13 0 7-6 12-13 12z"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-02</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-02</p>
+                    <h3 class="pf-title" data-i18n="pf_pt02_title">Forest Fire Detection with Thermal UAVs</h3>
+                    <p class="pf-desc" data-i18n="pf_pt02_desc">Early detection of fire hotspots using infrared thermal sensors and artificial intelligence classification.</p>
+                    <a href="proyecto-pt-24-02.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PT-24-03: Diseño alar optimizado -->
+            <div class="pf-card">
+                <div class="pf-visual visual-wing">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:260px;height:260px;top:-60px;right:-65px;"></div>
+                        <div class="vdeco-hex" style="width:140px;height:140px;bottom:-32px;left:-36px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-wing">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(34,211,238,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 26c0 0 8-4 16-4s16 4 16 4"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 26c4-6 10-10 16-10s12 4 16 10"/>
+                                <path stroke-linecap="round" d="M24 16v20" stroke-width="1" opacity="0.5"/>
+                                <path stroke-linecap="round" d="M16 20l-4 8M32 20l4 8" stroke-width="1" opacity="0.4"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-03</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-03</p>
+                    <h3 class="pf-title" data-i18n="pf_pt03_title">Optimized Wing Design for High Efficiency</h3>
+                    <p class="pf-desc" data-i18n="pf_pt03_desc">Parametric optimization of wing profiles for UAVs operating under low-Reynolds conditions at high Andean altitude.</p>
+                    <a href="proyecto-pt-24-03.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PT-24-04: Comunicaciones UAV mesh -->
+            <div class="pf-card">
+                <div class="pf-visual visual-mesh">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:240px;height:240px;bottom:-55px;left:-58px;"></div>
+                        <div class="vdeco-hex" style="width:128px;height:128px;top:-24px;right:-30px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-mesh">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(167,139,250,0.9)" stroke-width="1.5">
+                                <circle cx="24" cy="24" r="3" fill="rgba(167,139,250,0.5)" stroke-width="2"/>
+                                <circle cx="10" cy="14" r="2.5" stroke-width="1.5"/>
+                                <circle cx="38" cy="14" r="2.5" stroke-width="1.5"/>
+                                <circle cx="10" cy="34" r="2.5" stroke-width="1.5"/>
+                                <circle cx="38" cy="34" r="2.5" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M12 15l10 8M36 15l-10 8M12 33l10-8M36 33l-10-8M12 14h24M12 34h24" stroke-width="1" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-04</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-04</p>
+                    <h3 class="pf-title" data-i18n="pf_pt04_title">UAV Communications in Resilient Mesh Network</h3>
+                    <p class="pf-desc" data-i18n="pf_pt04_desc">Decentralized mesh network architecture for fault-tolerant communications between autonomous drone swarms.</p>
+                    <a href="proyecto-pt-24-04.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PT-24-05: Propulsión híbrida -->
+            <div class="pf-card">
+                <div class="pf-visual visual-hybrid">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:260px;height:260px;top:-58px;right:-68px;"></div>
+                        <div class="vdeco-hex" style="width:138px;height:138px;bottom:-30px;left:-34px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-hybrid">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(74,222,128,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 10l-4 14h8l-4 14"/>
+                                <path stroke-linecap="round" d="M28 16c4 0 8 2 8 8s-4 8-8 8" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M28 20c2 0 4 1 4 4s-2 4-4 4" stroke-width="1" opacity="0.5"/>
+                                <circle cx="12" cy="38" r="2" fill="rgba(74,222,128,0.4)"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-05</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-05</p>
+                    <h3 class="pf-title" data-i18n="pf_pt05_title">Hybrid Propulsion for Long-Range UAVs</h3>
+                    <p class="pf-desc" data-i18n="pf_pt05_desc">Electric-combustion hybrid propulsion system extending flight endurance to over 4 continuous hours.</p>
+                    <a href="proyecto-pt-24-05.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PT-24-06: Análisis CFD de perfiles -->
+            <div class="pf-card">
+                <div class="pf-visual visual-cfd">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:250px;height:250px;bottom:-58px;left:-56px;"></div>
+                        <div class="vdeco-hex" style="width:130px;height:130px;top:-26px;right:-28px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-cfd">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(96,165,250,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" d="M8 20c4-4 8-4 12 0s8 4 12 0s8-4 8-4" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M8 26c4-4 8-4 12 0s8 4 12 0s8-4 8-4" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M8 32c4-4 8-4 12 0s8 4 12 0s8-4 8-4" stroke-width="1"/>
+                                <path stroke-linecap="round" d="M8 14c4-4 8-4 12 0s8 4 12 0s8-4 8-4" stroke-width="1" opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-06</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-06</p>
+                    <h3 class="pf-title" data-i18n="pf_pt06_title">CFD Analysis of Airfoils at High Altitude</h3>
+                    <p class="pf-desc" data-i18n="pf_pt06_desc">Computational fluid dynamics (CFD) simulation to characterize aerodynamic behavior under Andean low-Reynolds conditions.</p>
+                    <a href="proyecto-pt-24-06.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PT-24-07: Materiales compuestos -->
+            <div class="pf-card">
+                <div class="pf-visual visual-materials">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:255px;height:255px;top:-58px;right:-62px;"></div>
+                        <div class="vdeco-hex" style="width:135px;height:135px;bottom:-30px;left:-33px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-materials">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(148,163,184,0.9)" stroke-width="1.5">
+                                <rect x="8" y="10" width="32" height="6" rx="2" stroke-width="1.5"/>
+                                <rect x="8" y="20" width="32" height="6" rx="2" stroke-width="1.5"/>
+                                <rect x="8" y="30" width="32" height="6" rx="2" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M12 13h24M12 23h24M12 33h24" stroke-width="0.8" opacity="0.4"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-07</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-07</p>
+                    <h3 class="pf-title" data-i18n="pf_pt07_title">Composite Materials for UAV Structures</h3>
+                    <p class="pf-desc" data-i18n="pf_pt07_desc">Experimental mechanical characterization of low-cost composite laminates for unmanned aircraft structures.</p>
+                    <a href="proyecto-pt-24-07.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PT-24-08: Aterrizaje de precisión -->
+            <div class="pf-card">
+                <div class="pf-visual visual-landing">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:248px;height:248px;bottom:-56px;left:-54px;"></div>
+                        <div class="vdeco-hex" style="width:128px;height:128px;top:-24px;right:-28px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-landing">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(251,191,36,0.9)" stroke-width="1.5">
+                                <circle cx="24" cy="24" r="14" stroke-width="1.2"/>
+                                <circle cx="24" cy="24" r="8" stroke-width="1.2"/>
+                                <circle cx="24" cy="24" r="2.5" fill="rgba(251,191,36,0.5)" stroke-width="2"/>
+                                <path stroke-linecap="round" d="M24 8v4M24 36v4M8 24h4M36 24h4"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PT-24-08</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_in_dev">In Development</span></div>
+                    <p class="pf-id">PT-24-08</p>
+                    <h3 class="pf-title" data-i18n="pf_pt08_title">Precision Landing via Computer Vision</h3>
+                    <p class="pf-desc" data-i18n="pf_pt08_desc">Visual guidance system for autonomous landing with less than 30 cm error in unprepared zones using an embedded camera.</p>
+                    <a href="proyecto-pt-24-08.html" class="btn-ver"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+</template>
+
+<!-- ═══ PROYECTOS FINALIZADOS ═════════════════════════ -->
+<section class="portfolio-section bg-gray">
+    <div class="portfolio-inner">
+        <div class="section-intro">
+            <p class="eyebrow eyebrow-done" data-i18n="eyebrow_done">Historic · Closed</p>
+            <div class="sec-title-row">
+                <h2 class="sec-title" data-i18n="section_done_title">Completed</h2>
+                <span class="title-badge badge-done" data-i18n="badge_done">Concluded</span>
+            </div>
+        </div>
+
+        <div class="portfolio-grid-single">
+
+            <!-- TARJETA 3: PIM-21-01 ────────────────── -->
+            <div class="pf-card card-done">
+                <div class="pf-visual visual-volcano">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:260px;height:260px;top:-55px;right:-65px;"></div>
+                        <div class="vdeco-hex" style="width:140px;height:140px;bottom:-30px;left:-35px;opacity:0.5;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-volcano-done">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(148,163,184,0.9)" stroke-width="1.5">
+                                <circle cx="24" cy="18" r="5" stroke-width="2"/>
+                                <path stroke-linecap="round" d="M24 8v3M24 23v3M8 18h3M37 18h3"/>
+                                <path stroke-linecap="round" d="M13 13l2 2M33 13l-2 2"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 36l-4 6h24l-4-6"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 36l-2-8h12l-2 8"/>
+                                <path stroke-linecap="round" d="M18 30h12" stroke-width="1.2"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PIM-21-01</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_national">National</span></div>
+                    <p class="pf-id">PIM-21-01</p>
+                    <h3 class="pf-title" data-i18n="pf_pim21_title">UAV Monitoring at Reventador Volcano</h3>
+                    <p class="pf-desc" data-i18n="pf_pim21_desc">Development of VTOL UAVs with distributed electric propulsion for volcanic monitoring.</p>
+                    <a href="proyecto-pim-21-01.html" class="btn-ver btn-ver-done"> 
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ═══ FOOTER ════════════════════════════════════════ -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" class="logo">
+                    <div class="logo-hex"><span>ATA</span></div>
+                    <div class="logo-text">
+                        <span class="logo-name">Research Group</span>
+                        <span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span>
+                    </div>
+                </a>
+                <p data-i18n="footer_about">Research group at Escuela Politécnica Nacional. Mechanics, Electronics &amp; Control, Telecommunications.</p>
+            </div>
+            <div class="footer-col">
+                <h5 data-i18n="footer_pages">Pages</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="nosotros.html" data-i18n="nav_about">About Us</a></li>
+                    <li><a href="proyectos.html" data-i18n="nav_projects">Projects</a></li>
+                    <li><a href="publicaciones.html" data-i18n="nav_publications">Publications</a></li>
+                    <li><a href="galeria.html" data-i18n="nav_gallery">Gallery</a></li>
+                    <li><a href="contacto.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5 data-i18n="footer_institution">Institution</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Escuela Politécnica Nacional</a></li>
+                    <li><a href="#">Quito, Ecuador</a></li>
+                    <li><a href="mailto:ata.rg@epn.edu.ec">ata.rg@epn.edu.ec</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_copyright">© 2025 <span>Research Group</span> · Escuela Politécnica Nacional. All rights reserved.</p>
+            <span class="footer-tag" data-i18n="footer_tag">EPN · Quito, Ecuador</span>
+        </div>
+    </div>
+</footer>
+
+<script src="idioma.js"></script>
+
+<script>
+(function () {
+    var ODS = [
+        { id: 1,  color: '#E5243B', name: 'Fin de la Pobreza',                              project: '' },
+        { id: 2,  color: '#DDA63A', name: 'Hambre Cero',                                    project: 'PIM-24-01 · Análisis de Cadmio en Cultivos de Cacao' },
+        { id: 3,  color: '#4C9F38', name: 'Salud y Bienestar',                              project: '' },
+        { id: 4,  color: '#C5192D', name: 'Educación de Calidad',                           project: 'Formación de Ingenieros e Investigadores en la EPN' },
+        { id: 5,  color: '#FF3A21', name: 'Igualdad de Género',                             project: '' },
+        { id: 6,  color: '#26BDE2', name: 'Agua Limpia y Saneamiento',                      project: 'Hidrodinámica Computacional de Cuencas Hidrográficas' },
+        { id: 7,  color: '#FCC30B', name: 'Energía Asequible y No Contaminante',            project: 'Optimización Aerodinámica de Sistemas de Generación Eólica' },
+        { id: 8,  color: '#A21942', name: 'Trabajo Decente y Crecimiento Económico',        project: '' },
+        { id: 9,  color: '#FD6925', name: 'Industria, Innovación e Infraestructura',        project: 'PIGR-24-01 · Reciclaje Sostenible de Fibra de Carbono' },
+        { id: 10, color: '#DD1367', name: 'Reducción de las Desigualdades',                 project: '' },
+        { id: 11, color: '#FD9D24', name: 'Ciudades y Comunidades Sostenibles',             project: '' },
+        { id: 12, color: '#BF8B2E', name: 'Producción y Consumo Responsables',              project: 'PIGR-24-01 · Materiales Compuestos Sostenibles para UAVs' },
+        { id: 13, color: '#3F7E44', name: 'Acción por el Clima',                            project: 'Modelado CFD de Flujos Atmosféricos y Volcánicos' },
+        { id: 14, color: '#0A97D9', name: 'Vida Submarina',                                 project: 'Simulación de Dinámica de Fluidos Computacional Marina' },
+        { id: 15, color: '#56C02B', name: 'Vida de Ecosistemas Terrestres',                 project: 'PIM-24-01 · Monitoreo Agrícola con UAVs Multiespectrales' },
+        { id: 16, color: '#00689D', name: 'Paz, Justicia e Instituciones Sólidas',          project: '' },
+        { id: 17, color: '#19486A', name: 'Alianzas para Lograr los Objetivos',             project: 'Redes con KU Leuven, Texas A&M, EAVISE y FONAG' }
+    ];
+    var NS = 'http://www.w3.org/2000/svg';
+    var CX = 350, CY = 350, OR = 295, IR = 178, GAP = 1.4;
+    var APer = 360 / 17, MR = (OR + IR) / 2, ISIZ = 46;
+
+    function xy(deg, r) {
+        var rad = deg * Math.PI / 180;
+        return [CX + r * Math.cos(rad), CY + r * Math.sin(rad)];
+    }
+    function arc(startDeg, endDeg) {
+        var s = startDeg + GAP / 2, e = endDeg - GAP / 2;
+        var la = (e - s > 180) ? 1 : 0;
+        var o1 = xy(s, OR), o2 = xy(e, OR), i1 = xy(s, IR), i2 = xy(e, IR);
+        return 'M' + o1[0].toFixed(2) + ' ' + o1[1].toFixed(2) +
+               ' A' + OR + ' ' + OR + ' 0 ' + la + ' 1 ' + o2[0].toFixed(2) + ' ' + o2[1].toFixed(2) +
+               ' L' + i2[0].toFixed(2) + ' ' + i2[1].toFixed(2) +
+               ' A' + IR + ' ' + IR + ' 0 ' + la + ' 0 ' + i1[0].toFixed(2) + ' ' + i1[1].toFixed(2) + 'Z';
+    }
+    function el(tag, attrs, styles) {
+        var e = document.createElementNS(NS, tag);
+        for (var k in (attrs  || {})) e.setAttribute(k, attrs[k]);
+        for (var k in (styles || {})) e.style[k] = styles[k];
+        return e;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var svg    = document.getElementById('ods-svg');
+        var legend = document.getElementById('ods-legend');
+        var defEl  = document.getElementById('ods-center-default');
+        var hovPnl = document.getElementById('ods-hover-panel');
+        var hovNum = document.getElementById('ods-hover-num');
+        var hovNm  = document.getElementById('ods-hover-name');
+        var hovPrj = document.getElementById('ods-hover-proj');
+        if (!svg) return;
+
+        svg.appendChild(el('circle', { cx: CX, cy: CY, r: IR - 3, class: 'ods-center-bg' }));
+
+        ODS.forEach(function (o, i) {
+            var s = -90 + i * APer, e = s + APer, m = s + APer / 2;
+            var mRad = m * Math.PI / 180;
+            var dx = (13 * Math.cos(mRad)).toFixed(2);
+            var dy = (13 * Math.sin(mRad)).toFixed(2);
+
+            var g = el('g', { class: 'ods-g-sector', 'aria-label': 'ODS ' + o.id + ': ' + o.name });
+            var p = el('path', { d: arc(s, e), fill: o.color, stroke: '#fff', 'stroke-width': '1.5', 'stroke-linejoin': 'round' });
+            g.appendChild(p);
+
+            var ip = xy(m, MR);
+            var img = el('image', {
+                href: 'iconos-ods/ods-' + o.id + '.png',
+                x: (ip[0] - ISIZ / 2).toFixed(2),
+                y: (ip[1] - ISIZ / 2).toFixed(2),
+                width: ISIZ,
+                height: ISIZ
+            }, { pointerEvents: 'none' });
+            g.appendChild(img);
+
+            g.addEventListener('mouseenter', function () {
+                g.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+                g.style.opacity = '0.92';
+                defEl.style.display = 'none';
+                hovPnl.style.display = 'block';
+                hovNum.textContent = 'ODS ' + o.id;
+                hovNum.style.color = o.color;
+                hovNm.textContent  = o.name;
+                hovPrj.textContent = o.project || '—';
+            });
+            g.addEventListener('mouseleave', function () {
+                g.style.transform = '';
+                g.style.opacity   = '';
+                defEl.style.display = 'block';
+                hovPnl.style.display = 'none';
+            });
+
+            svg.appendChild(g);
+
+            if (legend) {
+                var li = document.createElement('div');
+                li.className = 'ods-legend-item';
+                li.innerHTML = '<div class="ods-legend-dot" style="background:' + o.color + '"></div>' +
+                               '<span class="ods-legend-label">ODS&nbsp;' + o.id + '</span>';
+                legend.appendChild(li);
+            }
+        });
+    });
+}());
+</script>
+
+</body>
+</html>

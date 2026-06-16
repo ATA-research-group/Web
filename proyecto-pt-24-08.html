@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT-24-08: Aterrizaje de Precisión | ATA Research Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root { --black: #111111; --navy: #0A2540; --cyan: #00B4D8; --white: #FFFFFF; --gray-bg: #F7F9FC; --gray-border: #E2E8F0; --gray-text: #64748B; --t: all 0.25s ease; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--white); color: var(--navy); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        header { background: var(--black); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 0 rgba(0,180,216,0.18); }
+        .header-inner { max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+        .logo-hex { width: 42px; height: 42px; background: var(--cyan); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .logo-hex span { color: #000; font-weight: 900; font-size: 12px; letter-spacing: -0.5px; }
+        .logo-text { display: flex; flex-direction: column; gap: 3px; line-height: 1; }
+        .logo-name { color: var(--white); font-size: 14.5px; font-weight: 700; }
+        .logo-sub { color: var(--cyan); font-size: 9.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; }
+        .header-logos-container { display: flex; align-items: center; gap: 16px; }
+        .logo-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.15); }
+        .main-nav { display: flex; align-items: center; gap: 4px; }
+        .main-nav a { color: rgba(255,255,255,0.62); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 7px 15px; border-radius: 7px; transition: var(--t); }
+        .main-nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+        .main-nav a.active { color: var(--cyan); background: rgba(0,180,216,0.1); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--t); }
+        .mobile-nav { display: none; flex-direction: column; background: #0D0D0D; border-top: 1px solid rgba(255,255,255,0.05); padding: 8px 24px 16px; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { color: rgba(255,255,255,0.62); text-decoration: none; font-size: 14px; font-weight: 500; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.04); transition: var(--t); }
+        .mobile-nav a:last-child { border-bottom: none; }
+        .mobile-nav a:hover, .mobile-nav a.active { color: var(--cyan); }
+        .project-hero { background: linear-gradient(145deg, #1a0e04 0%, #0A2540 60%, #180c04 100%); padding: 72px 32px 64px; position: relative; overflow: hidden; }
+        .project-hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 90% 50%, rgba(0,180,216,0.07) 0%, transparent 65%); pointer-events: none; }
+        .hero-deco { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .hero-deco-hex { position: absolute; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); background: rgba(255,255,255,0.018); }
+        .ph-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 1; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.38); margin-bottom: 28px; letter-spacing: 0.5px; }
+        .breadcrumb a { color: rgba(255,255,255,0.38); text-decoration: none; transition: var(--t); }
+        .breadcrumb a:hover { color: var(--cyan); }
+        .breadcrumb .sep { color: rgba(255,255,255,0.2); }
+        .breadcrumb .current { color: rgba(0,180,216,0.8); }
+        .hero-meta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .project-code-badge { font-size: 10.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.3); padding: 5px 14px; border-radius: 100px; }
+        .status-badge-active { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; color: var(--cyan); background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.3); }
+        .status-badge-active::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; }
+        .project-hero h1 { font-size: clamp(20px, 3vw, 40px); font-weight: 900; color: var(--white); line-height: 1.14; letter-spacing: -1.5px; max-width: 860px; margin-bottom: 28px; }
+        .project-hero h1 span { color: var(--cyan); }
+        .director-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .director-item { display: flex; flex-direction: column; gap: 3px; }
+        .dir-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+        .dir-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.82); }
+        .wp-layout { max-width: 1240px; margin: 0 auto; padding: 72px 32px 80px; display: grid; grid-template-columns: 220px 1fr; gap: 64px; align-items: start; }
+        .wp-sidebar { position: sticky; top: 90px; }
+        .sidebar-label { font-size: 9.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 12px; }
+        .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+        .sidebar-nav a { display: block; font-size: 13px; font-weight: 500; color: var(--gray-text); text-decoration: none; padding: 7px 12px; border-radius: 7px; border-left: 2px solid transparent; transition: var(--t); }
+        .sidebar-nav a:hover { color: var(--navy); background: var(--gray-bg); border-left-color: var(--cyan); }
+        .sidebar-divider { height: 1px; background: var(--gray-border); margin: 16px 0; }
+        .sidebar-back { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--gray-text); text-decoration: none; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--gray-border); transition: var(--t); width: 100%; justify-content: center; }
+        .sidebar-back:hover { color: var(--navy); border-color: var(--navy); background: var(--gray-bg); }
+        .wp-main { min-width: 0; }
+        .wp-section { padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--gray-border); }
+        .wp-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .wp-section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--cyan); margin-bottom: 14px; }
+        .wp-section-label::before { content: ''; width: 20px; height: 2px; background: var(--cyan); border-radius: 2px; }
+        .wp-section h2 { font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; color: var(--navy); letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 20px; }
+        .wp-text { font-size: 15.5px; color: var(--gray-text); line-height: 1.82; margin-bottom: 16px; }
+        .wp-text:last-child { margin-bottom: 0; }
+        .wp-highlight { background: var(--gray-bg); border-left: 3px solid var(--cyan); border-radius: 0 10px 10px 0; padding: 20px 24px; font-size: 15.5px; color: var(--navy); line-height: 1.78; font-style: italic; }
+        .wp-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+        .wp-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--gray-text); line-height: 1.72; }
+        .wp-list li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; margin-top: 8px; }
+        .wp-deliverable { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: var(--gray-bg); border-radius: 10px; border: 1px solid var(--gray-border); transition: var(--t); }
+        .wp-deliverable:hover { border-color: rgba(0,180,216,0.3); }
+        .wp-deliverable-num { font-size: 11px; font-weight: 800; color: var(--cyan); background: rgba(0,180,216,0.1); border-radius: 6px; padding: 3px 9px; flex-shrink: 0; letter-spacing: 0.5px; }
+        .wp-deliverable p { font-size: 14px; color: var(--gray-text); line-height: 1.65; }
+        .deliverables-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+        footer { background: var(--black); padding: 64px 32px 28px; border-top: 1px solid rgba(0,180,216,0.1); }
+        .footer-inner { max-width: 1240px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 28px; }
+        .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
+        .footer-about p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.78; max-width: 290px; }
+        .footer-col h5 { color: rgba(255,255,255,0.88); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+        .footer-links a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 13px; transition: var(--t); }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.24); }
+        .footer-bottom p span { color: var(--cyan); }
+        .footer-tag { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px; }
+        @media (max-width: 900px) { .wp-layout { grid-template-columns: 1fr; gap: 0; } .wp-sidebar { position: static; margin-bottom: 40px; display: none; } }
+        @media (max-width: 768px) { .main-nav { display: none; } .hamburger { display: flex; } .header-inner { padding: 0 20px; } .project-hero { padding: 52px 20px 48px; } .wp-layout { padding: 48px 20px 64px; } footer { padding-left: 20px; padding-right: 20px; } .footer-grid { grid-template-columns: 1fr; gap: 36px; } }
+        .header-right { display: flex; align-items: center; gap: 8px; } .header-controls { display: flex; align-items: center; gap: 4px; }
+        .ctrl-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 7px; color: rgba(255,255,255,0.65); cursor: pointer; transition: var(--t); font-family: inherit; line-height: 1; }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.22); }
+        .lang-btn { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; padding: 6px 11px; height: 32px; text-transform: uppercase; } .theme-btn { width: 32px; height: 32px; } .theme-btn svg { width: 16px; height: 16px; display: block; }
+        .icon-sun { display: none; } .icon-moon { display: block; } .dark-theme .icon-sun { display: block; } .dark-theme .icon-moon { display: none; }
+        body.dark-theme { --gray-bg: #1E1E1E; --gray-border: #2A2A2A; --gray-text: #8FA5BB; background: #121212; color: #C4D4E0; }
+        body.dark-theme .mission-section, body.dark-theme .team-section, body.dark-theme .pub-section, body.dark-theme .contact-section, body.dark-theme .portfolio-section { background: #121212; }
+        body.dark-theme .sec-title, body.dark-theme .category-title, body.dark-theme .wp-section h2, body.dark-theme .pub-title, body.dark-theme .pillar h4, body.dark-theme .pf-card h3, body.dark-theme .member-name { color: #E4EEF8; }
+        body.dark-theme .pub-card, body.dark-theme .pf-card, body.dark-theme .member-card { background: #1E1E1E; border-color: #2A2A2A; } body.dark-theme .wp-highlight { color: #C4D4E0; }
+        body.dark-theme .sidebar-nav a:hover, body.dark-theme .sidebar-back:hover { color: #C4D4E0; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <div class="header-logos-container">
+            <img src="logo-epn.png" alt="Logo Institucional" style="max-height: 48px; width: auto; object-fit: contain;">
+            <div class="logo-divider"></div>
+            <a href="index.html" class="logo">
+            <img src="logo.png" alt="ATA Research Group" style="max-height:50px;width:auto;">
+            <div class="logo-text"><span class="logo-name">Research Group</span><span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span></div>
+        </a>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Home</a><a href="nosotros.html" data-i18n="nav_about">About</a>
+            <a href="proyectos.html" class="active" data-i18n="nav_projects">Projects</a>
+            <a href="publicaciones.html" data-i18n="nav_publications">Publications</a><a href="galeria.html" data-i18n="nav_gallery">Gallery</a><a href="contacto.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header-right">
+            <div class="header-controls">
+                <button class="ctrl-btn lang-btn" onclick="switchLanguage()" aria-label="Switch language">EN</button>
+                <button id="theme-toggle" class="ctrl-btn theme-btn" onclick="toggleTheme()" aria-label="Modo oscuro">
+                    <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+            <button class="hamburger" onclick="toggleNav()" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" data-i18n="nav_home">Home</a><a href="nosotros.html" data-i18n="nav_about">About</a>
+        <a href="proyectos.html" class="active" data-i18n="nav_projects">Projects</a>
+        <a href="publicaciones.html" data-i18n="nav_publications">Publications</a><a href="galeria.html" data-i18n="nav_gallery">Gallery</a><a href="contacto.html" data-i18n="nav_contact">Contact</a>
+    </div>
+</header>
+
+<section class="project-hero">
+    <div class="hero-deco">
+        <div class="hero-deco-hex" style="width:400px;height:400px;top:-100px;right:-80px;"></div>
+        <div class="hero-deco-hex" style="width:200px;height:200px;bottom:-60px;left:-50px;"></div>
+    </div>
+    <div class="ph-inner">
+        <div class="breadcrumb">
+            <a href="index.html" data-i18n="nav_home">Home</a><span class="sep">›</span>
+            <a href="proyectos.html" data-i18n="nav_projects">Projects</a><span class="sep">›</span>
+            <span class="current">PT-24-08</span>
+        </div>
+        <div class="hero-meta-row">
+            <span class="project-code-badge">PT-24-08</span>
+            <span class="status-badge-active" data-i18n="proj_status_active">In Development</span>
+        </div>
+        <h1 data-i18n="pt08_h1">Precision Landing System for Autonomous UAVs in Unprepared Zones using <span>Computer Vision</span></h1>
+        <div class="director-row">
+            <div class="director-item">
+                <span class="dir-label" data-i18n="proj_dir_label">Director</span>
+                <span class="dir-name">Esteban Alejandro Valencia Torres</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="wp-layout">
+    <aside class="wp-sidebar">
+        <p class="sidebar-label" data-i18n="sidebar_content">Contents</p>
+        <ul class="sidebar-nav">
+            <li><a href="#introduccion" data-i18n="proj_sec_01">01 · Introduction</a></li>
+            <li><a href="#objetivo-general" data-i18n="proj_sec_02">02 · General Objective</a></li>
+            <li><a href="#objetivos-especificos" data-i18n="proj_sec_03">03 · Specific Objectives</a></li>
+            <li><a href="#entregables" data-i18n="proj_sec_04_deliver">04 · Expected Deliverables</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <a href="proyectos.html" class="sidebar-back">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+            <span data-i18n="sidebar_back">Back to Projects</span>
+        </a>
+    </aside>
+    <main class="wp-main">
+
+        <section class="wp-section" id="introduccion">
+            <span class="wp-section-label" data-i18n="proj_sec_01">01 · Introduction</span>
+            <h2 data-i18n="proj_h2_context">Context &amp; Justification</h2>
+            <p class="wp-text" data-i18n="pt08_ctx1">Landing is one of the most critical flight phases with the highest incident rate in autonomous UAV operations. In scientific missions conducted in remote areas of Ecuador (volcano edges, forest areas, post-disaster risk zones), the availability of prepared landing areas is minimal or nonexistent, requiring the development of autonomous landing capabilities on unstructured terrain.</p>
+            <p class="wp-text" data-i18n="pt08_ctx2">This project develops a visual guidance system for precision landing that, through real-time image processing and the use of fiducial markers or AI-based terrain analysis, allows the UAV to identify a safe landing zone and execute the descent maneuver with a position error below 30 centimeters, without operator intervention.</p>
+        </section>
+
+        <section class="wp-section" id="objetivo-general">
+            <span class="wp-section-label" data-i18n="proj_sec_02">02 · General Objective</span>
+            <h2 data-i18n="proj_h2_goal">Main Research Goal</h2>
+            <div class="wp-highlight" data-i18n="pt08_goal">
+                Develop and validate a precision autonomous landing system for multirotor UAVs, based on embedded computer vision, capable of identifying safe landing zones on unprepared terrain and executing descent with position error below 30 cm under variable lighting conditions.
+            </div>
+        </section>
+
+        <section class="wp-section" id="objetivos-especificos">
+            <span class="wp-section-label" data-i18n="proj_sec_03">03 · Specific Objectives</span>
+            <h2 data-i18n="proj_h2_specific">Specific Scopes</h2>
+            <ul class="wp-list">
+                <li data-i18n="pt08_obj1">Design and implement a landing zone detection and tracking algorithm using image processing, combining ArUco marker detection and terrain homogeneity analysis via neural network.</li>
+                <li data-i18n="pt08_obj2">Develop a precision visual guidance controller integrating the estimated landing zone position with the flight control system (ArduCopter/PX4) via MAVLink protocol.</li>
+                <li data-i18n="pt08_obj3">Implement the system on low-weight embedded hardware (Raspberry Pi CM4 + RGB camera) and integrate it into a multirotor test UAV at ATA laboratory.</li>
+                <li data-i18n="pt08_obj4">Validate the system through at least 30 landing tests under different lighting, wind, and initial target distance conditions, quantifying the final positioning error.</li>
+            </ul>
+        </section>
+
+        <section class="wp-section" id="entregables">
+            <span class="wp-section-label" data-i18n="proj_sec_04_deliver">04 · Expected Deliverables</span>
+            <h2 data-i18n="proj_h2_products">Research Products</h2>
+            <div class="deliverables-grid">
+                <div class="wp-deliverable">
+                    <span class="wp-deliverable-num">E-01</span>
+                    <p data-i18n="pt08_e01">Embedded computer vision system for precision landing, with landing zone detection algorithms and visual guidance controller integrated and documented.</p>
+                </div>
+                <div class="wp-deliverable">
+                    <span class="wp-deliverable-num">E-02</span>
+                    <p data-i18n="pt08_e02">Autonomous landing test protocol with position error measurement methodology and statistical analysis of results under multiple operational conditions.</p>
+                </div>
+                <div class="wp-deliverable">
+                    <span class="wp-deliverable-num">E-03</span>
+                    <p data-i18n="pt08_e03">Experimental validation report with data from at least 30 test landings, positioning error distribution, and analysis of influencing factors.</p>
+                </div>
+                <div class="wp-deliverable">
+                    <span class="wp-deliverable-num">E-04</span>
+                    <p data-i18n="pt08_e04">Documented source code and system repository, available for integration into future ATA Research Group UAV platforms.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" class="logo">
+                    <div class="logo-hex"><span>ATA</span></div>
+                    <div class="logo-text"><span class="logo-name">Research Group</span><span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span></div>
+                </a>
+                <p data-i18n="footer_about">Research group of the Escuela Politécnica Nacional. Mechanics, Electronics &amp; Control, Telecommunications.</p>
+            </div>
+            <div class="footer-col">
+                <h5 data-i18n="footer_pages">Pages</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="nosotros.html" data-i18n="nav_about">About</a></li>
+                    <li><a href="proyectos.html" data-i18n="nav_projects">Projects</a></li>
+                    <li><a href="publicaciones.html" data-i18n="nav_publications">Publications</a></li>
+                    <li><a href="galeria.html" data-i18n="nav_gallery">Gallery</a></li>
+                    <li><a href="contacto.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5 data-i18n="footer_institution">Institution</h5>
+                <ul class="footer-links">
+                    <li><a href="#" data-i18n="footer_epn_name">Escuela Politécnica Nacional</a></li>
+                    <li><a href="#" data-i18n="footer_location">Quito, Ecuador</a></li>
+                    <li><a href="mailto:ata.rg@epn.edu.ec">ata.rg@epn.edu.ec</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_copyright">© 2025 <span>Research Group</span> · Escuela Politécnica Nacional. All rights reserved.</p>
+            <span class="footer-tag">EPN · Quito, Ecuador</span>
+        </div>
+    </div>
+</footer>
+<script src="idioma.js"></script>
+</body>
+</html>

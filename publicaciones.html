@@ -1,0 +1,1245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicaciones | Research Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --black:       #111111;
+            --navy:        #0A2540;
+            --cyan:        #00B4D8;
+            --white:       #FFFFFF;
+            --gray-bg:     #F7F9FC;
+            --gray-border: #E2E8F0;
+            --gray-text:   #64748B;
+            --t: all 0.25s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--navy);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HEADER ─────────────────────────────── */
+        header {
+            background: var(--black);
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,180,216,0.18);
+        }
+        .header-inner {
+            max-width: 1240px; margin: 0 auto;
+            padding: 0 32px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+        .logo-text { display: flex; flex-direction: column; gap: 3px; line-height: 1; }
+        .logo-name { color: var(--white); font-size: 14.5px; font-weight: 700; }
+        .logo-sub  { color: var(--cyan); font-size: 9.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; }
+        .header-logos-container { display: flex; align-items: center; gap: 16px; }
+        .logo-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.15); }
+
+        .main-nav { display: flex; align-items: center; gap: 4px; }
+        .main-nav a {
+            color: rgba(255,255,255,0.62); text-decoration: none;
+            font-size: 13.5px; font-weight: 500;
+            padding: 7px 15px; border-radius: 7px; transition: var(--t);
+        }
+        .main-nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+        .main-nav a.active { color: var(--cyan); background: rgba(0,180,216,0.1); }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; padding: 6px; background: none; border: none;
+        }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--t); }
+
+        .mobile-nav {
+            display: none; flex-direction: column;
+            background: #0D0D0D;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 8px 24px 16px;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            color: rgba(255,255,255,0.62); text-decoration: none;
+            font-size: 14px; font-weight: 500;
+            padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.04); transition: var(--t);
+        }
+        .mobile-nav a:last-child { border-bottom: none; }
+        .mobile-nav a:hover, .mobile-nav a.active { color: var(--cyan); }
+
+        /* ─── PAGE HERO ───────────────────────────── */
+        .page-hero {
+            background: var(--black);
+            padding: 72px 32px 64px;
+            position: relative; overflow: hidden;
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 80% at 100% 50%, rgba(0,180,216,0.06) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .ph-inner {
+            max-width: 1240px; margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+        .breadcrumb {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.38);
+            margin-bottom: 24px; letter-spacing: 0.5px;
+        }
+        .breadcrumb a { color: rgba(255,255,255,0.38); text-decoration: none; transition: var(--t); }
+        .breadcrumb a:hover { color: var(--cyan); }
+        .breadcrumb span { color: rgba(0,180,216,0.6); }
+        .breadcrumb .sep { color: rgba(255,255,255,0.2); }
+
+        .page-hero h1 {
+            font-size: clamp(32px, 4.5vw, 58px);
+            font-weight: 900; color: var(--white);
+            line-height: 1.08; letter-spacing: -2px;
+            margin-bottom: 14px;
+        }
+        .page-hero h1 span { color: var(--cyan); }
+        .page-hero p {
+            font-size: 16px; color: rgba(255,255,255,0.5);
+            font-weight: 400;
+        }
+
+        /* ─── PUBLICATIONS SECTION ────────────────── */
+        .pub-section { padding: 88px 32px; background: var(--white); }
+        .pub-inner { max-width: 1240px; margin: 0 auto; }
+
+        .eyebrow {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--cyan); margin-bottom: 10px;
+        }
+        .sec-title {
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 800; color: var(--navy);
+            line-height: 1.14; letter-spacing: -1.2px;
+            margin-bottom: 56px;
+        }
+
+        /* Publications grid */
+        .pub-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .pub-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 18px;
+            padding: 36px 32px 30px;
+            display: flex; flex-direction: column;
+            transition: var(--t);
+            position: relative; overflow: hidden;
+        }
+        .pub-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--cyan);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+        .pub-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 56px rgba(0,0,0,0.09);
+            border-color: transparent;
+        }
+        .pub-card:hover::before { transform: scaleX(1); }
+
+        .pub-type {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--cyan); background: rgba(0,180,216,0.08);
+            border: 1px solid rgba(0,180,216,0.2);
+            padding: 4px 12px; border-radius: 100px;
+            margin-bottom: 20px; align-self: flex-start;
+        }
+
+        .pub-title {
+            font-size: 16px; font-weight: 800; color: var(--navy);
+            line-height: 1.38; letter-spacing: -0.3px;
+            margin-bottom: 14px;
+        }
+
+        .pub-authors {
+            font-size: 13px; color: var(--gray-text);
+            font-weight: 500; margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .pub-authors strong { color: var(--navy); font-weight: 600; }
+
+        .pub-venue {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; color: var(--gray-text);
+            margin-bottom: 20px; flex-wrap: wrap;
+        }
+        .pub-venue-name { font-style: italic; }
+        .pub-year {
+            background: var(--gray-bg); border: 1px solid var(--gray-border);
+            color: var(--navy); font-size: 11px; font-weight: 700;
+            padding: 3px 10px; border-radius: 100px; font-style: normal;
+        }
+
+        .pub-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+        .pub-tag {
+            background: var(--gray-bg); border: 1px solid var(--gray-border);
+            color: var(--gray-text); font-size: 11px; font-weight: 600;
+            padding: 4px 10px; border-radius: 100px;
+        }
+
+        /* ─── ABSTRACT ACCORDION ──────────────────── */
+        .pub-abstract-wrap { margin-bottom: 24px; }
+
+        .abstract-toggle {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: none; border: none; cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
+            color: var(--cyan); padding: 0;
+            transition: var(--t);
+        }
+        .abstract-toggle:hover { color: #00cef5; }
+        .abstract-toggle svg {
+            width: 14px; height: 14px; flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+        .abstract-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+        .abstract-toggle[aria-expanded="true"] .toggle-label-show { display: none; }
+        .abstract-toggle[aria-expanded="false"] .toggle-label-hide { display: none; }
+
+        .pub-abstract {
+            background: var(--gray-bg);
+            border: 1px solid var(--gray-border);
+            border-left: 3px solid rgba(0,180,216,0.4);
+            border-radius: 0 10px 10px 0;
+            padding: 16px 18px;
+            margin-top: 12px;
+            font-size: 13px; color: var(--gray-text);
+            line-height: 1.76;
+            animation: abstractIn 0.22s ease;
+        }
+        @keyframes abstractIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── PUB IMAGE ──────────────────────────── */
+        .pub-image-wrapper {
+            margin-bottom: 16px;
+            width: 100%;
+            max-height: 180px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .pub-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .pub-card:hover .pub-image-wrapper img {
+            transform: scale(1.03);
+        }
+
+        /* ─── RESEARCHGATE BUTTON ─────────────────── */
+        .btn-pub {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--cyan); color: var(--black);
+            text-decoration: none; font-size: 12.5px; font-weight: 700;
+            padding: 10px 20px; border-radius: 8px;
+            transition: var(--t); align-self: flex-start;
+            letter-spacing: 0.2px; margin-top: auto;
+        }
+        .btn-pub:hover {
+            background: #22cdf0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,180,216,0.35);
+        }
+        .btn-pub svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+        /* ─── FOOTER ──────────────────────────────── */
+        footer {
+            background: var(--black);
+            padding: 64px 32px 28px;
+            border-top: 1px solid rgba(0,180,216,0.1);
+        }
+        .footer-inner { max-width: 1240px; margin: 0 auto; }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 28px;
+        }
+        .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
+        .footer-about p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.78; max-width: 290px; }
+        .footer-logo-hex {
+            width: 42px; height: 42px; background: var(--cyan);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .footer-logo-hex span { color: #000; font-weight: 900; font-size: 12px; letter-spacing: -0.5px; }
+        .footer-col h5 {
+            color: rgba(255,255,255,0.88); font-size: 11px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+        .footer-links a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 13px; transition: var(--t); }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-bottom {
+            display: flex; align-items: center;
+            justify-content: space-between; flex-wrap: wrap; gap: 12px;
+        }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.24); }
+        .footer-bottom p span { color: var(--cyan); }
+        .footer-tag {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+            color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+        }
+
+        /* ─── RESPONSIVE ──────────────────────────── */
+        @media (max-width: 1024px) {
+            .pub-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hamburger { display: flex; }
+            .header-inner, .page-hero, .pub-section { padding-left: 20px; padding-right: 20px; }
+            footer { padding-left: 20px; padding-right: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+        }
+        @media (max-width: 560px) {
+            .pub-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ─── HEADER CONTROLS ─────────────────────────── */
+        .header-right { display: flex; align-items: center; gap: 8px; }
+        .header-controls { display: flex; align-items: center; gap: 4px; }
+        .ctrl-btn {
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 7px;
+            color: rgba(255,255,255,0.65);
+            cursor: pointer; transition: var(--t);
+            font-family: inherit; line-height: 1;
+        }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.22); }
+        .lang-btn { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; padding: 6px 11px; height: 32px; text-transform: uppercase; }
+        .theme-btn { width: 32px; height: 32px; }
+        .theme-btn svg { width: 16px; height: 16px; display: block; }
+        .icon-sun { display: none; }
+        .icon-moon { display: block; }
+        .dark-theme .icon-sun { display: block; }
+        .dark-theme .icon-moon { display: none; }
+        /* ─── DARK THEME ─────────────────────────────── */
+        body.dark-theme {
+            --gray-bg: #1E1E1E; --gray-border: #2A2A2A; --gray-text: #8FA5BB;
+            background: #121212; color: #C4D4E0;
+        }
+        body.dark-theme .mission-section,
+        body.dark-theme .team-section,
+        body.dark-theme .pub-section,
+        body.dark-theme .contact-section,
+        body.dark-theme .portfolio-section { background: #121212; }
+        body.dark-theme .team-section:nth-child(even),
+        body.dark-theme .portfolio-section.bg-gray { background: #181818; }
+        body.dark-theme .sec-title,
+        body.dark-theme .category-title,
+        body.dark-theme .wp-section h2,
+        body.dark-theme .pub-title,
+        body.dark-theme .pillar h4,
+        body.dark-theme .pf-card h3,
+        body.dark-theme .member-name { color: #E4EEF8; }
+        body.dark-theme .pub-card,
+        body.dark-theme .pf-card,
+        body.dark-theme .member-card { background: #1E1E1E; border-color: #2A2A2A; }
+        body.dark-theme .wp-highlight { color: #C4D4E0; }
+        body.dark-theme .sidebar-nav a:hover,
+        body.dark-theme .sidebar-back:hover { color: #C4D4E0; }
+        body.dark-theme .badge-eng { color: #90AAC0; border-color: rgba(144,170,192,0.3); background: rgba(144,170,192,0.08); }
+        body.dark-theme .badge-student { color: #8FA5BB; border-color: rgba(143,165,187,0.3); }
+        body.dark-theme .pub-authors strong,
+        body.dark-theme .pub-year { color: #C4D4E0; }
+        body.dark-theme .contact-card,
+        body.dark-theme .info-item { background: #1E1E1E; border-color: #2A2A2A; }
+        body.dark-theme .form-group input,
+        body.dark-theme .form-group textarea { background: #121212; border-color: #2A2A2A; color: #C4D4E0; }
+
+        /* ─── PUBLICATION FILTERS ─────────────────────── */
+        .pub-filters-container {
+            display: flex; align-items: flex-end; gap: 16px;
+            margin-bottom: 40px; flex-wrap: wrap;
+        }
+        .filter-group { display: flex; flex-direction: column; gap: 6px; }
+        .filter-label {
+            font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--gray-text);
+        }
+        .filter-select {
+            appearance: none; -webkit-appearance: none;
+            background-color: var(--white);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 14px center;
+            border: 1.5px solid var(--gray-border); border-radius: 10px;
+            padding: 10px 40px 10px 14px;
+            font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600;
+            color: var(--navy); cursor: pointer; transition: var(--t);
+            min-width: 180px; outline: none;
+        }
+        .filter-select:hover { border-color: var(--cyan); }
+        .filter-select:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(0,180,216,0.15);
+        }
+        body.dark-theme .filter-select {
+            background-color: #1E1E1E;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238FA5BB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            border-color: #2A2A2A; color: #C4D4E0;
+        }
+        body.dark-theme .filter-select:focus {
+            border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,180,216,0.15);
+        }
+        body.dark-theme .filter-label { color: #8FA5BB; }
+
+        /* ─── ACTIVE STRIP (redesigned) ──────────────── */
+        .active-strip {
+            padding: 64px 32px;
+            background: var(--gray-bg);
+            border-top: 1px solid var(--gray-border);
+        }
+        .strip-inner { max-width: 1240px; margin: 0 auto; }
+        .strip-left { margin-bottom: 28px; }
+        .strip-title {
+            font-size: clamp(22px, 2.5vw, 32px);
+            font-weight: 800; color: var(--navy);
+            line-height: 1.2; letter-spacing: -0.8px;
+        }
+        .strip-pills { display: flex; flex-wrap: wrap; gap: 14px; }
+        .strip-pill {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--white); border: 1px solid var(--gray-border);
+            border-radius: 8px; padding: 14px 20px;
+            font-size: 13.5px; font-weight: 500; color: var(--navy);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            cursor: default;
+        }
+        .strip-pill strong { color: var(--cyan); font-weight: 800; font-size: 14px; }
+        .strip-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+        }
+        body.dark-theme .active-strip { background: #181818; border-color: #2A2A2A; }
+        body.dark-theme .strip-title { color: #E4EEF8; }
+        body.dark-theme .strip-pill { background: #1E1E1E; border-color: #2A2A2A; color: #C4D4E0; }
+        body.dark-theme .strip-pill:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+
+        /* ─── RESPONSIVE (filters + strip) ────────────── */
+        @media (max-width: 768px) {
+            .pub-filters-container { flex-direction: column; align-items: stretch; gap: 12px; }
+            .filter-group { width: 100%; }
+            .filter-select { width: 100%; min-width: unset; }
+            .active-strip { padding: 48px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="header-logos-container">
+            <img src="logo-epn.png" alt="Logo Institucional" style="max-height: 48px; width: auto; object-fit: contain;">
+            <div class="logo-divider"></div>
+            <a href="index.html" class="logo">
+            <img src="logo.png" alt=" Research Group" style="max-height:50px;width:auto;">
+            <div class="logo-text">
+                <span class="logo-name">Research Group</span>
+                <span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span>
+            </div>
+        </a>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="nosotros.html" data-i18n="nav_about">About Us</a>
+            <a href="proyectos.html" data-i18n="nav_projects">Projects</a>
+            <a href="publicaciones.html" class="active" data-i18n="nav_publications">Publications</a>
+            <a href="galeria.html" data-i18n="nav_gallery">Gallery</a>
+            <a href="contacto.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header-right">
+            <div class="header-controls">
+                <button class="ctrl-btn lang-btn" onclick="switchLanguage()" aria-label="Cambiar idioma">EN</button>
+                <button id="theme-toggle" class="ctrl-btn theme-btn" onclick="toggleTheme()" aria-label="Modo oscuro">
+                    <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+            <button class="hamburger" onclick="toggleNav()" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="nosotros.html" data-i18n="nav_about">About Us</a>
+        <a href="proyectos.html" data-i18n="nav_projects">Projects</a>
+        <a href="publicaciones.html" class="active" data-i18n="nav_publications">Publications</a>
+        <a href="galeria.html" data-i18n="nav_gallery">Gallery</a>
+        <a href="contacto.html" data-i18n="nav_contact">Contact</a>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="ph-inner">
+        <div class="breadcrumb">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <span class="sep">›</span>
+            <span data-i18n="pub_page_name">Publications</span>
+        </div>
+        <h1 data-i18n="pub_hero_title">Scientific<br><span>Publications</span></h1>
+        <p data-i18n="pub_hero_sub">Recent articles and research from our team</p>
+    </div>
+</section>
+
+<section class="pub-section">
+    <div class="pub-inner">
+        <p class="eyebrow" data-i18n="pub_eyebrow">Scientific Output</p>
+        <h2 class="sec-title" data-i18n="pub_title">Recent Articles</h2>
+
+        <div class="pub-filters-container">
+            <div class="filter-group">
+                <label class="filter-label" for="filter-tipo" data-i18n="filter_type_lbl">Publication type</label>
+                <select class="filter-select" id="filter-tipo" onchange="applyFilters()">
+                    <option value="" data-i18n="filter_type_all">All types</option>
+                    <option value="revista" data-i18n="filter_journal">Journal</option>
+                    <option value="conferencia" data-i18n="filter_conf">Conference</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label" for="filter-anio" data-i18n="filter_year_lbl">Year</label>
+                <select class="filter-select" id="filter-anio" onchange="applyFilters()">
+                    <option value="" data-i18n="filter_year_all">All years</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pub-grid">
+
+            <div class="pub-card" data-tipo="conferencia" data-anio="2025">
+                <span class="pub-type" data-i18n="type_intl_conf">International Conference</span>
+                <h3 class="pub-title" data-i18n="pub_t_01">Bridging Theory and Simulation: Parametric Identification and Validation for a Multirotor UAV in PX4-Gazebo</h3>
+                <p class="pub-authors">Erick Loyaga, Estefano Quinatoa, Edgar Haro, Esteban Valencia, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_01">November 2025 · Engineering Proceedings</span>
+                    <span class="pub-year">2025</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav_multirotor">Multirotor UAV</span>
+                    <span class="pub-tag" data-i18n="tag_sitl_sim">SITL Simulation</span>
+                    <span class="pub-tag" data-i18n="tag_digital_twin">Digital Twin</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-1">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-1" hidden data-i18n="pub_a_01">
+                        This article presents a structured methodology to bridge the gap between theoretical modeling and high-fidelity simulation of multirotor unmanned aerial systems (UAS) using software-in-the-loop (SITL) digital twins in PX4 v1.12. A key challenge addressed is the absence of standardized procedures for translating UAV physical characteristics into simulation-ready parameters. To overcome this, we propose a hybrid parametric identification process combining analytical modeling with experimental characterization. Critical parameters are obtained through a combination of physical measurements and theoretical derivation.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2025-01.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/397674103_Bridging_Theory_and_Simulation_Parametric_Identification_and_Validation_for_a_Multirotor_UAV_in_PX4-Gazebo" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2025">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_02">Design Optimization of a Pseudo-Rigid-Compliant Mechanism for Large Continuous and Smooth Morphing of Airfoil Camber</h3>
+                <p class="pub-authors">Víctor Alulema, Víctor Hidalgo, Edgar Cando, Esteban Valencia.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_02">September 2025 · Aerospace</span>
+                    <span class="pub-year">2025</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_airfoil">Airfoil</span>
+                    <span class="pub-tag" data-i18n="tag_fixed_wing_uav">Fixed-Wing UAV</span>
+                    <span class="pub-tag" data-i18n="tag_flex_mech">Compliant Mechanism</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-2">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-2" hidden data-i18n="pub_a_02">
+                        This work presents a novel variable-camber mechanism that combines the high load capacity, structural stability, and mechanical efficiency of rigid-body mechanisms with the adaptability, lightweight design, and continuous smooth motion of compliant mechanisms. Through multidisciplinary optimization, this study determined the optimal mechanism configuration and airfoil shapes for a small fixed-wing UAV, showing potential drag reduction of up to 13% under various cruise conditions.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2025-02.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/395617569_Design_Optimization_of_a_Pseudo-Rigid-Compliant_Mechanism_for_Large_Continuous_and_Smooth_Morphing_of_Airfoil_Camber" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2025">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_03">An Open-source UAV Digital Twin Framework: A Case Study on Remote Sensing in the Andean Mountains</h3>
+                <p class="pub-authors">Esteban Valencia, Francisco Toapanta, Gabriel Oña, Patrick Vandewalle, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_03">June 2025 · Journal of Intelligent &amp; Robotic Systems</span>
+                    <span class="pub-year">2025</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_digital_twin">Digital Twin</span>
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_remote_sensing">Remote Sensing</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-3">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-3" hidden data-i18n="pub_a_03">
+                        The growing demand for UAVs in the aerospace industry underscores the need for accurate simulation environments, especially in remote regions. This study develops an open-source framework for a customized UAV simulation environment using ROS-Gazebo and Ardupilot. To evaluate UAV positioning accuracy in real-mission simulation, experimental digital twin validation was performed. These tests revealed maximum errors of 9% in the Z-axis trajectory (altitude), demonstrating the suitability of the method for emulating complex missions using digital twin models.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2025-03.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/392405088_An_Open-source_UAV_Digital_Twin_framework_A_Case_Study_on_Remote_Sensing_in_the_Andean_Mountains" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2025">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_04">Optimization of Flight Planning for Orthomosaic Generation Using Digital Twins and SITL Simulation</h3>
+                <p class="pub-authors">Alex Oña, Luis Ortega, Andrey Carrillo, Esteban Valencia.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_04">May 2025 · Drones</span>
+                    <span class="pub-year">2025</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_orthomosaic">Orthomosaic</span>
+                    <span class="pub-tag" data-i18n="tag_sitl">SITL</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-4">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-4" hidden data-i18n="pub_a_04">
+                        Precision agriculture (PA) introduces techniques to optimize agricultural management, requiring higher-resolution imagery. To address the challenges and risks of operating UAVs, software-in-the-loop (SITL) simulation, combined with digital twins (DT), enables studying UAV behavior and anticipating risks. This paper presents a novel methodology integrating the SITL framework with the Gazebo simulator. The results demonstrate that the proposed parameters optimize mission planning in terms of efficiency and quality.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2025-04.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/392358076_Optimization_of_Flight_Planning_for_Orthomosaic_Generation_Using_Digital_Twins_and_SITL_Simulation" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2025">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_05">Aero-structural Evaluation of Kraft Paper-Reinforced Composites for the Manufacturing of UAV Fuselages and Wings Using a Numerical Approach</h3>
+                <p class="pub-authors">Cristian Cruzatty, Mateo Narváez, Edwin Amaguaña, Esteban Valencia, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_05">April 2025 · International Journal of Mechanics and Materials in Design</span>
+                    <span class="pub-year">2025</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_composites">Composite Materials</span>
+                    <span class="pub-tag" data-i18n="tag_kraft_paper">Kraft Paper</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-5">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-5" hidden data-i18n="pub_a_05">
+                        Contemporary UAV manufacturing methods rely on composite materials such as carbon fiber. However, their high cost and limited availability hinder progress in certain regions. This work evaluates a low-cost, eco-friendly material: Kraft paper laminates embedded in an epoxy resin matrix. Using numerical simulation, the material was tested in different structural systems. The results show that Kraft paper-reinforced composites offer good performance in applications with moderate structural demands.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2025-05.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/390597825_Aero-structural_evaluation_of_kraft_paper-reinforced_composites_for_the_manufacturing_of_UAV_fuselages_and_wings_using_a_numerical_approach" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2024">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_06">Experimental Validation of the Remote Sensing Method for River Velocity Measurement Using an Open-Source PIV Scheme: Case Study: Antisana River in the Ecuadorian Andes</h3>
+                <p class="pub-authors">Wendy Torres, Alejandra Torres, Esteban Valencia, Edgar Cando, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_06">November 2024 · Water</span>
+                    <span class="pub-year">2024</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_piv">PIV</span>
+                    <span class="pub-tag" data-i18n="tag_velocimetry">Velocimetry</span>
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-6">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-6" hidden data-i18n="pub_a_06">
+                        This study presents the experimental validation of a remote sensing method for measuring river flow velocity using particle image velocimetry (PIV) combined with unmanned aerial vehicles (UAV). The case study focuses on the Antisana River in the Ecuadorian Andes. The results demonstrate that velocity measurements obtained via PIV closely match those from standardized traditional methods, which would significantly improve hydrological studies in remote regions.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2024-02.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/385591525_Experimental_Validation_of_the_Remote_Sensing_Method_for_River_Velocity_Measurement_Using_an_Open-Source_PIV_Scheme-Case_Study_Antisana_River_in_the_Ecuadorian_Andes" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2024">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_07">Paving the Way for Sustainable UAVs Using Distributed Propulsion and Solar-Powered Systems</h3>
+                <p class="pub-authors">Esteban Valencia, Cristian Cruzatty, Edwin Amaguaña, Edgar Cando.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_07">October 2024 · Drones</span>
+                    <span class="pub-year">2024</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_solar_uav">Solar UAV</span>
+                    <span class="pub-tag" data-i18n="tag_dist_propulsion">Distributed Propulsion</span>
+                    <span class="pub-tag" data-i18n="tag_sustainability">Sustainability</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-7">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-7" hidden data-i18n="pub_a_07">
+                        Photovoltaic solar technology can provide an interesting improvement to the autonomy of hybrid systems for unmanned aerial platforms. This work presents a methodology for evaluating hybrid solar-powered UAVs in distributed propulsion configurations through a two-level modeling scheme. The results indicate that hybrid solar configurations can theoretically achieve fuel savings of up to 80% compared to conventional configurations.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2024-03.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/385112902_Paving_the_Way_for_Sustainable_UAVs_Using_Distributed_Propulsion_and_Solar-Powered_Systems" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="conferencia" data-anio="2024">
+                <span class="pub-type" data-i18n="type_intl_conf">International Conference</span>
+                <h3 class="pub-title" data-i18n="pub_t_08">Open-Source Software-in-the-Loop Strategies for Realistic UAV Monitoring Applications</h3>
+                <p class="pub-authors">Guillermo Chamorro, Francisco Toapanta, Andrey Carrillo, Esteban Valencia, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_08">June 2024</span>
+                    <span class="pub-year">2024</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_sitl_sw">SITL Software</span>
+                    <span class="pub-tag" data-i18n="tag_monitoring">Monitoring</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-8">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-8" hidden data-i18n="pub_a_08">
+                        [ABSTRACT TO BE ADDED — The user will provide this information later.]
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2024-04.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/381567256_Open-Source_Software-in-the-Loop_Strategies_for_Realistic_UAV_Monitoring_Applications" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2023">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_09">Modeling of Solid Particle Erosion for a Water-Sand Impingement System Using OpenFOAM</h3>
+                <p class="pub-authors">Mateo Narváez, Cristian Cruzatty, Esteban Valencia, Edgar Cando, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_09">December 2023 · Coatings</span>
+                    <span class="pub-year">2023</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_erosion">Erosion</span>
+                    <span class="pub-tag" data-i18n="tag_cfd">CFD</span>
+                    <span class="pub-tag" data-i18n="tag_openfoam">OpenFOAM</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-9">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-9" hidden data-i18n="pub_a_09">
+                        The development of precise methodologies for a comprehensive understanding of the erosion phenomenon is a complex and necessary task. This study involved a comprehensive analysis incorporating empirical data from a sand-water jet on a submerged plate, and numerical simulations employing the Oka erosion model compiled in OpenFOAM. The results revealed agreement between experimental and simulated erosion contours, confirming the model's ability to represent erosion phenomena.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2023-01.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/376497132_Modeling_of_Solid_Particle_Erosion_for_a_Water-Sand_Impingement_System_Using_OpenFOAM" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2023">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_10">Towards More Efficient Electric Propulsion UAV Systems Using Boundary Layer Ingestion</h3>
+                <p class="pub-authors">Jonathan Arias, Francisco Martinez, Edgar Cando, Esteban Valencia.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_10">November 2023 · Drones</span>
+                    <span class="pub-year">2023</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_bli">BLI</span>
+                    <span class="pub-tag" data-i18n="tag_elec_propulsion">Electric Propulsion</span>
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-10">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-10" hidden data-i18n="pub_a_10">
+                        The implementation of distributed propulsion and boundary layer ingestion for unmanned aerial vehicles represents various challenges for the design of embedded ducts in blended wing body configurations. This work explores the conceptual design and evaluation of DP configurations with BLI. The results show the optimal propulsion configuration for the BWB UAV obtaining 3.95 % of power benefit and propulsive efficiency (np &gt; 80 %).
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2023-02.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/375815123_Towards_More_Efficient_Electric_Propulsion_UAV_Systems_Using_Boundary_Layer_Ingestion" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2023">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_11">Low-Cost Computer-Vision-Based Embedded Systems for UAVs</h3>
+                <p class="pub-authors">Luis Ortega, Erick Loyaga, Patricio Cruz, Esteban Valencia, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_11">October 2023 · Robotics</span>
+                    <span class="pub-year">2023</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_cv">Computer Vision</span>
+                    <span class="pub-tag" data-i18n="tag_embedded_sys">Embedded Systems</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-11">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-11" hidden data-i18n="pub_a_11">
+                        Unmanned aerial vehicles (UAV) are vital for remote monitoring in difficult environments such as volcano observation. Low-cost computer vision systems offer a solution by processing data and increasing autonomy. This paper presents an economical prototype that aids navigation, minimizing effects on autonomy and prioritizing better maneuverability through the integrated landing and obstacle avoidance system (LOAS). Using open-source software and MAVLink communication, they were tested on a quadcopter equipped with Pixhawk. Programmed on a Raspberry Pi, it includes a distance sensor and basic camera. Tests in controlled environments showed good performance in 90% of cases. The integration of this energy-efficient model promises cost reduction and greater surveillance capability.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2023-03.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/375040034_Low-Cost_Computer-Vision-Based_Embedded_Systems_for_UAVs" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="conferencia" data-anio="2023">
+                <span class="pub-type" data-i18n="type_intl_conf">International Conference</span>
+                <h3 class="pub-title" data-i18n="pub_t_12">Adaptive Sampling-based Particle Filter for Visual-Inertial Gimbal in the Wild</h3>
+                <p class="pub-authors">Kang Xueyang, Ariel Herrera, Enrique Lema, Patrick Vandewalle, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_12">May 2023 · Conference Paper</span>
+                    <span class="pub-year">2023</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_particle_filter">Particle Filter</span>
+                    <span class="pub-tag" data-i18n="tag_gimbal">Gimbal</span>
+                    <span class="pub-tag" data-i18n="tag_visual_inertial">Visual-Inertial</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-12">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-12" hidden data-i18n="pub_a_12">
+                        [ABSTRACT TO BE ADDED — Placeholder for manual completion.]
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2023-04.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/372115956_Adaptive_Sampling-based_Particle_Filter_for_Visual-inertial_Gimbal_in_the_Wild" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2023">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_13">Numerical Analysis of the Operation of a Wave Energy Converter (WEC) Using CFD</h3>
+                <p class="pub-authors">Cristian Andrade, Esteban Valencia, Edgar Cando.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_13">January 2023 · Enfoque UTE</span>
+                    <span class="pub-year">2023</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_cfd">CFD</span>
+                    <span class="pub-tag" data-i18n="tag_wave_energy">Wave Energy</span>
+                    <span class="pub-tag" data-i18n="tag_wec">WEC</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-13">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-13" hidden data-i18n="pub_a_13">
+                        This study numerically analyzes, through CFD, the operation of a wave energy converter (WEC) with local sea conditions. The device dynamics were characterized by applying domain reduction criteria, structured cells, and dynamic mesh with 6DOF. ANSYS Fluent software was used for 1:5 scale simulations. Fluid dynamics prediction was achieved with an error between 3.6% and 4.7% comparing surface elevation and between 5% and 6% for angular displacement. Data was extracted from the INOCAR-SWAN model at points near Esmeraldas and the Gulf of Guayaquil. Better results were obtained in sea states with greater depth, presenting average mechanical power between 0.165 kW and 0.22 kW.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2023-06.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/367481283_Analisis_numerico_del_funcionamiento_de_un_Convertidor_de_Energia_de_las_Olas_WEC_usando_CFD" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2022">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_14">Wetland Monitoring Technification for the Ecuadorian Andean Region Based on a Multi-Agent Framework</h3>
+                <p class="pub-authors">Esteban Valencia, David Changoluisa, Kevin Palma, Gabriela Espinel, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_14">March 2022 · Heliyon</span>
+                    <span class="pub-year">2022</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_wetlands">Wetlands</span>
+                    <span class="pub-tag" data-i18n="tag_remote_sensing">Remote Sensing</span>
+                    <span class="pub-tag" data-i18n="tag_vant">UAV</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-14">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-14" hidden data-i18n="pub_a_14">
+                        Remote sensing using satellites and unmanned aerial vehicles (UAV) has become an important tool for wetland delineation and saturation assessment. However, deployment and operational costs limit its implementation in hostile high-Andean environments. This work presents a framework to cost-effectively monitor wetlands through a multi-agent approach based on: field tests, UAV orthomosaics, and satellite imagery. The method comprises two stages: i) monitoring agent definition and ii) image processing. Semi-empirical and statistical models are incorporated in an open-source framework. The method's application highlights the suitability of the low-cost remote sensing approach in the visual spectrum. The main contribution lies in establishing a technified monitoring framework for Ecuadorian high-Andean wetlands, extrapolable to other extreme conditions.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2022-01.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/359324692_Wetland_monitoring_technification_for_the_Ecuadorian_Andean_region_based_on_a_multi-agent_framework" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2022">
+                <span class="pub-type" data-i18n="type_journal">Journal Article</span>
+                <h3 class="pub-title" data-i18n="pub_t_15">Evaluation of Series and Parallel Hybrid Propulsion Systems for UAVs Implementing Distributed Propulsion Architectures</h3>
+                <p class="pub-authors">Darwin Jiménez, Esteban Valencia, Ariel Herrera, Marcelo Pozo, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_15">January 2022 · Aerospace</span>
+                    <span class="pub-year">2022</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_hybrid_prop">Hybrid Propulsion</span>
+                    <span class="pub-tag" data-i18n="tag_dist_propulsion">Distributed Propulsion</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-15">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-15" hidden data-i18n="pub_a_15">
+                        Current environmental policies for the aviation sector drive the use of cleaner propulsion alternatives to reduce carbon footprints and acoustic pollution in the coming years. In this context, hybrid propulsion systems have emerged as a potential solution, having demonstrated a good balance between performance and low pollutant emissions. This work compares parallel and series hybrid propulsion systems using heterogeneous and homogeneous distributed propulsion architectures. To highlight the advantages of distributed propulsion systems and validate the developed methodology, a single hybrid propulsion configuration is used as a reference case. For propulsion system sizing, a parametric modeling tool is used that includes a constraints analysis along with a weight estimation module. Results show that for the representative Galapagos Islands monitoring case (7-hour endurance), the parallel hybrid system presents the best characteristics with a 34% reduction in fuel savings.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2022-02.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/358122786_Evaluation_of_Series_and_Parallel_Hybrid_Propulsion_Systems_for_UAVs_Implementing_Distributed_Propulsion_Architectures" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="conferencia" data-anio="2022">
+                <span class="pub-type" data-i18n="type_intl_conf">International Conference</span>
+                <h3 class="pub-title" data-i18n="pub_t_16">Object Detection and Tracking Based on Artificial Vision for a Single Board Computer (SBC)</h3>
+                <p class="pub-authors">Bryan Mosquera, Bryan Castello, Enrique Lema, Esteban Valencia, et al.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_16">January 2022 · Lecture Notes in Electrical Engineering</span>
+                    <span class="pub-year">2022</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_cv">Computer Vision</span>
+                    <span class="pub-tag" data-i18n="tag_obj_detection">Object Detection</span>
+                    <span class="pub-tag" data-i18n="tag_raspberry_pi">Raspberry Pi</span>
+                </div>
+                <div class="pub-abstract-wrap">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-16">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
+                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
+                    </button>
+                    <div class="pub-abstract" id="abstract-16" hidden data-i18n="pub_a_16">
+                        In the field of computer vision, object detection and tracking is an area of high demand. Specialized algorithms have been developed to track any object. However, these algorithms cannot initiate the detection process automatically, as users must manually draw a bounding box. A possible solution is to combine an object detection neural network with a vision-based tracking algorithm. This research proposes an algorithm to enhance the capabilities of KCF, an object-tracking algorithm, by combining it with SSD MobileNet V2, a neural network for object identification. The proposed algorithm is designed to run on a single-board computer (SBC). This makes it possible to run and process real-time video on a Raspberry Pi 4.
+                    </div>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/pub-2022-03.png" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://www.researchgate.net/publication/362013770_Object_Detection_and_Tracking_Based_on_Artificial_Vision_for_a_Single_Board_Computer_SBC" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="active-strip">
+    <div class="strip-inner">
+        <div class="strip-left">
+            <p class="eyebrow" data-i18n="strip_eyebrow">Completed Theses</p>
+            <h3 class="strip-title" data-i18n="strip_title">Thesis Projects</h3>
+        </div>
+        <div class="strip-pills">
+            <span class="strip-pill"><strong>01</strong> <span data-i18n="strip_pill_01">Autonomous flight control</span></span>
+            <span class="strip-pill"><strong>02</strong> <span data-i18n="strip_pill_02">Forest fire detection</span></span>
+            <span class="strip-pill"><strong>03</strong> <span data-i18n="strip_pill_03">Optimized wing design</span></span>
+            <span class="strip-pill"><strong>04</strong> <span data-i18n="strip_pill_04">UAV mesh communications</span></span>
+            <span class="strip-pill"><strong>05</strong> <span data-i18n="strip_pill_05">Hybrid propulsion</span></span>
+            <span class="strip-pill"><strong>06</strong> <span data-i18n="strip_pill_06">CFD airfoil analysis</span></span>
+            <span class="strip-pill"><strong>07</strong> <span data-i18n="strip_pill_07">Composite materials</span></span>
+            <span class="strip-pill"><strong>08</strong> <span data-i18n="strip_pill_08">Precision landing</span></span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" class="logo" style="margin-bottom:20px;display:inline-flex;">
+                    <div class="footer-logo-hex"><span>ATA</span></div>
+                    <div class="logo-text">
+                        <span class="logo-name">Research Group</span>
+                        <span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span>
+                    </div>
+                </a>
+                <p data-i18n="footer_about">Multidisciplinary research team at Escuela Politécnica Nacional</p>
+            </div>
+            <div class="footer-col">
+                <h5 data-i18n="footer_pages">Pages</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="nosotros.html" data-i18n="nav_about">About Us</a></li>
+                    <li><a href="proyectos.html" data-i18n="nav_projects">Projects</a></li>
+                    <li><a href="publicaciones.html" data-i18n="nav_publications">Publications</a></li>
+                    <li><a href="galeria.html" data-i18n="nav_gallery">Gallery</a></li>
+                    <li><a href="contacto.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5 data-i18n="footer_institution">Institution</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Escuela Politécnica Nacional</a></li>
+                    <li><a href="#">Quito, Ecuador</a></li>
+                    <li><a href="mailto:ata.rg@epn.edu.ec">ata.rg@epn.edu.ec</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_copyright">© 2025 <span>Research Group</span> · Escuela Politécnica Nacional. All rights reserved.</p>
+            <span class="footer-tag" data-i18n="footer_tag">EPN · Quito, Ecuador</span>
+        </div>
+    </div>
+</footer>
+
+<script src="idioma.js"></script>
+<script>
+    function toggleAbstract(btn) {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        const targetId = btn.getAttribute('aria-controls');
+        const abstract = document.getElementById(targetId);
+        if (isExpanded) {
+            btn.setAttribute('aria-expanded', 'false');
+            abstract.hidden = true;
+        } else {
+            btn.setAttribute('aria-expanded', 'true');
+            abstract.hidden = false;
+        }
+    }
+</script>
+
+<script>
+    (function () {
+        var pendingHide = new Map();
+
+        function applyFilters() {
+            var tipo = document.getElementById('filter-tipo').value;
+            var anio = document.getElementById('filter-anio').value;
+            var cards = document.querySelectorAll('.pub-card');
+
+            cards.forEach(function (card) {
+                var cardTipo = card.getAttribute('data-tipo') || '';
+                var cardAnio = card.getAttribute('data-anio') || '';
+                var matchTipo = !tipo || cardTipo === tipo;
+                var matchAnio = !anio || cardAnio === anio;
+                var visible = matchTipo && matchAnio;
+
+                if (visible) {
+                    if (pendingHide.has(card)) {
+                        clearTimeout(pendingHide.get(card));
+                        pendingHide.delete(card);
+                    }
+                    card.style.display = 'flex';
+                    requestAnimationFrame(function () { card.style.opacity = '1'; });
+                } else {
+                    card.style.opacity = '0';
+                    var t = setTimeout(function () {
+                        card.style.display = 'none';
+                        pendingHide.delete(card);
+                    }, 260);
+                    pendingHide.set(card, t);
+                }
+            });
+        }
+
+        window.applyFilters = applyFilters;
+    })();
+</script>
+
+</body>
+</html>
