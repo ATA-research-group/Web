@@ -1,0 +1,1335 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | ATA Research Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --black:       #111111;
+            --navy:        #0A2540;
+            --cyan:        #00B4D8;
+            --white:       #FFFFFF;
+            --gray-bg:     #F7F9FC;
+            --gray-border: #E2E8F0;
+            --gray-text:   #64748B;
+            --t: all 0.25s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--navy);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HEADER ─────────────────────────────── */
+        header {
+            background: var(--black);
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,180,216,0.18);
+        }
+        .header-inner {
+            max-width: 1240px; margin: 0 auto;
+            padding: 0 32px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 13px;
+            text-decoration: none; background: transparent;
+        }
+        .logo img {
+            max-height: 50px; width: auto;
+            display: block; background: transparent;
+        }
+        .logo-text { display: flex; flex-direction: column; gap: 3px; line-height: 1; }
+        .logo-name { color: var(--white); font-size: 14.5px; font-weight: 700; }
+        .logo-sub  { color: var(--cyan); font-size: 9.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; }
+        .header-logos-container { display: flex; align-items: center; gap: 16px; }
+        .logo-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.15); }
+
+        .main-nav { display: flex; align-items: center; gap: 4px; }
+        .main-nav a {
+            color: rgba(255,255,255,0.62); text-decoration: none;
+            font-size: 13.5px; font-weight: 500;
+            padding: 7px 15px; border-radius: 7px; transition: var(--t);
+        }
+        .main-nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+        .main-nav a.active { color: var(--cyan); background: rgba(0,180,216,0.1); }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; padding: 6px; background: none; border: none;
+        }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--t); }
+
+        .mobile-nav {
+            display: none; flex-direction: column;
+            background: #0D0D0D;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 8px 24px 16px;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            color: rgba(255,255,255,0.62); text-decoration: none;
+            font-size: 14px; font-weight: 500;
+            padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.04); transition: var(--t);
+        }
+        .mobile-nav a:last-child { border-bottom: none; }
+        .mobile-nav a:hover, .mobile-nav a.active { color: var(--cyan); }
+
+        /* ─── PAGE HERO ───────────────────────────── */
+        .page-hero {
+            background: var(--black);
+            padding: 72px 32px 64px;
+            position: relative; overflow: hidden;
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 80% at 100% 50%, rgba(0,180,216,0.06) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .ph-inner {
+            max-width: 1240px; margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+        .breadcrumb {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.38);
+            margin-bottom: 24px; letter-spacing: 0.5px;
+        }
+        .breadcrumb a { color: rgba(255,255,255,0.38); text-decoration: none; transition: var(--t); }
+        .breadcrumb a:hover { color: var(--cyan); }
+        .breadcrumb span { color: rgba(0,180,216,0.6); }
+        .breadcrumb .sep { color: rgba(255,255,255,0.2); }
+
+        .page-hero h1 {
+            font-size: clamp(32px, 4.5vw, 58px);
+            font-weight: 900; color: var(--white);
+            line-height: 1.08; letter-spacing: -2px;
+            margin-bottom: 14px;
+        }
+        .page-hero h1 span { color: var(--cyan); }
+        .page-hero p {
+            font-size: 16px; color: rgba(255,255,255,0.5);
+            font-weight: 400;
+        }
+
+        /* Team overview strip */
+        .team-overview {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            display: inline-flex; align-items: center; gap: 0;
+            margin-top: 36px; overflow: hidden;
+        }
+        .ov-stat {
+            padding: 18px 32px; text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+        .ov-stat:last-child { border-right: none; }
+        .ov-num { display: block; font-size: 28px; font-weight: 900; color: var(--cyan); letter-spacing: -1px; line-height: 1; }
+        .ov-lbl { display: block; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; margin-top: 5px; }
+
+        /* ─── TEAM SECTIONS ───────────────────────── */
+        .team-section { padding: 80px 32px; }
+        .team-section:nth-child(even) { background: var(--gray-bg); }
+
+        .team-inner { max-width: 1240px; margin: 0 auto; }
+
+        .eyebrow {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--cyan); margin-bottom: 10px;
+        }
+
+        .category-head {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 40px; padding-bottom: 24px;
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .category-badge {
+            display: inline-flex; align-items: center;
+            font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+            padding: 5px 14px; border-radius: 100px;
+        }
+        .badge-phd     { background: rgba(0,180,216,0.12); color: var(--cyan); border: 1px solid rgba(0,180,216,0.3); }
+        .badge-eng     { background: rgba(10,37,64,0.08);  color: var(--navy); border: 1px solid rgba(10,37,64,0.2); }
+        .badge-student { background: rgba(100,116,139,0.1); color: #475569;    border: 1px solid rgba(100,116,139,0.2); }
+        .badge-collab  { background: rgba(139,92,246,0.1); color: #6d28d9;     border: 1px solid rgba(139,92,246,0.2); }
+
+        .category-title {
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 800; color: var(--navy);
+            letter-spacing: -0.8px;
+        }
+        .category-count {
+            margin-left: auto;
+            font-size: 12px; font-weight: 600; color: var(--gray-text);
+            background: var(--gray-border); padding: 4px 12px; border-radius: 100px;
+        }
+
+        /* Member grid */
+        .members-grid {
+            display: flex; flex-wrap: wrap;
+            gap: 28px 20px; justify-content: center;
+        }
+
+        /* Subsection separator inside a section */
+        .subsection-gap { margin-top: 60px; }
+
+        /* ─── YEAR GROUP (subsecciones) ───────────── */
+        .year-group { margin-bottom: 52px; }
+        .year-group:last-child { margin-bottom: 0; }
+
+        .year-heading {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 28px;
+        }
+        .year-label {
+            font-size: 13px; font-weight: 800; letter-spacing: 1px;
+            color: var(--navy);
+            background: rgba(0,180,216,0.08);
+            border: 1px solid rgba(0,180,216,0.22);
+            padding: 6px 20px; border-radius: 100px;
+            white-space: nowrap;
+        }
+        .year-line {
+            flex: 1; height: 1px;
+            background: linear-gradient(90deg, rgba(0,180,216,0.28) 0%, transparent 100%);
+        }
+
+        /* ─── MEMBER CARD ────────────────────────── */
+        .member-card {
+            width: 168px;
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 16px;
+            padding: 28px 16px 22px;
+            text-align: center;
+            transition: var(--t);
+            position: relative;
+        }
+        .member-card::before {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--cyan);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+            border-color: transparent;
+            z-index: 10;
+        }
+        .member-card:hover::before { transform: scaleX(1); }
+
+        /* Pendiente card style */
+        .member-card.pending {
+            border-style: dashed;
+            opacity: 0.55;
+        }
+        .member-card.pending:hover { transform: none; box-shadow: none; border-color: var(--gray-border); }
+        .member-card.pending:hover::before { transform: scaleX(0); }
+        .member-card.pending .hex-outer { background: rgba(100,116,139,0.06); }
+        .member-card.pending .hex-wrapper {
+            background: linear-gradient(140deg, #cbd5e1 0%, #e2e8f0 100%);
+        }
+
+        /* Hex outer ring */
+        .hex-outer {
+            width: 120px; height: 120px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(0,180,216,0.1);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            transition: var(--t);
+        }
+        .member-card:hover .hex-outer { background: rgba(0,180,216,0.22); }
+
+        /* Hex image container */
+        .hex-wrapper {
+            width: 104px; height: 104px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            overflow: hidden;
+            background: linear-gradient(140deg, var(--navy) 0%, #1a4a80 100%);
+            position: relative;
+        }
+        .hex-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+        }
+
+        .member-name {
+            font-size: 13.5px; font-weight: 700; color: var(--navy);
+            line-height: 1.3; margin-bottom: 8px;
+        }
+        .member-role {
+            display: inline-block;
+            font-size: 10.5px; font-weight: 600;
+            padding: 4px 10px; border-radius: 100px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ─── MEMBER DESCRIPTION (expansible, Secciones 1 & 3) ─── */
+        .member-description {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            font-size: 11.5px;
+            font-weight: 400;
+            color: var(--gray-text);
+            line-height: 1.55;
+            text-align: center;
+            padding: 0 4px;
+            margin-top: 0;
+        }
+        .member-card.has-description:hover .member-description {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+
+        /* ─── CARD SOCIAL ICONS ───────────────────── */
+        .card-social {
+            display: flex; align-items: center; justify-content: center;
+            gap: 6px; margin-top: 10px;
+        }
+        .social-icon {
+            display: flex; align-items: center; justify-content: center;
+            width: 26px; height: 26px;
+            border-radius: 6px;
+            background: var(--gray-bg);
+            border: 1px solid var(--gray-border);
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: var(--t);
+            flex-shrink: 0;
+        }
+        .social-icon svg { width: 13px; height: 13px; display: block; }
+        .social-icon:hover {
+            background: var(--cyan); border-color: var(--cyan);
+            color: var(--black); transform: translateY(-2px);
+        }
+
+        /* ─── CATEGORY DIVIDER ───────────────────── */
+        .cat-divider {
+            background: var(--navy);
+            padding: 48px 32px 40px;
+            border-top: 3px solid rgba(0,180,216,0.35);
+        }
+        .cat-divider-inner {
+            max-width: 1240px; margin: 0 auto;
+            display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+        }
+        .cat-divider-line {
+            flex: 1; height: 1px;
+            background: linear-gradient(90deg, rgba(0,180,216,0.4) 0%, transparent 100%);
+        }
+        .cat-divider-title {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 900; color: var(--white);
+            letter-spacing: -1px; white-space: nowrap;
+        }
+        .cat-divider-title span { color: var(--cyan); }
+        .cat-divider-count {
+            background: rgba(0,180,216,0.12);
+            border: 1px solid rgba(0,180,216,0.3);
+            color: var(--cyan); font-size: 11px; font-weight: 700;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        /* ─── ALUMNI LIST ──────────────────────────── */
+        .alumni-section { padding: 80px 32px; }
+        .alumni-inner { max-width: 1240px; margin: 0 auto; }
+        .alumni-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 10px 20px;
+        }
+        .alumni-item {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 13.5px; font-weight: 500; color: var(--navy);
+            padding: 11px 16px;
+            background: var(--gray-bg);
+            border: 1px solid var(--gray-border);
+            border-radius: 9px;
+            transition: var(--t);
+        }
+        .alumni-item::before {
+            content: ''; width: 5px; height: 5px; border-radius: 50%;
+            background: var(--cyan); flex-shrink: 0;
+        }
+        .alumni-item:hover { border-color: rgba(0,180,216,0.35); }
+
+        /* ─── FOOTER ──────────────────────────────── */
+        footer {
+            background: var(--black);
+            padding: 64px 32px 28px;
+            border-top: 1px solid rgba(0,180,216,0.1);
+        }
+        .footer-inner { max-width: 1240px; margin: 0 auto; }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 28px;
+        }
+        .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
+        .footer-about p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.78; max-width: 290px; }
+        .footer-col h5 {
+            color: rgba(255,255,255,0.88); font-size: 11px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+        .footer-links a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 13px; transition: var(--t); }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-bottom {
+            display: flex; align-items: center;
+            justify-content: space-between; flex-wrap: wrap; gap: 12px;
+        }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.24); }
+        .footer-bottom p span { color: var(--cyan); }
+        .footer-tag {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+            color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+        }
+
+        /* ─── RESPONSIVE ──────────────────────────── */
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hamburger { display: flex; }
+            .header-inner, .page-hero, .team-section { padding-left: 20px; padding-right: 20px; }
+            footer { padding-left: 20px; padding-right: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+            .team-overview { flex-wrap: wrap; }
+            .ov-stat { flex: 1 1 100px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+            .ov-stat:last-child { border-bottom: none; }
+            .category-count { display: none; }
+            .hex-outer { width: 100px; height: 100px; }
+            .hex-wrapper { width: 86px; height: 86px; }
+            .member-card { width: 148px; }
+            .cat-divider { padding-left: 20px; padding-right: 20px; }
+            .alumni-section { padding-left: 20px; padding-right: 20px; }
+            .alumni-list { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .members-grid { gap: 20px 14px; }
+            .member-card { width: 140px; padding: 22px 12px 18px; }
+            .hex-outer { width: 90px; height: 90px; }
+            .hex-wrapper { width: 76px; height: 76px; }
+            .member-name { font-size: 12.5px; }
+            .alumni-list { grid-template-columns: 1fr; }
+        }
+
+        /* ─── HEADER CONTROLS ─────────────────────────── */
+        .header-right { display: flex; align-items: center; gap: 8px; }
+        .header-controls { display: flex; align-items: center; gap: 4px; }
+        .ctrl-btn {
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 7px;
+            color: rgba(255,255,255,0.65);
+            cursor: pointer; transition: var(--t);
+            font-family: inherit; line-height: 1;
+        }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.22); }
+        .lang-btn { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; padding: 6px 11px; height: 32px; text-transform: uppercase; }
+        .theme-btn { width: 32px; height: 32px; }
+        .theme-btn svg { width: 16px; height: 16px; display: block; }
+        .icon-sun { display: none; }
+        .icon-moon { display: block; }
+        .dark-theme .icon-sun { display: block; }
+        .dark-theme .icon-moon { display: none; }
+        /* ─── DARK THEME ─────────────────────────────── */
+        body.dark-theme {
+            --gray-bg: #1E1E1E; --gray-border: #2A2A2A; --gray-text: #8FA5BB;
+            background: #121212; color: #C4D4E0;
+        }
+        body.dark-theme .team-section { background: #121212; }
+        body.dark-theme .team-section:nth-child(even) { background: #181818; }
+        body.dark-theme .alumni-section { background: #181818; }
+        body.dark-theme .sec-title,
+        body.dark-theme .category-title,
+        body.dark-theme .member-name { color: #E4EEF8; }
+        body.dark-theme .year-label { color: #C4D4E0; }
+        body.dark-theme .member-card { background: #1E1E1E; border-color: #2A2A2A; }
+        body.dark-theme .badge-eng { color: #90AAC0; border-color: rgba(144,170,192,0.3); background: rgba(144,170,192,0.08); }
+        body.dark-theme .badge-student { color: #8FA5BB; border-color: rgba(143,165,187,0.3); }
+        body.dark-theme .badge-collab { color: #a78bfa; border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); }
+        body.dark-theme .alumni-item { background: #1E1E1E; border-color: #2A2A2A; color: #C4D4E0; }
+        body.dark-theme .alumni-item:hover { border-color: rgba(0,180,216,0.35); }
+        /* Dark theme: social icons */
+        body.dark-theme .social-icon { background: #252525; border-color: #333; color: #8FA5BB; }
+        body.dark-theme .social-icon:hover { background: var(--cyan); border-color: var(--cyan); color: var(--black); }
+        body.dark-theme .member-description { color: #8FA5BB; }
+
+        /* ─── PARTNERS (ENTES COLABORADORES) ─────── */
+        .partners-section {
+            padding: 80px 32px;
+            background: var(--white);
+        }
+        .partners-inner { max-width: 1240px; margin: 0 auto; }
+        .partners-header { text-align: center; margin-bottom: 56px; }
+        .partners-eyebrow {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--cyan); margin-bottom: 12px;
+        }
+        .partners-title {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 800; color: var(--navy); letter-spacing: -1px;
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .partner-item {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 14px;
+            padding: 32px 20px;
+            background: var(--gray-bg);
+            border: 1px solid var(--gray-border);
+            border-radius: 14px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .partner-item:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+            border-color: rgba(0,180,216,0.3);
+        }
+        .partner-item img {
+            max-width: 100%; max-height: 60px; width: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.5;
+            transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+        }
+        .partner-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        @media (max-width: 960px) { .partners-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 640px) {
+            .partners-section { padding-left: 20px; padding-right: 20px; }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+            .partner-item { padding: 24px 16px; }
+        }
+        /* ─── DARK THEME · PARTNERS ──────────────── */
+        body.dark-theme .partners-section { background: #121212; }
+        body.dark-theme .partners-title { color: #E4EEF8; }
+        body.dark-theme .partner-item { background: #1E1E1E; border-color: #2A2A2A; }
+        body.dark-theme .partner-item:hover { border-color: rgba(0,180,216,0.3); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+        body.dark-theme .partners-grid img {
+            background-color: rgba(255,255,255,0.92);
+            padding: 10px;
+            border-radius: 10px;
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════ -->
+<header>
+    <div class="header-inner">
+        <div class="header-logos-container">
+            <img src="logo-epn.png" alt="Logo Institucional" style="max-height: 48px; width: auto; object-fit: contain;">
+            <div class="logo-divider"></div>
+            <a href="index.html" class="logo">
+            <img src="logo.png" alt="ATA Research Group">
+            <div class="logo-text">
+                <span class="logo-name">Research Group</span>
+                <span class="logo-sub">EPN · Aeronautics &amp; Thermofluids</span>
+            </div>
+        </a>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="nosotros.html" class="active">About</a>
+            <a href="proyectos.html">Projects</a>
+            <a href="publicaciones.html">Publications</a>
+            <a href="galeria.html">Gallery</a>
+            <a href="contacto.html">Contact</a>
+        </nav>
+        <div class="header-right">
+            <div class="header-controls">
+                <button class="ctrl-btn lang-btn" onclick="switchLanguage()" aria-label="Switch language">ES</button>
+                <button id="theme-toggle" class="ctrl-btn theme-btn" onclick="toggleTheme()" aria-label="Dark mode">
+                    <svg class="icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    <svg class="icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+            </div>
+            <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="nosotros.html" class="active">About</a>
+        <a href="proyectos.html">Projects</a>
+        <a href="publicaciones.html">Publications</a>
+        <a href="galeria.html">Gallery</a>
+        <a href="contacto.html">Contact</a>
+    </div>
+</header>
+
+<!-- ═══ PAGE HERO ════════════════════════════════════ -->
+<section class="page-hero">
+    <div class="ph-inner">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="sep">›</span>
+            <span>About</span>
+        </div>
+        <h1>Our Research<br><span>Team</span></h1>
+        <p>Mechanical, Electronics &amp; Control, Telecommunications — EPN</p>
+        <div class="team-overview">
+            <div class="ov-stat">
+                <span class="ov-num">6</span>
+                <span class="ov-lbl">PRINCIPAL STAFF</span>
+            </div>
+            <div class="ov-stat">
+                <span class="ov-num">8</span>
+                <span class="ov-lbl">Researchers</span>
+            </div>
+            <div class="ov-stat">
+                <span class="ov-num">11</span>
+                <span class="ov-lbl">Collaborators</span>
+            </div>
+            <div class="ov-stat">
+                <span class="ov-num">15</span>
+                <span class="ov-lbl">In Training</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 01 · STAFF PRINCIPAL ════════════════════════ -->
+<div class="cat-divider">
+    <div class="cat-divider-inner">
+        <h2 class="cat-divider-title"><span>01.</span> Principal Staff</h2>
+        <div class="cat-divider-line"></div>
+        <span class="cat-divider-count">6 members</span>
+    </div>
+</div>
+
+<section class="team-section">
+    <div class="team-inner">
+        <div class="members-grid">
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Esteban Valencia">
+                </div></div>
+                <h3 class="member-name">PhD. Esteban Valencia</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Jackeline Abad">
+                </div></div>
+                <h3 class="member-name">PhD. Jackeline Abad</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de William Chamorro">
+                </div></div>
+                <h3 class="member-name">PhD. William Chamorro</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Juan Carlos Almachi">
+                </div></div>
+                <h3 class="member-name">PhD. Juan Carlos Almachi</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Jeny Ruales">
+                </div></div>
+                <h3 class="member-name">PhD. Jeny Ruales</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Victor Hidalgo">
+                </div></div>
+                <h3 class="member-name">PhD. Victor Hidalgo</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 02 · ESTUDIANTE DE DOCTORADO ════════════════ -->
+<div class="cat-divider">
+    <div class="cat-divider-inner">
+        <h2 class="cat-divider-title"><span>02.</span> PhD Student</h2>
+        <div class="cat-divider-line"></div>
+        <span class="cat-divider-count">1 member</span>
+    </div>
+</div>
+
+<section class="team-section">
+    <div class="team-inner">
+        <div class="members-grid">
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Victor Alulema">
+                </div></div>
+                <h3 class="member-name">PhD. Victor Alulema</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 03 · INGENIEROS DE INVESTIGACIÓN ════════════ -->
+<div class="cat-divider">
+    <div class="cat-divider-inner">
+        <h2 class="cat-divider-title"><span>03.</span> Research Engineers</h2>
+        <div class="cat-divider-line"></div>
+        <span class="cat-divider-count">7 members</span>
+    </div>
+</div>
+
+<section class="team-section">
+    <div class="team-inner">
+        <div class="members-grid">
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Erick Loyaga">
+                </div></div>
+                <h3 class="member-name">Ing. Erick Loyaga</h3>
+                <span class="member-role badge-eng">RESEARCHER</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Edwin Amaguaña">
+                </div></div>
+                <h3 class="member-name">Ing. Edwin Amaguaña</h3>
+                <span class="member-role badge-eng">RESEARCHER</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Kevin Vidal">
+                </div></div>
+                <h3 class="member-name">Ing. Kevin Vidal</h3>
+                <span class="member-role badge-eng">RESEARCHER</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Victor Berrazueta">
+                </div></div>
+                <h3 class="member-name">Ing. Victor Berrazueta</h3>
+                <span class="member-role badge-eng">RESEARCHER</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Sebastián Ullaguari">
+                </div></div>
+                <h3 class="member-name">Ing. Sebastián Ullaguari</h3>
+                <span class="member-role badge-eng">RESEARCHER</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Jair Palma">
+                </div></div>
+                <h3 class="member-name">Ing. Jair Palma</h3>
+                <span class="member-role badge-eng">RESEARCHER</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card has-description">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Jairo Pilliza">
+                </div></div>
+                <h3 class="member-name">MSc. Jairo Pilliza</h3>
+                <span class="member-role badge-eng">RESEARCHER</span>
+                <div class="member-description">Detailed position and description of the person goes here.</div>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 04 · COLABORADORES ══════════════════════════ -->
+<div class="cat-divider">
+    <div class="cat-divider-inner">
+        <h2 class="cat-divider-title"><span>04.</span> Collaborators</h2>
+        <div class="cat-divider-line"></div>
+        <span class="cat-divider-count">11 members</span>
+    </div>
+</div>
+
+<section class="team-section">
+    <div class="team-inner">
+
+        <div class="category-head">
+            <span class="category-badge badge-phd">Internal</span>
+            <span class="category-count">6 members</span>
+        </div>
+        <div class="members-grid">
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Edgar Cando">
+                </div></div>
+                <h3 class="member-name">PhD. Edgar Cando</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Marcelo Pozo">
+                </div></div>
+                <h3 class="member-name">PhD. Marcelo Pozo</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Diego Reinoso">
+                </div></div>
+                <h3 class="member-name">PhD. Diego Reinoso</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Deyanira Valencia">
+                </div></div>
+                <h3 class="member-name">Arq. Deyanira Valencia</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Andrea Jaramillo">
+                </div></div>
+                <h3 class="member-name">Biol. Andrea Jaramillo</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Carolina Ramos">
+                </div></div>
+                <h3 class="member-name">Ing. Carolina Ramos</h3>
+                <span class="member-role badge-phd">FACULTY</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="subsection-gap"></div>
+        <div class="category-head">
+            <span class="category-badge badge-collab">External</span>
+            <span class="category-count">5 members</span>
+        </div>
+        <div class="members-grid">
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Juan Carlos González">
+                </div></div>
+                <h3 class="member-name">Ing. Juan Carlos González</h3>
+                <span class="member-role badge-collab">COLLABORATOR</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Patrick Vandewalle">
+                </div></div>
+                <h3 class="member-name">PhD. Patrick Vandewalle</h3>
+                <span class="member-role badge-collab">COLLABORATOR</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Pedro Bravo">
+                </div></div>
+                <h3 class="member-name">PhD. Pedro Bravo</h3>
+                <span class="member-role badge-collab">COLLABORATOR</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Hernán Cerón">
+                </div></div>
+                <h3 class="member-name">PhD. Hernán Cerón</h3>
+                <span class="member-role badge-collab">COLLABORATOR</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de University T&M">
+                </div></div>
+                <h3 class="member-name">PhD. University T&amp;M</h3>
+                <span class="member-role badge-collab">COLLABORATOR</span>
+                <div class="card-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="ORCID" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.872-3.722h-2.297z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Website" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══ 05 · EN FORMACIÓN ═══════════════════════════ -->
+<div class="cat-divider">
+    <div class="cat-divider-inner">
+        <h2 class="cat-divider-title"><span>05.</span> In Training</h2>
+        <div class="cat-divider-line"></div>
+        <span class="cat-divider-count">9 members</span>
+    </div>
+</div>
+
+<section class="team-section">
+    <div class="team-inner">
+        <div class="year-group">
+            <div class="year-heading">
+                <span class="year-label">Ayudantes de Investigación</span>
+                <div class="year-line"></div>
+            </div>
+            <div class="members-grid">
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Dylan Cobos">
+                    </div></div>
+                    <h3 class="member-name">Dylan Cobos</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Gissel Dávila">
+                    </div></div>
+                    <h3 class="member-name">Gissel Dávila</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Randy Chauca">
+                    </div></div>
+                    <h3 class="member-name">Randy Chauca</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Andrés Aulestia">
+                    </div></div>
+                    <h3 class="member-name">Andrés Aulestia</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Ismael Chicaiza">
+                    </div></div>
+                    <h3 class="member-name">Ismael Chicaiza</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Javier Oviedo">
+                    </div></div>
+                    <h3 class="member-name">Javier Oviedo</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Vanessa Fonseca">
+                    </div></div>
+                    <h3 class="member-name">Vanessa Fonseca</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Victor Cruz">
+                    </div></div>
+                    <h3 class="member-name">Victor Cruz</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="hex-outer"><div class="hex-wrapper">
+                        <img src="placeholder.jpg" alt="Foto de Gabriel Alegría">
+                    </div></div>
+                    <h3 class="member-name">Gabriel Alegría</h3>
+                    <span class="member-role badge-phd">FACULTY</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 06 · ESTUDIANTES CON PROYECTO DE TITULACIÓN ═ -->
+<div class="cat-divider">
+    <div class="cat-divider-inner">
+        <h2 class="cat-divider-title"><span>06.</span> Students with Thesis Project</h2>
+        <div class="cat-divider-line"></div>
+        <span class="cat-divider-count">6 members</span>
+    </div>
+</div>
+
+<section class="team-section">
+    <div class="team-inner">
+        <div class="members-grid">
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Luis Chuga">
+                </div></div>
+                <h3 class="member-name">Luis Chuga</h3>
+                <span class="member-role badge-student">STUDENT</span>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Kevin Bustamante">
+                </div></div>
+                <h3 class="member-name">Kevin Bustamante</h3>
+                <span class="member-role badge-student">STUDENT</span>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de José Estrada">
+                </div></div>
+                <h3 class="member-name">José Estrada</h3>
+                <span class="member-role badge-student">STUDENT</span>
+            </div>
+
+            <div class="member-card">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Foto de Esteban Salazar">
+                </div></div>
+                <h3 class="member-name">Esteban Salazar</h3>
+                <span class="member-role badge-student">STUDENT</span>
+            </div>
+
+            <div class="member-card pending">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Plaza pendiente">
+                </div></div>
+                <h3 class="member-name">Pending</h3>
+                <span class="member-role badge-student">STUDENT</span>
+            </div>
+
+            <div class="member-card pending">
+                <div class="hex-outer"><div class="hex-wrapper">
+                    <img src="placeholder.jpg" alt="Plaza pendiente">
+                </div></div>
+                <h3 class="member-name">Pending</h3>
+                <span class="member-role badge-student">STUDENT</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 07 · ALUMNI ══════════════════════════════════ -->
+<div class="cat-divider">
+    <div class="cat-divider-inner">
+        <h2 class="cat-divider-title"><span>07.</span> Alumni</h2>
+        <div class="cat-divider-line"></div>
+        <span class="cat-divider-count">8 graduates</span>
+    </div>
+</div>
+
+<section class="alumni-section">
+    <div class="alumni-inner">
+        <div class="alumni-list">
+            <div class="alumni-item">Ing. David Ortega</div>
+            <div class="alumni-item">Ing. Juan Pachacamac</div>
+            <div class="alumni-item">Ing. Stefano Cazco</div>
+            <div class="alumni-item">Ing. Kevin Torres</div>
+            <div class="alumni-item">Ing. Jossue Checa</div>
+            <div class="alumni-item">Ing. Edgar Haro</div>
+            <div class="alumni-item">Ing. Estefano Quinatoa</div>
+            <div class="alumni-item">Ing. Marcelo Vaca</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ENTES COLABORADORES ═══════════════════════════ -->
+<section class="partners-section">
+    <div class="partners-inner">
+        <div class="partners-header">
+            <p class="partners-eyebrow">Institutional Partnerships</p>
+            <h2 class="partners-title">Collaborating Organizations</h2>
+        </div>
+        <div class="partners-grid">
+
+            <div class="partner-item">
+                <img src="logo-fonag.png" alt="FONAG">
+            </div>
+
+            <div class="partner-item">
+                <img src="logo-emmaps.png" alt="EMMAPS">
+            </div>
+
+            <div class="partner-item">
+                <img src="logo-iniap.png" alt="INIAP">
+            </div>
+
+            <div class="partner-item">
+                <img src="logo-embajada-francia.png" alt="Embajada de Francia">
+            </div>
+
+            <div class="partner-item">
+                <img src="logo-ku-leuven.png" alt="KU Leuven">
+            </div>
+
+            <div class="partner-item">
+                <img src="logo-texas-am.png" alt="University of Texas A&M">
+            </div>
+
+            <div class="partner-item">
+                <img src="logo-eavise.png" alt="EAVISE Research Group">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════ -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" class="logo" style="margin-bottom:20px;">
+                    <div style="
+                        width:42px;height:42px;flex-shrink:0;
+                        clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+                        background:var(--cyan);
+                        display:flex;align-items:center;justify-content:center;">
+                        <span style="color:#000;font-weight:900;font-size:12px;letter-spacing:-0.5px;">ATA</span>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">Research Group</span>
+                        <span class="logo-sub">EPN · Aeronautics &amp; Thermofluids</span>
+                    </div>
+                </a>
+                <p>Research group of Escuela Politécnica Nacional. Mechanical, Electronics &amp; Control, Telecommunications.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Pages</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="nosotros.html">About</a></li>
+                    <li><a href="proyectos.html">Projects</a></li>
+                    <li><a href="publicaciones.html">Publications</a></li>
+                    <li><a href="galeria.html">Gallery</a></li>
+                    <li><a href="contacto.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Institution</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Escuela Politécnica Nacional</a></li>
+                    <li><a href="#">Quito, Ecuador</a></li>
+                    <li><a href="mailto:ata.rg@epn.edu.ec">ata.rg@epn.edu.ec</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 <span>Research Group</span> · Escuela Politécnica Nacional. All rights reserved.</p>
+            <span class="footer-tag">EPN · Quito, Ecuador</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(){ if(localStorage.getItem('theme')==='dark') document.body.classList.add('dark-theme'); })();
+    function toggleNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+    function toggleTheme() {
+        var d = document.body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', d ? 'dark' : 'light');
+    }
+    function switchLanguage() {
+        var f = location.pathname.split('/').pop() || 'index.html';
+        if (f === '') f = 'index.html';
+        var n = f.replace(/\.html$/, '');
+        if (n.endsWith('-es')) location.href = n.replace(/-es$/, '') + '.html';
+        else location.href = n + '-es.html';
+    }
+</script>
+
+</body>
+</html>
