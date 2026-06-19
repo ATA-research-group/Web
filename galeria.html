@@ -338,6 +338,12 @@
         }
         .lightbox-close:hover { background: rgba(0,180,216,0.3); color: #fff; }
         .lightbox-close svg { width: 20px; height: 20px; }
+        .lightbox-vid {
+            max-width: 100%; max-height: 78vh;
+            object-fit: contain; border-radius: 10px;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+            display: block; background: #1a1a2e;
+        }
 
         /* ─── FOOTER ────────────────────────────── */
         footer {
@@ -521,7 +527,7 @@
             <div class="hex-item" data-cat="campo" data-title="Hydrometric Measurement in Pichincha Volcano Basins" data-title-es="Medición Hidrométrica en Cuencas del Volcán Pichincha">
             <div class="hex-border"><div class="hex-inner">
         
-            <video class="hex-img" src="galeria/campo-2.webm" autoplay loop muted playsinline></video>
+            <video class="hex-img" src="galeria/campo-2.webm" poster="galeria/campo-2.png" autoplay loop muted playsinline></video>
         
                 <div class="hex-overlay">
                     <div class="hex-ov-icon">
@@ -643,7 +649,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
             </svg>
         </button>
-        <img class="lightbox-img" id="lb-img" src="" alt="">
+        <img  class="lightbox-img" id="lb-img" src="" alt="">
+        <video class="lightbox-vid" id="lb-vid" controls loop src="" style="display:none;"></video>
         <div class="lightbox-meta">
             <p class="lightbox-title" id="lb-title"></p>
             <p class="lightbox-cat"   id="lb-cat"></p>
@@ -787,14 +794,29 @@
     /* ── Lightbox ── */
     var lightbox = document.getElementById('gallery-lightbox');
     var lbImg    = document.getElementById('lb-img');
+    var lbVid    = document.getElementById('lb-vid');
     var lbTitle  = document.getElementById('lb-title');
     var lbCat    = document.getElementById('lb-cat');
 
     allItems.forEach(function(item) {
         item.addEventListener('click', function() {
-            var img = item.querySelector('.hex-img');
-            lbImg.src   = img ? img.src : '';
-            lbImg.alt   = img ? img.alt : '';
+            var mediaEl = item.querySelector('.hex-img');
+            var isVideo = mediaEl && mediaEl.tagName === 'VIDEO';
+
+            if (isVideo) {
+                lbVid.src          = mediaEl.src;
+                lbVid.style.display = '';
+                lbImg.style.display = 'none';
+                lbImg.src           = '';
+                lbImg.alt           = '';
+            } else {
+                lbImg.src           = mediaEl ? mediaEl.src : '';
+                lbImg.alt           = mediaEl ? mediaEl.alt : '';
+                lbImg.style.display = '';
+                lbVid.style.display = 'none';
+                lbVid.src           = '';
+            }
+
             lbTitle.textContent = (currentLang === 'es' ? (item.dataset.titleEs || item.dataset.title) : item.dataset.title) || '';
             lbCat.textContent   = getCatLabel(item.dataset.cat);
             lightbox.classList.add('open');
@@ -809,7 +831,11 @@
     function closeLightbox() {
         lightbox.classList.remove('open');
         document.body.style.overflow = '';
-        setTimeout(function() { lbImg.src = ''; }, 300);
+        setTimeout(function() {
+            lbImg.src = '';
+            lbVid.pause();
+            lbVid.src = '';
+        }, 300);
     }
 </script>
 
