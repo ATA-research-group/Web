@@ -179,8 +179,12 @@
 
         /* Member grid */
         .members-grid {
-            display: flex; flex-wrap: wrap;
-            gap: 28px 20px; justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 168px);
+            gap: 28px 20px;
+            justify-content: center;
+            align-items: stretch;
+            width: 100%;
         }
 
         /* Subsection separator inside a section */
@@ -210,13 +214,19 @@
         /* ─── MEMBER CARD ────────────────────────── */
         .member-card {
             width: 168px;
+            max-width: 100%;
+            margin: 0;
             background: var(--white);
             border: 1px solid var(--gray-border);
             border-radius: 16px;
-            padding: 28px 16px 22px;
+            padding: 28px 16px 20px;
             text-align: center;
             transition: var(--t);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-start;
         }
         .member-card::before {
             content: '';
@@ -284,6 +294,7 @@
 
         /* ─── MEMBER DESCRIPTION (expansible, Secciones 1 & 3) ─── */
         .member-description {
+            flex-grow: 1;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
@@ -305,7 +316,9 @@
         /* ─── CARD SOCIAL ICONS ───────────────────── */
         .card-social {
             display: flex; align-items: center; justify-content: center;
-            gap: 6px; margin-top: 10px;
+            gap: 6px; margin-top: auto;
+            align-self: center;
+            padding-top: 20px;
         }
         .social-icon {
             display: flex; align-items: center; justify-content: center;
@@ -423,12 +436,13 @@
             .hex-outer { width: 100px; height: 100px; }
             .hex-wrapper { width: 86px; height: 86px; }
             .member-card { width: 148px; }
+            .members-grid { grid-template-columns: repeat(auto-fit, 148px); }
             .cat-divider { padding-left: 20px; padding-right: 20px; }
             .alumni-section { padding-left: 20px; padding-right: 20px; }
             .alumni-list { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 480px) {
-            .members-grid { gap: 20px 14px; }
+            .members-grid { gap: 20px 14px; grid-template-columns: repeat(auto-fit, 140px); }
             .member-card { width: 140px; padding: 22px 12px 18px; }
             .hex-outer { width: 90px; height: 90px; }
             .hex-wrapper { width: 76px; height: 76px; }
