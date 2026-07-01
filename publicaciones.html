@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publicaciones | Research Group</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -20,6 +22,40 @@
             --gray-border: #E2E8F0;
             --gray-text:   #64748B;
             --t: all 0.25s ease;
+
+            /* ── Light-mode structural colours ── */
+            --header-bg:       #FFFFFF;
+            --nav-link:        rgba(17,17,17,0.60);
+            --nav-hover-c:     var(--navy);
+            --nav-hover-bg:    rgba(17,17,17,0.05);
+            --logo-name:       var(--navy);
+            --logo-divider:    rgba(17,17,17,0.12);
+            --hamburger:       var(--navy);
+            --mobile-nav-bg:   var(--gray-bg);
+            --mobile-nav-bdr:  rgba(17,17,17,0.06);
+
+            --page-hero-bg:    var(--gray-bg);
+            --page-hero-h1:    var(--navy);
+            --page-hero-p:     var(--gray-text);
+            --breadcrumb:      var(--gray-text);
+            --breadcrumb-sep:  rgba(17,17,17,0.20);
+
+            --ctrl-bg:         rgba(17,17,17,0.06);
+            --ctrl-border:     rgba(17,17,17,0.10);
+            --ctrl-color:      rgba(17,17,17,0.65);
+            --ctrl-hover-bg:   rgba(17,17,17,0.12);
+            --ctrl-hover-c:    var(--navy);
+            --ctrl-hover-b:    rgba(17,17,17,0.22);
+
+            --footer-bg:       #FFFFFF;
+            --footer-p:        rgba(17,17,17,0.50);
+            --footer-h5:       rgba(17,17,17,0.80);
+            --footer-link:     rgba(17,17,17,0.45);
+            --footer-sep:      rgba(17,17,17,0.08);
+            --footer-copy:     rgba(17,17,17,0.35);
+            --footer-tag-c:    rgba(17,17,17,0.40);
+            --footer-tag-bg:   rgba(17,17,17,0.04);
+            --footer-tag-b:    rgba(17,17,17,0.07);
         }
 
         body {
@@ -32,7 +68,7 @@
 
         /* ─── HEADER ─────────────────────────────── */
         header {
-            background: var(--black);
+            background: var(--header-bg);
             position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 1px 0 rgba(0,180,216,0.18);
         }
@@ -43,44 +79,48 @@
         }
         .logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
         .logo-text { display: flex; flex-direction: column; gap: 3px; line-height: 1; }
-        .logo-name { color: var(--white); font-size: 14.5px; font-weight: 700; }
+        .logo-name { color: var(--logo-name); font-size: 14.5px; font-weight: 700; }
         .logo-sub  { color: var(--cyan); font-size: 9.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; }
         .header-logos-container { display: flex; align-items: center; gap: 16px; }
-        .logo-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.15); }
+        .logo-divider { width: 1px; height: 42px; background: var(--logo-divider); }
+        .logo-dark-theme  { display: none !important; }
+        .logo-light-theme { display: block !important; }
+        body.dark-theme .logo-dark-theme  { display: block !important; }
+        body.dark-theme .logo-light-theme { display: none !important; }
 
         .main-nav { display: flex; align-items: center; gap: 4px; }
         .main-nav a {
-            color: rgba(255,255,255,0.62); text-decoration: none;
+            color: var(--nav-link); text-decoration: none;
             font-size: 13.5px; font-weight: 500;
             padding: 7px 15px; border-radius: 7px; transition: var(--t);
         }
-        .main-nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+        .main-nav a:hover { color: var(--nav-hover-c); background: var(--nav-hover-bg); }
         .main-nav a.active { color: var(--cyan); background: rgba(0,180,216,0.1); }
 
         .hamburger {
             display: none; flex-direction: column; gap: 5px;
             cursor: pointer; padding: 6px; background: none; border: none;
         }
-        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--t); }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--hamburger); border-radius: 2px; transition: var(--t); }
 
         .mobile-nav {
             display: none; flex-direction: column;
-            background: #0D0D0D;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            background: var(--mobile-nav-bg);
+            border-top: 1px solid var(--mobile-nav-bdr);
             padding: 8px 24px 16px;
         }
         .mobile-nav.open { display: flex; }
         .mobile-nav a {
-            color: rgba(255,255,255,0.62); text-decoration: none;
+            color: var(--nav-link); text-decoration: none;
             font-size: 14px; font-weight: 500;
-            padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.04); transition: var(--t);
+            padding: 13px 0; border-bottom: 1px solid var(--mobile-nav-bdr); transition: var(--t);
         }
         .mobile-nav a:last-child { border-bottom: none; }
         .mobile-nav a:hover, .mobile-nav a.active { color: var(--cyan); }
 
         /* ─── PAGE HERO ───────────────────────────── */
         .page-hero {
-            background: var(--black);
+            background: var(--page-hero-bg);
             padding: 72px 32px 64px;
             position: relative; overflow: hidden;
         }
@@ -96,23 +136,23 @@
         }
         .breadcrumb {
             display: flex; align-items: center; gap: 8px;
-            font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.38);
+            font-size: 12px; font-weight: 500; color: var(--breadcrumb);
             margin-bottom: 24px; letter-spacing: 0.5px;
         }
-        .breadcrumb a { color: rgba(255,255,255,0.38); text-decoration: none; transition: var(--t); }
+        .breadcrumb a { color: var(--breadcrumb); text-decoration: none; transition: var(--t); }
         .breadcrumb a:hover { color: var(--cyan); }
         .breadcrumb span { color: rgba(0,180,216,0.6); }
-        .breadcrumb .sep { color: rgba(255,255,255,0.2); }
+        .breadcrumb .sep { color: var(--breadcrumb-sep); }
 
         .page-hero h1 {
             font-size: clamp(32px, 4.5vw, 58px);
-            font-weight: 900; color: var(--white);
+            font-weight: 900; color: var(--page-hero-h1);
             line-height: 1.08; letter-spacing: -2px;
             margin-bottom: 14px;
         }
         .page-hero h1 span { color: var(--cyan); }
         .page-hero p {
-            font-size: 16px; color: rgba(255,255,255,0.5);
+            font-size: 16px; color: var(--page-hero-p);
             font-weight: 400;
         }
 
@@ -278,7 +318,7 @@
 
         /* ─── FOOTER ──────────────────────────────── */
         footer {
-            background: var(--black);
+            background: var(--footer-bg);
             padding: 64px 32px 28px;
             border-top: 1px solid rgba(0,180,216,0.1);
         }
@@ -286,11 +326,11 @@
         .footer-grid {
             display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px;
             padding-bottom: 48px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--footer-sep);
             margin-bottom: 28px;
         }
         .footer-about .logo { margin-bottom: 20px; display: inline-flex; }
-        .footer-about p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.78; max-width: 290px; }
+        .footer-about p { font-size: 13px; color: var(--footer-p); line-height: 1.78; max-width: 290px; }
         .footer-logo-hex {
             width: 42px; height: 42px; background: var(--cyan);
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -298,21 +338,21 @@
         }
         .footer-logo-hex span { color: #000; font-weight: 900; font-size: 12px; letter-spacing: -0.5px; }
         .footer-col h5 {
-            color: rgba(255,255,255,0.88); font-size: 11px; font-weight: 700;
+            color: var(--footer-h5); font-size: 11px; font-weight: 700;
             letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px;
         }
         .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-        .footer-links a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 13px; transition: var(--t); }
+        .footer-links a { color: var(--footer-link); text-decoration: none; font-size: 13px; transition: var(--t); }
         .footer-links a:hover { color: var(--cyan); }
         .footer-bottom {
             display: flex; align-items: center;
             justify-content: space-between; flex-wrap: wrap; gap: 12px;
         }
-        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.24); }
+        .footer-bottom p { font-size: 12px; color: var(--footer-copy); }
         .footer-bottom p span { color: var(--cyan); }
         .footer-tag {
-            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
-            color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600;
+            background: var(--footer-tag-bg); border: 1px solid var(--footer-tag-b);
+            color: var(--footer-tag-c); font-size: 11px; font-weight: 600;
             padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
         }
 
@@ -336,14 +376,14 @@
         .header-controls { display: flex; align-items: center; gap: 4px; }
         .ctrl-btn {
             display: flex; align-items: center; justify-content: center;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--ctrl-bg);
+            border: 1px solid var(--ctrl-border);
             border-radius: 7px;
-            color: rgba(255,255,255,0.65);
+            color: var(--ctrl-color);
             cursor: pointer; transition: var(--t);
             font-family: inherit; line-height: 1;
         }
-        .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.22); }
+        .ctrl-btn:hover { background: var(--ctrl-hover-bg); color: var(--ctrl-hover-c); border-color: var(--ctrl-hover-b); }
         .lang-btn { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; padding: 6px 11px; height: 32px; text-transform: uppercase; }
         .theme-btn { width: 32px; height: 32px; }
         .theme-btn svg { width: 16px; height: 16px; display: block; }
@@ -355,6 +395,40 @@
         body.dark-theme {
             --gray-bg: #1E1E1E; --gray-border: #2A2A2A; --gray-text: #8FA5BB;
             background: #121212; color: #C4D4E0;
+
+            /* structural dark-mode overrides */
+            --header-bg:      #111111;
+            --nav-link:       rgba(255,255,255,0.62);
+            --nav-hover-c:    #FFFFFF;
+            --nav-hover-bg:   rgba(255,255,255,0.07);
+            --logo-name:      #FFFFFF;
+            --logo-divider:   rgba(255,255,255,0.15);
+            --hamburger:      #FFFFFF;
+            --mobile-nav-bg:  #0D0D0D;
+            --mobile-nav-bdr: rgba(255,255,255,0.05);
+
+            --page-hero-bg:   #111111;
+            --page-hero-h1:   #FFFFFF;
+            --page-hero-p:    rgba(255,255,255,0.50);
+            --breadcrumb:     rgba(255,255,255,0.38);
+            --breadcrumb-sep: rgba(255,255,255,0.20);
+
+            --ctrl-bg:        rgba(255,255,255,0.06);
+            --ctrl-border:    rgba(255,255,255,0.10);
+            --ctrl-color:     rgba(255,255,255,0.65);
+            --ctrl-hover-bg:  rgba(255,255,255,0.12);
+            --ctrl-hover-c:   #FFFFFF;
+            --ctrl-hover-b:   rgba(255,255,255,0.22);
+
+            --footer-bg:      #111111;
+            --footer-p:       rgba(255,255,255,0.38);
+            --footer-h5:      rgba(255,255,255,0.88);
+            --footer-link:    rgba(255,255,255,0.38);
+            --footer-sep:     rgba(255,255,255,0.05);
+            --footer-copy:    rgba(255,255,255,0.24);
+            --footer-tag-c:   rgba(255,255,255,0.35);
+            --footer-tag-bg:  rgba(255,255,255,0.04);
+            --footer-tag-b:   rgba(255,255,255,0.07);
         }
         body.dark-theme .mission-section,
         body.dark-theme .team-section,
@@ -470,7 +544,8 @@
             <img src="logo-epn.png" alt="Logo Institucional" style="max-height: 48px; width: auto; object-fit: contain;">
             <div class="logo-divider"></div>
             <a href="index.html" class="logo">
-            <img src="logo.png" alt=" Research Group" style="max-height:50px;width:auto;">
+            <img src="logo-oscuro.png" alt="ATA Research Group" class="logo-dark-theme" style="max-height:50px;width:auto;">
+            <img src="logo-claro.png" alt="ATA Research Group" class="logo-light-theme" style="max-height:50px;width:auto;">
             <div class="logo-text">
                 <span class="logo-name">Research Group</span>
                 <span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span>
@@ -813,18 +888,6 @@
                     <span class="pub-tag" data-i18n="tag_sitl_sw">SITL Software</span>
                     <span class="pub-tag" data-i18n="tag_monitoring">Monitoring</span>
                 </div>
-                <div class="pub-abstract-wrap">
-                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-8">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
-                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
-                    </button>
-                    <div class="pub-abstract" id="abstract-8" hidden data-i18n="pub_a_08">
-                        [ABSTRACT TO BE ADDED — The user will provide this information later.]
-                    </div>
-                </div>
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2024-04.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
@@ -956,18 +1019,6 @@
                     <span class="pub-tag" data-i18n="tag_particle_filter">Particle Filter</span>
                     <span class="pub-tag" data-i18n="tag_gimbal">Gimbal</span>
                     <span class="pub-tag" data-i18n="tag_visual_inertial">Visual-Inertial</span>
-                </div>
-                <div class="pub-abstract-wrap">
-                    <button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false" aria-controls="abstract-12">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                        <span class="toggle-label-show" data-i18n="btn_abstract">Abstract</span>
-                        <span class="toggle-label-hide" data-i18n="btn_hide_abstract">Hide abstract</span>
-                    </button>
-                    <div class="pub-abstract" id="abstract-12" hidden data-i18n="pub_a_12">
-                        [ABSTRACT TO BE ADDED — Placeholder for manual completion.]
-                    </div>
                 </div>
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2023-04.png" alt="Publicación ATA Research Group" loading="lazy">
