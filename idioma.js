@@ -1152,8 +1152,9 @@ function updateDOM() {
     });
     const langBtn = document.querySelector('.lang-btn');
     if (langBtn) {
-        langBtn.innerText = currentLang === 'en' ? 'ES' : 'EN';
+        langBtn.innerText = currentLang === 'en' ? 'EN' : 'ES';
     }
+    document.documentElement.lang = currentLang;
 }
 
 function switchLanguage() {
