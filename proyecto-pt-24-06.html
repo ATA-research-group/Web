@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>(function(){var l=localStorage.getItem('lang');if(!l){localStorage.setItem('lang','en');}else if(l==='es'){document.documentElement.style.visibility='hidden';}})()</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT-24-06: Análisis CFD de Perfiles | ATA Research Group</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,6 +25,10 @@
         .logo-sub { color: var(--cyan); font-size: 9.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; }
         .header-logos-container { display: flex; align-items: center; gap: 16px; }
         .logo-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.15); }
+        .logo-dark-theme  { display: none !important; }
+        .logo-light-theme { display: block !important; }
+        body.dark-theme .logo-dark-theme  { display: block !important; }
+        body.dark-theme .logo-light-theme { display: none !important; }
         .main-nav { display: flex; align-items: center; gap: 4px; }
         .main-nav a { color: rgba(255,255,255,0.62); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 7px 15px; border-radius: 7px; transition: var(--t); }
         .main-nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
@@ -113,7 +120,8 @@
             <img src="logo-epn.png" alt="Logo Institucional" style="max-height: 48px; width: auto; object-fit: contain;">
             <div class="logo-divider"></div>
             <a href="index.html" class="logo">
-            <img src="logo.png" alt="ATA Research Group" style="max-height:50px;width:auto;">
+            <img src="logo-oscuro.png" alt="ATA Research Group" class="logo-dark-theme" style="max-height:50px;width:auto;">
+            <img src="logo-claro.png" alt="ATA Research Group" class="logo-light-theme" style="max-height:50px;width:auto;">
             <div class="logo-text"><span class="logo-name">Research Group</span><span class="logo-sub" data-i18n="logo_sub">EPN · Aeronautics &amp; Thermofluids</span></div>
         </a>
         </div>

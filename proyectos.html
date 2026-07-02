@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>(function(){var l=localStorage.getItem('lang');if(!l){localStorage.setItem('lang','en');}else if(l==='es'){document.documentElement.style.visibility='hidden';}})()</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos | Research Group</title>
     <link rel="icon" type="image/png" href="logo.png">
@@ -416,6 +417,17 @@
         .hex-materials { background: rgba(148,163,184,0.15); border: 2px solid rgba(148,163,184,0.4); }
         .hex-landing   { background: rgba(251,191,36,0.15);  border: 2px solid rgba(251,191,36,0.4); }
 
+        /* ─── INTERNATIONAL PROJECT CARD VISUALS ──── */
+        .visual-vlir-done  { background: linear-gradient(145deg, #141824 0%, #0A2540 55%, #0d1830 100%); }
+        .visual-smart-farm { background: linear-gradient(145deg, #071410 0%, #0A2540 55%, #071c12 100%); }
+        .visual-antisana   { background: linear-gradient(145deg, #04101a 0%, #0A2540 55%, #031428 100%); }
+        .visual-wildfire   { background: linear-gradient(145deg, #180a02 0%, #0A2540 55%, #160802 100%); }
+
+        .hex-vlir-done   { background: rgba(100,116,139,0.15); border: 2px solid rgba(100,116,139,0.35); }
+        .hex-smart-farm  { background: rgba(34,197,94,0.15);   border: 2px solid rgba(34,197,94,0.4); }
+        .hex-antisana    { background: rgba(56,189,248,0.15);  border: 2px solid rgba(56,189,248,0.4); }
+        .hex-wildfire    { background: rgba(251,146,60,0.15);  border: 2px solid rgba(251,146,60,0.4); }
+
         /* ─── RESPONSIVE ──────────────────────────── */
         @media (max-width: 768px) {
             .main-nav { display: none; }
@@ -774,7 +786,73 @@
                     <p class="pf-id">PIM-24-01</p>
                     <h3 class="pf-title" data-i18n="pf_pim24_title">Cadmium Analysis in Cacao</h3>
                     <p class="pf-desc" data-i18n="pf_pim24_desc">Use of remote monitoring and multispectral imaging to estimate cadmium content in crops.</p>
-                    <a href="proyecto-pim-24-01.html" class="btn-ver"> 
+                    <a href="proyecto-pim-24-01.html" class="btn-ver">
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TARJETA VLIR TEAM 2025 ──────────────── -->
+            <div class="pf-card">
+                <div class="pf-visual visual-antisana">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:245px;height:245px;bottom:-55px;left:-58px;"></div>
+                        <div class="vdeco-hex" style="width:130px;height:130px;top:-26px;right:-30px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-antisana">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(56,189,248,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 38l18-26 18 26H6z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 22l4-6 4 6"/>
+                                <path stroke-linecap="round" d="M6 38h36" stroke-width="0.8" opacity="0.35"/>
+                                <path stroke-linecap="round" d="M4 38c5-2 9-3 13-1" stroke-width="1" opacity="0.5"/>
+                                <circle cx="38" cy="11" r="2" stroke-width="1.5" opacity="0.8"/>
+                                <path stroke-linecap="round" d="M38 13v4M34 11h2M38 7v2" stroke-width="1" opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">3E241117</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
+                    <p class="pf-id">3E241117 &middot; Sep 2024 – Aug 2029</p>
+                    <h3 class="pf-title" data-i18n="pf_vlirteam_title">Data-Driven Conservation in Antisana</h3>
+                    <p class="pf-desc" data-i18n="pf_vlirteam_desc">Leveraging artificial intelligence and unmanned aerial systems to safeguard Ecuador's paramo wetlands and volcano glaciers.</p>
+                    <a href="proyecto-vlir-team-25.html" class="btn-ver">
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TARJETA ECOHYDROSHIELD ──────────────── -->
+            <div class="pf-card">
+                <div class="pf-visual visual-wildfire">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:255px;height:255px;top:-60px;right:-66px;"></div>
+                        <div class="vdeco-hex" style="width:138px;height:138px;bottom:-32px;left:-36px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-wildfire">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(251,146,60,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 8L10 14v12c0 8 6 15 14 18 8-3 14-10 14-18V14L24 8z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 22c0 0-5 3-5 8a5 5 0 0010 0c0-5-5-8-5-8z" stroke-width="1.2" opacity="0.8"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">ECOHDROSHIELD</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
+                    <p class="pf-id">SI Programme &middot; KU Leuven &amp; EPN</p>
+                    <h3 class="pf-title" data-i18n="pf_ecohydro_title">EcoHydroShield Wildfire Prevention</h3>
+                    <p class="pf-desc" data-i18n="pf_ecohydro_desc">An autonomous climate-adaptive system integrating drones and AI to reduce fire risk and disperse water in protected ecological areas.</p>
+                    <a href="proyecto-ecohydroshield.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -1064,7 +1142,75 @@
             </div>
         </div>
 
-        <div class="portfolio-grid-single">
+        <div class="portfolio-grid">
+
+            <!-- TARJETA VLIR SI 2025 ─────────────────── -->
+            <div class="pf-card">
+                <div class="pf-visual visual-smart-farm">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:250px;height:250px;top:-58px;right:-64px;"></div>
+                        <div class="vdeco-hex" style="width:135px;height:135px;bottom:-30px;left:-34px;opacity:0.6;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-smart-farm">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(34,197,94,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 40V26"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 26c0-8 8-14 14-11-2 7-8 11-14 11z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M24 33c0-6-7-11-13-9 2 6 7 10 13 9z"/>
+                                <circle cx="24" cy="14" r="4" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M11 11h4M33 11h-4M24 6V2" stroke-width="1" opacity="0.55"/>
+                                <path stroke-linecap="round" d="M14 14l2 2M34 14l-2 2" stroke-width="1" opacity="0.45"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">3E230830</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
+                    <p class="pf-id">3E230830 &middot; Sep 2023 – Aug 2025</p>
+                    <h3 class="pf-title" data-i18n="pf_vlir25_title">Smart Farming for Dragon Fruit in the Amazon</h3>
+                    <p class="pf-desc" data-i18n="pf_vlir25_desc">Implementation of precision agriculture using remote monitoring and computer vision for the sustainable cultivation of dragon fruit in the Ecuadorian Amazon.</p>
+                    <a href="proyecto-vlir-si-25.html" class="btn-ver">
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TARJETA: VLIR SI 2023 ───────────────── -->
+            <div class="pf-card card-done">
+                <div class="pf-visual visual-vlir-done">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:255px;height:255px;top:-58px;right:-64px;"></div>
+                        <div class="vdeco-hex" style="width:135px;height:135px;bottom:-30px;left:-34px;opacity:0.5;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-vlir-done">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(148,163,184,0.9)" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 40h28l-9-16-4 6-3-10-3 10-4-6-5 16z"/>
+                                <path stroke-linecap="round" d="M24 20c1-4 2-8 2-12" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+                                <circle cx="34" cy="10" r="2.5" stroke-width="1.5"/>
+                                <path stroke-linecap="round" d="M36.5 10h4M31.5 10h-4M34 7.5V4M34 12.5v4" stroke-width="1" opacity="0.55"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">3E200983</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
+                    <p class="pf-id">3E200983 &middot; Jan 2020 – Aug 2022</p>
+                    <h3 class="pf-title" data-i18n="pf_vlir23_title">Real-time Volcano Monitoring System</h3>
+                    <p class="pf-desc" data-i18n="pf_vlir23_desc">Implementation of a real-time monitoring system based on unmanned aerial vehicles (UAVs) and image processing methods for early eruption prediction.</p>
+                    <a href="proyecto-vlir-si-23.html" class="btn-ver btn-ver-done">
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
 
             <!-- TARJETA 3: PIM-21-01 ────────────────── -->
             <div class="pf-card card-done">
@@ -1104,8 +1250,6 @@
         </div>
     </div>
 </section>
-
-
 
 <!-- ═══ FOOTER ════════════════════════════════════════ -->
 <footer>
