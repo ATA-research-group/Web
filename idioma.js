@@ -79,7 +79,7 @@ const translations = {
         cat2_count:            '1 member',
         cat3_count:            '5 members',
         cat4_count:            '8 members',
-        cat5_count:            '8 members',
+        cat5_count:            '9 members',
         year_label_formation:  'Research Assistants',
         carrera_label:         'MAJOR',
         badge_internal:        'Internal',
@@ -104,6 +104,7 @@ const translations = {
         section_active_title:  'In Development',
         badge_ongoing:         'Ongoing',
         status_national:       'National',
+        status_international:  'International',
         btn_view_project:      'View Project',
         eyebrow_thesis:        'Thesis &middot; Active',
         section_thesis_title:  'Thesis Projects',
@@ -342,6 +343,26 @@ const translations = {
         pt08_e03:    'Experimental validation report with data from at least 30 test landings, positioning error distribution, and analysis of influencing factors.',
         pt08_e04:    'Documented source code and system repository, available for integration into future ATA Research Group UAV platforms.',
 
+        /* ── PROJECT: VLIR SI 2023 ── */
+        vlir23_h1:    'Real time volcano monitoring for early eruption prediction using <span>unmanned aerial vehicles and image processing methods</span>',
+        vlir23_ctx1:  'According to GVP (Global Volcanism Program), Ecuador occupies the third place of countries that have the largest number of volcanoes around the world. With a total of 84 volcanoes, of which 17 are considered potentially active, Ecuador is constantly threatened by volcanic activity. As result of past eruptions, nearly a million people have been affected and infrastructure has been damaged severely. Currently, the information provided by ground-based monitoring stations is not enough to assess the whole spectrum of variables immersed in the forecasting of potential eruptive scenarios, which need real time and periodical data gathered in situ.',
+        vlir23_goal:  'Implement a real time monitoring system based on unmanned aerial vehicles (UAVs) and image processing methods for gathering data to assess volcanic plumes composition and to track geomorphological changes of the volcano, which are important parameters to predict eruptive scenarios and enhance prospective studies for early prevention and mitigation of disasters.',
+
+        /* ── PROJECT: VLIR SI 2025 ── */
+        vlir25_h1:    'Smart Farming methodology for efficient and sustainable cultivation of <span>dragon fruit in Ecuador\'s Amazon</span>: Pilot evaluation of the impact of technology on poverty and inequality reduction',
+        vlir25_ctx1:  'This initiative proposes the implementation of precision agriculture for the intelligent, efficient, and sustainable production of dragon fruit in the Ecuadorian Amazon, Palora canton as case study. The project is motivated by the great appeal of this fruit in international markets due to its numerous health and nutritional properties. The national government has done a good job managing commercial agreements; however, very little has been done regarding the modernization of agricultural processes, which has made it difficult for many farmers, mainly small and medium ones, to export their production to markets such as Europe, North America, and Asia because they do not meet the quality, biosecurity, traceability, and sustainability requirements established by those markets.',
+        vlir25_goal:  'Develop a methodology for intelligent, efficient, and sustainable cultivation of dragon fruit in the Ecuadorian Amazon, employing precision agriculture techniques such as remote monitoring systems and computer vision. The goal is to demonstrate in pilot farms how precision agriculture can help farmers use resources like water and soil more efficiently, reduce agrochemicals, plan production based on data, ensure fruit quality, and apply sustainable cultivation techniques that enhance product quality and farmers\' overall quality of life.',
+
+        /* ── PROJECT: VLIR TEAM 2025 ── */
+        vlirteam_h1:    'Data-Driven Conservation Initiative for <span>High Andean Ecosystems in the Antisana Natural Reserve</span>',
+        vlirteam_ctx1:  'The project aims to safeguard Ecuador\'s paramo wetlands and volcano glaciers via a data-driven monitoring framework. These ecosystems are crucial for climate change mitigation and adaptation.',
+        vlirteam_goal:  'Leverage artificial intelligence and unmanned aerial systems to assess wetland health, water availability, and glacier dynamics, targeting sustainable water management and biodiversity conservation. This is achieved through a collaborative effort between the Escuela Polit&eacute;cnica Nacional (EPN) and its Belgian partner, KU Leuven, to provide data-driven decision-making for local stakeholders, support robust policy development, and address critical water scarcity issues aligning with SDGs 6, 13, 15, and 17.',
+
+        /* ── PROJECT: ECOHDROSHIELD ── */
+        ecohydro_h1:    'EcoHydroShield: <span>Autonomous Climate-Adaptive System</span> for Wildfire Prevention in Protected Ecological Areas',
+        ecohydro_ctx1:  'Forest fires threaten biodiversity, ecosystems, and communities, worsened by climate change and poor land management. In Ecuador, over 5,000 fires in 2024 caused severe damage, underscoring the need for mitigation.',
+        ecohydro_goal:  'Integrate drones, AI, and autonomous water dispersion (EcoHydroShield) to reduce fire risk in protected areas like Pifo, Chilibulo, and El Quinche. Aligned with SDGs 13 and 15, the project applies climate-adaptive technologies to create a replicable model for climate resilience and ecosystem sustainability, providing validated data for policymakers and fostering local empowerment.',
+
         /* ── NOSOTROS: EXTRA SECTIONS ── */
         cat6:           ' Thesis Students',
         cat6_count:     '5 members',
@@ -428,6 +449,7 @@ const translations = {
         role_vanessa:           'Student in Telecommunications Engineering',
         role_victor_cruz:       'Student in Mechatronics Engineering',
         role_gabriel:           'Student in Mechatronics Engineering',
+        role_alexA:             'Student in Mechanical Engineering',
         role_luis:              'Mechanical Engineering',
         role_kevin_bustamante:  'Mechatronics Engineering',
         role_jose:              'Mechanical Engineering',
@@ -457,6 +479,16 @@ const translations = {
         pf_pt07_desc:   'Experimental mechanical characterization of low-cost composite laminates for unmanned aircraft structures.',
         pf_pt08_title:  'Precision Landing via Computer Vision',
         pf_pt08_desc:   'Visual guidance system for autonomous landing with less than 30 cm error in unprepared zones using an embedded camera.',
+
+        /* ── PROYECTOS: VLIR / INTERNATIONAL CARDS ── */
+        pf_vlir23_title: 'Real-time Volcano Monitoring System',
+        pf_vlir23_desc:  'Implementation of a real-time monitoring system based on unmanned aerial vehicles (UAVs) and image processing methods for early eruption prediction.',
+        pf_vlir25_title: 'Smart Farming for Dragon Fruit in the Amazon',
+        pf_vlir25_desc:  'Implementation of precision agriculture using remote monitoring and computer vision for the sustainable cultivation of dragon fruit in the Ecuadorian Amazon.',
+        pf_vlirteam_title: 'Data-Driven Conservation in Antisana',
+        pf_vlirteam_desc:  'Leveraging artificial intelligence and unmanned aerial systems to safeguard Ecuador\'s paramo wetlands and volcano glaciers.',
+        pf_ecohydro_title: 'EcoHydroShield Wildfire Prevention',
+        pf_ecohydro_desc:  'An autonomous climate-adaptive system integrating drones and AI to reduce fire risk and disperse water in protected ecological areas.',
 
         /* ── PUBLICACIONES: TITLES ── */
         pub_t_01: 'Bridging Theory and Simulation: Parametric Identification and Validation for a Multirotor UAV in PX4-Gazebo',
@@ -642,7 +674,7 @@ const translations = {
         cat2_count:            '1 miembro',
         cat3_count:            '5 miembros',
         cat4_count:            '8 miembros',
-        cat5_count:            '8 miembros',
+        cat5_count:            '9 miembros',
         year_label_formation:  'Ayudantes de Investigaci&oacute;n',
         carrera_label:         'CARRERA',
         badge_internal:        'Internos',
@@ -667,6 +699,7 @@ const translations = {
         section_active_title:  'En Desarrollo',
         badge_ongoing:         'En Curso',
         status_national:       'Nacional',
+        status_international:  'Internacional',
         btn_view_project:      'Ver Proyecto',
         eyebrow_thesis:        'Titulaci&oacute;n &middot; Activo',
         section_thesis_title:  'Proyectos de Titulaci&oacute;n',
@@ -905,6 +938,26 @@ const translations = {
         pt08_e03:    'Informe de validaci&oacute;n experimental con datos de al menos 30 aterrizajes de prueba, distribuci&oacute;n de errores de posicionamiento y an&aacute;lisis de factores influyentes.',
         pt08_e04:    'C&oacute;digo fuente documentado y repositorio del sistema de aterrizaje, disponible para integraci&oacute;n en plataformas UAV futuras del grupo ATA Research Group.',
 
+        /* ── PROYECTO: VLIR SI 2023 ── */
+        vlir23_h1:    'Monitoreo volc&aacute;nico en tiempo real para la predicci&oacute;n temprana de erupciones mediante <span>veh&iacute;culos a&eacute;reos no tripulados y m&eacute;todos de procesamiento de im&aacute;genes</span>',
+        vlir23_ctx1:  'Seg&uacute;n el GVP (Programa Global de Vulcanismo), Ecuador ocupa el tercer lugar entre los pa&iacute;ses con mayor n&uacute;mero de volcanes en el mundo. Con un total de 84 volcanes, de los cuales 17 se consideran potencialmente activos, Ecuador est&aacute; constantemente amenazado por la actividad volc&aacute;nica. Como resultado de erupciones pasadas, casi un mill&oacute;n de personas se han visto afectadas y la infraestructura ha sufrido da&ntilde;os graves. Actualmente, la informaci&oacute;n proporcionada por las estaciones de monitoreo terrestres no es suficiente para evaluar todo el espectro de variables presentes en la predicci&oacute;n de escenarios eruptivos potenciales, que requieren datos recopilados in situ en tiempo real y de forma peri&oacute;dica.',
+        vlir23_goal:  'Implementar un sistema de monitoreo en tiempo real basado en veh&iacute;culos a&eacute;reos no tripulados (UAVs) y m&eacute;todos de procesamiento de im&aacute;genes para recopilar datos que permitan evaluar la composici&oacute;n de las plumas volc&aacute;nicas y rastrear los cambios geomorfol&oacute;gicos del volc&aacute;n, par&aacute;metros clave para predecir escenarios eruptivos y potenciar los estudios prospectivos de prevenci&oacute;n y mitigaci&oacute;n temprana de desastres.',
+
+        /* ── PROYECTO: VLIR SI 2025 ── */
+        vlir25_h1:    'Metodolog&iacute;a de Agricultura Inteligente para el cultivo eficiente y sostenible de <span>pitahaya en la Amazon&iacute;a ecuatoriana</span>: Evaluaci&oacute;n piloto del impacto de la tecnolog&iacute;a en la reducci&oacute;n de la pobreza y la desigualdad',
+        vlir25_ctx1:  'Esta iniciativa propone la implementaci&oacute;n de agricultura de precisi&oacute;n para la producci&oacute;n inteligente, eficiente y sostenible de pitahaya en la Amazon&iacute;a ecuatoriana, con el cant&oacute;n Palora como caso de estudio. El proyecto est&aacute; motivado por el gran atractivo de esta fruta en los mercados internacionales debido a sus numerosas propiedades para la salud y su valor nutricional. El gobierno nacional ha gestionado bien los acuerdos comerciales; sin embargo, poco se ha hecho en materia de modernizaci&oacute;n de los procesos agr&iacute;colas, lo que ha dificultado que muchos agricultores &mdash;principalmente peque&ntilde;os y medianos&mdash; puedan exportar su producci&oacute;n a mercados como Europa, Am&eacute;rica del Norte y Asia, por no cumplir los requisitos de calidad, bioseguridad, trazabilidad y sostenibilidad que exigen dichos mercados.',
+        vlir25_goal:  'Desarrollar una metodolog&iacute;a para el cultivo inteligente, eficiente y sostenible de pitahaya en la Amazon&iacute;a ecuatoriana, empleando t&eacute;cnicas de agricultura de precisi&oacute;n como sistemas de monitoreo remoto y visi&oacute;n artificial. El objetivo es demostrar en granjas piloto c&oacute;mo la agricultura de precisi&oacute;n puede ayudar a los agricultores a usar recursos como el agua y el suelo de manera m&aacute;s eficiente, reducir el uso de agroquímicos, planificar la producci&oacute;n con base en datos, garantizar la calidad de la fruta y aplicar t&eacute;cnicas de cultivo sostenibles que mejoren la calidad del producto y la calidad de vida de los agricultores.',
+
+        /* ── PROYECTO: VLIR TEAM 2025 ── */
+        vlirteam_h1:    'Iniciativa de Conservaci&oacute;n Basada en Datos para los <span>Ecosistemas Altoandinos de la Reserva Natural Antisana</span>',
+        vlirteam_ctx1:  'El proyecto tiene como objetivo salvaguardar los humedales de p&aacute;ramo y los glaciares del volc&aacute;n Antisana en Ecuador mediante un marco de monitoreo basado en datos. Estos ecosistemas son cruciales para la mitigaci&oacute;n y adaptaci&oacute;n al cambio clim&aacute;tico.',
+        vlirteam_goal:  'Aprovechar la inteligencia artificial y los sistemas a&eacute;reos no tripulados para evaluar la salud de los humedales, la disponibilidad de agua y la din&aacute;mica glaciar, con miras a la gesti&oacute;n sostenible del agua y la conservaci&oacute;n de la biodiversidad. Esto se logra a trav&eacute;s de un esfuerzo colaborativo entre la Escuela Polit&eacute;cnica Nacional (EPN) y su socio belga, KU Leuven, para proporcionar toma de decisiones basada en datos a los actores locales, apoyar el desarrollo de pol&iacute;ticas s&oacute;lidas y abordar problemas cr&iacute;ticos de escasez de agua, aline&aacute;ndose con los ODS 6, 13, 15 y 17.',
+
+        /* ── PROYECTO: ECOHYDROSHIELD ── */
+        ecohydro_h1:    'EcoHydroShield: <span>Sistema Aut&oacute;nomo Adaptativo al Clima</span> para la Prevenci&oacute;n de Incendios Forestales en &Aacute;reas Ecol&oacute;gicas Protegidas',
+        ecohydro_ctx1:  'Los incendios forestales amenazan la biodiversidad, los ecosistemas y las comunidades, agravados por el cambio clim&aacute;tico y la mala gesti&oacute;n de la tierra. En Ecuador, m&aacute;s de 5.000 incendios en 2024 causaron da&ntilde;os severos, evidenciando la urgencia de implementar medidas de mitigaci&oacute;n.',
+        ecohydro_goal:  'Integrar drones, inteligencia artificial y dispersi&oacute;n aut&oacute;noma de agua (EcoHydroShield) para reducir el riesgo de incendios en &aacute;reas protegidas como Pifo, Chilibulo y El Quinche. Alineado con los ODS 13 y 15, el proyecto aplica tecnolog&iacute;as adaptativas al clima para crear un modelo replicable de resiliencia clim&aacute;tica y sostenibilidad ecosist&eacute;mica, aportando datos validados para tomadores de decisiones y fomentando el empoderamiento local.',
+
         /* ── NOSOTROS: EXTRA SECTIONS ── */
         cat6:           ' Estudiantes con Proyecto de Titulaci&oacute;n',
         cat6_count:     '5 miembros',
@@ -991,6 +1044,7 @@ const translations = {
         role_vanessa:           'Estudiante en Ingenier&iacute;a en Telecomunicaciones',
         role_victor_cruz:       'Estudiante en Ingenier&iacute;a Mecatr&oacute;nica',
         role_gabriel:           'Estudiante en Ingenier&iacute;a Mecatr&oacute;nica',
+        role_alexA:             'Estudiante en Ingenier&iacute;a Mec&aacute;nica',
         role_luis:              'Ingenier&iacute;a en Mec&aacute;nica',
         role_kevin_bustamante:  'Ingenier&iacute;a en Mecatr&oacute;nica',
         role_jose:              'Ingenier&iacute;a en Mec&aacute;nica',
@@ -1020,6 +1074,16 @@ const translations = {
         pf_pt07_desc:   'Caracterizaci&oacute;n mec&aacute;nica experimental de laminados compuestos de bajo costo para estructuras de aeronaves no tripuladas.',
         pf_pt08_title:  'Aterrizaje de Precisi&oacute;n por Visi&oacute;n Artificial',
         pf_pt08_desc:   'Sistema de guiado visual para aterrizaje aut&oacute;nomo con error inferior a 30 cm en zonas no preparadas mediante c&aacute;mara embebida.',
+
+        /* ── PROYECTOS: CARDS VLIR / INTERNACIONALES ── */
+        pf_vlir23_title: 'Sistema de Monitoreo Volc&aacute;nico en Tiempo Real',
+        pf_vlir23_desc:  'Implementaci&oacute;n de un sistema de monitoreo en tiempo real basado en veh&iacute;culos a&eacute;reos no tripulados (UAVs) y m&eacute;todos de procesamiento de im&aacute;genes para la predicci&oacute;n temprana de erupciones.',
+        pf_vlir25_title: 'Agricultura Inteligente para Pitahaya en la Amazon&iacute;a',
+        pf_vlir25_desc:  'Implementaci&oacute;n de agricultura de precisi&oacute;n mediante monitoreo remoto y visi&oacute;n artificial para el cultivo sostenible de pitahaya en la Amazon&iacute;a ecuatoriana.',
+        pf_vlirteam_title: 'Conservaci&oacute;n Basada en Datos en Antisana',
+        pf_vlirteam_desc:  'Aprovechamiento de la inteligencia artificial y sistemas a&eacute;reos no tripulados para proteger los humedales de p&aacute;ramo y los glaciares del volc&aacute;n Antisana.',
+        pf_ecohydro_title: 'EcoHydroShield: Prevenci&oacute;n de Incendios Forestales',
+        pf_ecohydro_desc:  'Sistema aut&oacute;nomo adaptativo al clima que integra drones e inteligencia artificial para reducir el riesgo de incendios y dispersar agua en &aacute;reas ecol&oacute;gicas protegidas.',
 
         /* ── PUBLICACIONES: TITLES ── */
         pub_t_01: 'Uniendo teor&iacute;a y simulaci&oacute;n: Identificaci&oacute;n y validaci&oacute;n param&eacute;trica para un UAV multirrotor en PX4&ndash;Gazebo',
@@ -1155,6 +1219,7 @@ function updateDOM() {
         langBtn.innerText = currentLang === 'en' ? 'EN' : 'ES';
     }
     document.documentElement.lang = currentLang;
+    document.documentElement.style.visibility = '';
 }
 
 function switchLanguage() {
