@@ -161,21 +161,7 @@
             font-size: 15.5px; color: var(--page-hero-p);
             font-weight: 400; max-width: 460px;
         }
-        .active-badge {
-            flex-shrink: 0;
-            background: rgba(0,180,216,0.1);
-            border: 1px solid rgba(0,180,216,0.3);
-            border-radius: 14px; padding: 20px 28px;
-            text-align: center;
-        }
-        .active-badge .ab-num {
-            display: block; font-size: 42px; font-weight: 900;
-            color: var(--cyan); letter-spacing: -2px; line-height: 1;
-        }
-        .active-badge .ab-lbl {
-            display: block; font-size: 12px; font-weight: 600;
-            color: rgba(255,255,255,0.5); margin-top: 6px; letter-spacing: 0.5px;
-        }
+
 
         /* ─── PORTFOLIO SECTIONS ──────────────────── */
         .portfolio-section { padding: 88px 32px; }
@@ -293,10 +279,14 @@
             display: inline-flex; align-items: center; gap: 6px;
             font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
             text-transform: uppercase; margin-bottom: 8px;
+            color: var(--gray-text);
+            background: rgba(100,116,139,0.08);
+            border: 1px solid rgba(100,116,139,0.15);
+            padding: 3px 9px; border-radius: 100px;
         }
-        .pf-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-        .pf-status-active { color: var(--cyan); }
-        .pf-status-active .pf-dot { background: var(--cyan); }
+        .pf-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; background: var(--gray-text); }
+        .pf-status-active { color: var(--gray-text); }
+        .pf-status-active .pf-dot { background: var(--gray-text); }
         .pf-status-done { color: var(--gray-text); }
         .pf-status-done .pf-dot { background: var(--gray-text); }
 
@@ -332,12 +322,13 @@
         .btn-ver svg { width: 13px; height: 13px; }
 
         .btn-ver-done {
-            background: transparent; color: var(--gray-text);
-            border: 1px solid var(--gray-border);
+            background: var(--cyan); color: var(--black);
+            border: none;
         }
         .btn-ver-done:hover {
-            background: var(--cyan); color: var(--black);
-            border-color: var(--cyan);
+            background: #22cdf0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,180,216,0.38);
         }
 
         /* ─── ACTIVE STRIP ────────────────────────── */
@@ -419,11 +410,13 @@
 
         /* ─── INTERNATIONAL PROJECT CARD VISUALS ──── */
         .visual-vlir-done  { background: linear-gradient(145deg, #141824 0%, #0A2540 55%, #0d1830 100%); }
+        .visual-cedia-done { background: linear-gradient(145deg, #04121a 0%, #0A2540 55%, #030f1c 100%); }
         .visual-smart-farm { background: linear-gradient(145deg, #071410 0%, #0A2540 55%, #071c12 100%); }
         .visual-antisana   { background: linear-gradient(145deg, #04101a 0%, #0A2540 55%, #031428 100%); }
         .visual-wildfire   { background: linear-gradient(145deg, #180a02 0%, #0A2540 55%, #160802 100%); }
 
         .hex-vlir-done   { background: rgba(100,116,139,0.15); border: 2px solid rgba(100,116,139,0.35); }
+        .hex-cedia-done  { background: rgba(100,116,139,0.15); border: 2px solid rgba(100,116,139,0.30); }
         .hex-smart-farm  { background: rgba(34,197,94,0.15);   border: 2px solid rgba(34,197,94,0.4); }
         .hex-antisana    { background: rgba(56,189,248,0.15);  border: 2px solid rgba(56,189,248,0.4); }
         .hex-wildfire    { background: rgba(251,146,60,0.15);  border: 2px solid rgba(251,146,60,0.4); }
@@ -676,10 +669,6 @@
             <h1 data-i18n="proy_hero_title">Research<br>&amp; <span>Development</span></h1>
             <p class="hero-sub" data-i18n="proy_hero_sub">Portfolio of active and completed projects in aeronautics, precision agriculture, and advanced materials.</p>
         </div>
-        <div class="active-badge">
-            <span class="ab-num">8</span>
-            <span class="ab-lbl" data-i18n="active_badge_lbl">Thesis projects<br>in development</span>
-        </div>
     </div>
 </section>
 
@@ -688,7 +677,7 @@
     <div class="ods-inner">
         <div class="ods-header">
             <span class="ods-eyebrow" data-i18n="ods_eyebrow">Agenda 2030 · United Nations</span>
-            <h2 class="ods-title" data-i18n="ods_title">Research Aligned with the SDGs</h2>
+            <h2 class="ods-title" data-i18n="ods_title">Aligned with the SDGs</h2>
             <p class="ods-subtitle" data-i18n="ods_subtitle">Our projects directly contribute to the Sustainable Development Goals. Hover over each sector to explore.</p>
         </div>
         <div class="ods-chart-row">
@@ -715,11 +704,8 @@
 <section class="portfolio-section bg-white">
     <div class="portfolio-inner">
         <div class="section-intro">
-            <p class="eyebrow" data-i18n="eyebrow_active">Status · Active</p>
-            <div class="sec-title-row">
-                <h2 class="sec-title" data-i18n="section_active_title">In Development</h2>
-                <span class="title-badge badge-active" data-i18n="badge_ongoing">Ongoing</span>
-            </div>
+            <p class="eyebrow" data-i18n="eyebrow_active">Research Portfolio</p>
+            <h2 class="sec-title" data-i18n="section_active_title">In Development</h2>
         </div>
 
         <div class="portfolio-grid">
@@ -747,10 +733,10 @@
                     </div>
                 </div>
                 <div class="pf-body">
-                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_national">National</span></div>
+                    <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_group">Group</span></div>
                     <p class="pf-id">PIGR-24-01</p>
-                    <h3 class="pf-title" data-i18n="pf_pigr_title">Sustainable Reuse of Carbon Fiber</h3>
-                    <p class="pf-desc" data-i18n="pf_pigr_desc">Research, experimental evaluation and simulation for the efficient recycling of carbon fiber.</p>
+                    <h3 class="pf-title" data-i18n="title_pigr24">Sustainable Carbon Fiber Reuse</h3>
+                    <p class="pf-desc" data-i18n="desc_pigr24">Energy and life cycle study of Sustainable Carbon Fiber Reuse Processes.</p>
                     <a href="proyecto-pigr-24-01.html" class="btn-ver"> 
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -870,11 +856,8 @@
 <section class="portfolio-section bg-gray">
     <div class="portfolio-inner">
         <div class="section-intro">
-            <p class="eyebrow" data-i18n="eyebrow_thesis">Thesis · Active</p>
-            <div class="sec-title-row">
-                <h2 class="sec-title" data-i18n="section_thesis_title">Thesis Projects</h2>
-                <span class="title-badge badge-active" data-i18n="badge_ongoing">Ongoing</span>
-            </div>
+            <p class="eyebrow" data-i18n="eyebrow_thesis">Graduate Research</p>
+            <h2 class="sec-title" data-i18n="section_thesis_title">Thesis Projects</h2>
         </div>
 
         <div class="portfolio-grid">
@@ -1135,11 +1118,8 @@
 <section class="portfolio-section bg-gray">
     <div class="portfolio-inner">
         <div class="section-intro">
-            <p class="eyebrow eyebrow-done" data-i18n="eyebrow_done">Historic · Closed</p>
-            <div class="sec-title-row">
-                <h2 class="sec-title" data-i18n="section_done_title">Completed</h2>
-                <span class="title-badge badge-done" data-i18n="badge_done">Concluded</span>
-            </div>
+            <p class="eyebrow eyebrow-done" data-i18n="eyebrow_done">Research Archive</p>
+            <h2 class="sec-title" data-i18n="section_done_title">Completed</h2>
         </div>
 
         <div class="portfolio-grid">
@@ -1234,11 +1214,48 @@
                     </div>
                 </div>
                 <div class="pf-body">
-                    <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_national">National</span></div>
+                    <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_multi">Multidisciplinary</span></div>
                     <p class="pf-id">PIM-21-01</p>
-                    <h3 class="pf-title" data-i18n="pf_pim21_title">UAV Monitoring at Reventador Volcano</h3>
-                    <p class="pf-desc" data-i18n="pf_pim21_desc">Development of VTOL UAVs with distributed electric propulsion for volcanic monitoring.</p>
-                    <a href="proyecto-pim-21-01.html" class="btn-ver btn-ver-done"> 
+                    <h3 class="pf-title" data-i18n="title_pim21">Volcanic Emission Monitoring at Reventador</h3>
+                    <p class="pf-desc" data-i18n="desc_pim21">Development of a methodology for monitoring volcanic emissions and geomorphological evaluation for the Reventador volcano using UAVs.</p>
+                    <a href="proyecto-pim-21-01.html" class="btn-ver btn-ver-done">
+                        <span data-i18n="btn_view_project">View Project</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TARJETA 4: PIEX-CEDIA-24-99 ─────────────── -->
+            <div class="pf-card card-done">
+                <div class="pf-visual visual-cedia-done">
+                    <div class="pf-visual-deco">
+                        <div class="vdeco-hex" style="width:260px;height:260px;top:-55px;right:-65px;"></div>
+                        <div class="vdeco-hex" style="width:140px;height:140px;bottom:-30px;left:-35px;opacity:0.5;"></div>
+                    </div>
+                    <div class="pf-visual-inner">
+                        <div class="pf-hex hex-cedia-done">
+                            <svg fill="none" viewBox="0 0 48 48" stroke="rgba(148,163,184,0.9)" stroke-width="1.5">
+                                <rect x="6" y="19" width="10" height="10" rx="1.5"/>
+                                <rect x="19" y="7" width="10" height="10" rx="1.5"/>
+                                <rect x="19" y="31" width="10" height="10" rx="1.5"/>
+                                <rect x="32" y="19" width="10" height="10" rx="1.5"/>
+                                <line x1="16" y1="21" x2="19" y2="14" stroke-linecap="round"/>
+                                <line x1="16" y1="27" x2="19" y2="34" stroke-linecap="round"/>
+                                <line x1="29" y1="14" x2="32" y2="21" stroke-linecap="round"/>
+                                <line x1="29" y1="34" x2="32" y2="27" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <span class="pf-visual-code">PIEX-CEDIA-24-99</span>
+                    </div>
+                </div>
+                <div class="pf-body">
+                    <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_external">External</span></div>
+                    <p class="pf-id">PIEX-CEDIA-24-99</p>
+                    <h3 class="pf-title" data-i18n="title_cedia24">Web3 Platform for Potato Crop Traceability</h3>
+                    <p class="pf-desc" data-i18n="desc_cedia24">Development of a web3 platform for the study of toxicological traceability in potato crops using remote sensing and blockchain.</p>
+                    <a href="proyecto-piex-cedia-24-99.html" class="btn-ver btn-ver-done">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -1297,23 +1314,23 @@
 <script>
 (function () {
     var ODS = [
-        { id: 1,  color: '#E5243B', name: 'Fin de la Pobreza',                              project: '' },
-        { id: 2,  color: '#DDA63A', name: 'Hambre Cero',                                    project: 'PIM-24-01 · Análisis de Cadmio en Cultivos de Cacao' },
-        { id: 3,  color: '#4C9F38', name: 'Salud y Bienestar',                              project: '' },
-        { id: 4,  color: '#C5192D', name: 'Educación de Calidad',                           project: 'Formación de Ingenieros e Investigadores en la EPN' },
-        { id: 5,  color: '#FF3A21', name: 'Igualdad de Género',                             project: '' },
-        { id: 6,  color: '#26BDE2', name: 'Agua Limpia y Saneamiento',                      project: 'Hidrodinámica Computacional de Cuencas Hidrográficas' },
-        { id: 7,  color: '#FCC30B', name: 'Energía Asequible y No Contaminante',            project: 'Optimización Aerodinámica de Sistemas de Generación Eólica' },
-        { id: 8,  color: '#A21942', name: 'Trabajo Decente y Crecimiento Económico',        project: '' },
-        { id: 9,  color: '#FD6925', name: 'Industria, Innovación e Infraestructura',        project: 'PIGR-24-01 · Reciclaje Sostenible de Fibra de Carbono' },
-        { id: 10, color: '#DD1367', name: 'Reducción de las Desigualdades',                 project: '' },
-        { id: 11, color: '#FD9D24', name: 'Ciudades y Comunidades Sostenibles',             project: '' },
-        { id: 12, color: '#BF8B2E', name: 'Producción y Consumo Responsables',              project: 'PIGR-24-01 · Materiales Compuestos Sostenibles para UAVs' },
-        { id: 13, color: '#3F7E44', name: 'Acción por el Clima',                            project: 'Modelado CFD de Flujos Atmosféricos y Volcánicos' },
-        { id: 14, color: '#0A97D9', name: 'Vida Submarina',                                 project: 'Simulación de Dinámica de Fluidos Computacional Marina' },
-        { id: 15, color: '#56C02B', name: 'Vida de Ecosistemas Terrestres',                 project: 'PIM-24-01 · Monitoreo Agrícola con UAVs Multiespectrales' },
-        { id: 16, color: '#00689D', name: 'Paz, Justicia e Instituciones Sólidas',          project: '' },
-        { id: 17, color: '#19486A', name: 'Alianzas para Lograr los Objetivos',             project: 'Redes con KU Leuven, Texas A&M, EAVISE y FONAG' }
+        { id: 1,  color: '#E5243B', name: 'No Poverty',                                  projects: ['ods_proj_pitahaya'] },
+        { id: 2,  color: '#DDA63A', name: 'Zero Hunger',                                 projects: ['ods_proj_pitahaya', 'ods_proj_potato', 'ods_proj_cacao'] },
+        { id: 3,  color: '#4C9F38', name: 'Good Health and Well-Being',                  projects: ['ods_proj_potato', 'ods_proj_cacao'] },
+        { id: 4,  color: '#C5192D', name: 'Quality Education',                           projects: [] },
+        { id: 5,  color: '#FF3A21', name: 'Gender Equality',                             projects: [] },
+        { id: 6,  color: '#26BDE2', name: 'Clean Water and Sanitation',                  projects: ['ods_proj_antisana'] },
+        { id: 7,  color: '#FCC30B', name: 'Affordable and Clean Energy',                 projects: [] },
+        { id: 8,  color: '#A21942', name: 'Decent Work and Economic Growth',             projects: ['ods_proj_pitahaya'] },
+        { id: 9,  color: '#FD6925', name: 'Industry, Innovation and Infrastructure',     projects: ['ods_proj_carbon', 'ods_proj_volc1', 'ods_proj_volc2'] },
+        { id: 10, color: '#DD1367', name: 'Reduced Inequalities',                        projects: ['ods_proj_pitahaya'] },
+        { id: 11, color: '#FD9D24', name: 'Sustainable Cities and Communities',          projects: ['ods_proj_volc1', 'ods_proj_volc2'] },
+        { id: 12, color: '#BF8B2E', name: 'Responsible Consumption and Production',      projects: ['ods_proj_carbon', 'ods_proj_pitahaya', 'ods_proj_potato'] },
+        { id: 13, color: '#3F7E44', name: 'Climate Action',                              projects: ['ods_proj_antisana', 'ods_proj_fire'] },
+        { id: 14, color: '#0A97D9', name: 'Life Below Water',                            projects: [] },
+        { id: 15, color: '#56C02B', name: 'Life on Land',                                projects: ['ods_proj_antisana', 'ods_proj_fire'] },
+        { id: 16, color: '#00689D', name: 'Peace, Justice and Strong Institutions',      projects: [] },
+        { id: 17, color: '#19486A', name: 'Partnerships for the Goals',                  projects: ['ods_proj_antisana'] }
     ];
     var NS = 'http://www.w3.org/2000/svg';
     var CX = 350, CY = 350, OR = 295, IR = 178, GAP = 1.4;
@@ -1376,10 +1393,19 @@
                 g.style.opacity = '0.92';
                 defEl.style.display = 'none';
                 hovPnl.style.display = 'block';
-                hovNum.textContent = 'ODS ' + o.id;
+                var lang = localStorage.getItem('lang') || 'en';
+                var t  = (typeof translations !== 'undefined' && translations[lang]) || {};
+                var te = (typeof translations !== 'undefined' && translations.en)    || {};
+                hovNum.textContent = (lang === 'es' ? 'ODS ' : 'SDG ') + o.id;
                 hovNum.style.color = o.color;
-                hovNm.textContent  = o.name;
-                hovPrj.textContent = o.project || '—';
+                hovNm.innerHTML = t['ods_name_' + o.id] || o.name;
+                if (o.projects && o.projects.length) {
+                    hovPrj.innerHTML = o.projects.map(function (k) {
+                        return '&middot;&nbsp;' + (t[k] || te[k] || k);
+                    }).join('<br>');
+                } else {
+                    hovPrj.innerHTML = '&mdash;';
+                }
             });
             g.addEventListener('mouseleave', function () {
                 g.style.transform = '';
