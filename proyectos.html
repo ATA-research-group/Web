@@ -607,6 +607,29 @@
             .ods-chart-wrapper { max-width: 340px; }
             .ods-legend { display: none; }
         }
+
+        /* ─── PROJECT CODE BADGE (CELESTE) ───────────────── */
+        .pf-id-badge {
+            display: inline-block;
+            font-size: 10px; font-weight: 700; letter-spacing: 1.8px;
+            text-transform: uppercase; white-space: nowrap;
+            color: #00A3E0;
+            background: rgba(0, 163, 224, 0.12);
+            border: 1px solid rgba(0, 163, 224, 0.30);
+            padding: 3px 11px; border-radius: 100px;
+            margin-bottom: 9px;
+        }
+
+        /* ─── CARD PERSONNEL: DIRECTOR / CO-DIRECTOR ─────── */
+        .pf-personnel { display: flex; flex-direction: column; gap: 3px; margin-bottom: 14px; }
+        .pf-personnel-row { display: flex; align-items: baseline; gap: 5px; }
+        .pf-personnel-lbl {
+            font-size: 9px; font-weight: 700; letter-spacing: 0.8px;
+            text-transform: uppercase; color: var(--cyan);
+            white-space: nowrap; flex-shrink: 0;
+        }
+        .pf-personnel-val { font-size: 11.5px; color: var(--gray-text); line-height: 1.3; }
+        body.dark-theme .pf-personnel-val { color: #8FA5BB; }
     </style>
 </head>
 <body>
@@ -729,15 +752,19 @@
                                 <circle cx="9" cy="24" r="2" fill="rgba(168,85,247,0.4)"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">PIGR-24-01</span>
+                        <span class="pf-visual-code">PIGR 2024</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_group">Group</span></div>
-                    <p class="pf-id">PIGR-24-01</p>
+                    <span class="pf-id-badge">PIGR 2024</span>
                     <h3 class="pf-title" data-i18n="title_pigr24">Sustainable Carbon Fiber Reuse</h3>
                     <p class="pf-desc" data-i18n="desc_pigr24">Energy and life cycle study of Sustainable Carbon Fiber Reuse Processes.</p>
-                    <a href="proyecto-pigr-24-01.html" class="btn-ver"> 
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Palacios Encalada José Luis</span></div>
+                    </div>
+                    <a href="proyecto-pigr-24-01.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -764,14 +791,18 @@
                                 <path stroke-linecap="round" d="M18 8l-3-4M30 8l3-4" stroke-width="1.2" stroke-dasharray="2 2"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">PIM-24-01</span>
+                        <span class="pf-visual-code">PIM 2024</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_national">National</span></div>
-                    <p class="pf-id">PIM-24-01</p>
+                    <span class="pf-id-badge">PIM 2024</span>
                     <h3 class="pf-title" data-i18n="pf_pim24_title">Cadmium Analysis in Cacao</h3>
                     <p class="pf-desc" data-i18n="pf_pim24_desc">Use of remote monitoring and multispectral imaging to estimate cadmium content in crops.</p>
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val" data-i18n="..">.</span></div>
+                    </div>
                     <a href="proyecto-pim-24-01.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -799,14 +830,18 @@
                                 <path stroke-linecap="round" d="M38 13v4M34 11h2M38 7v2" stroke-width="1" opacity="0.5"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">3E241117</span>
+                        <span class="pf-visual-code">VLIR 2025</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <p class="pf-id">3E241117 &middot; Sep 2024 – Aug 2029</p>
+                    <span class="pf-id-badge">VLIR 2025</span>
                     <h3 class="pf-title" data-i18n="pf_vlirteam_title">Data-Driven Conservation in Antisana</h3>
                     <p class="pf-desc" data-i18n="pf_vlirteam_desc">Leveraging artificial intelligence and unmanned aerial systems to safeguard Ecuador's paramo wetlands and volcano glaciers.</p>
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Vandewalle Patrick</span></div>
+                    </div>
                     <a href="proyecto-vlir-team-25.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -830,14 +865,18 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M24 22c0 0-5 3-5 8a5 5 0 0010 0c0-5-5-8-5-8z" stroke-width="1.2" opacity="0.8"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">ECOHDROSHIELD</span>
+                        <span class="pf-visual-code">ECOHYDRO</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <p class="pf-id">SI Programme &middot; KU Leuven &amp; EPN</p>
+                    <span class="pf-id-badge">ECOHYDRO</span>
                     <h3 class="pf-title" data-i18n="pf_ecohydro_title">EcoHydroShield Wildfire Prevention</h3>
                     <p class="pf-desc" data-i18n="pf_ecohydro_desc">An autonomous climate-adaptive system integrating drones and AI to reduce fire risk and disperse water in protected ecological areas.</p>
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val" data-i18n=".">.</span></div>
+                    </div>
                     <a href="proyecto-ecohydroshield.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -1142,14 +1181,18 @@
                                 <path stroke-linecap="round" d="M14 14l2 2M34 14l-2 2" stroke-width="1" opacity="0.45"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">3E230830</span>
+                        <span class="pf-visual-code">VLIR 2023</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <p class="pf-id">3E230830 &middot; Sep 2023 – Aug 2025</p>
+                    <span class="pf-id-badge">VLIR 2023</span>
                     <h3 class="pf-title" data-i18n="pf_vlir25_title">Smart Farming for Dragon Fruit in the Amazon</h3>
                     <p class="pf-desc" data-i18n="pf_vlir25_desc">Implementation of precision agriculture using remote monitoring and computer vision for the sustainable cultivation of dragon fruit in the Ecuadorian Amazon.</p>
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Abad Torres Jackeline</span></div>
+                    </div>
                     <a href="proyecto-vlir-si-25.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -1175,14 +1218,18 @@
                                 <path stroke-linecap="round" d="M36.5 10h4M31.5 10h-4M34 7.5V4M34 12.5v4" stroke-width="1" opacity="0.55"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">3E200983</span>
+                        <span class="pf-visual-code">VLIR 2020</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <p class="pf-id">3E200983 &middot; Jan 2020 – Aug 2022</p>
+                    <span class="pf-id-badge">VLIR 2020</span>
                     <h3 class="pf-title" data-i18n="pf_vlir23_title">Real-time Volcano Monitoring System</h3>
                     <p class="pf-desc" data-i18n="pf_vlir23_desc">Implementation of a real-time monitoring system based on unmanned aerial vehicles (UAVs) and image processing methods for early eruption prediction.</p>
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val" data-i18n=".">.</span></div>
+                    </div>
                     <a href="proyecto-vlir-si-23.html" class="btn-ver btn-ver-done">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -1210,14 +1257,18 @@
                                 <path stroke-linecap="round" d="M18 30h12" stroke-width="1.2"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">PIM-21-01</span>
+                        <span class="pf-visual-code">PIM 2021</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_multi">Multidisciplinary</span></div>
-                    <p class="pf-id">PIM-21-01</p>
+                    <span class="pf-id-badge">PIM 2021</span>
                     <h3 class="pf-title" data-i18n="title_pim21">Volcanic Emission Monitoring at Reventador</h3>
                     <p class="pf-desc" data-i18n="desc_pim21">Development of a methodology for monitoring volcanic emissions and geomorphological evaluation for the Reventador volcano using UAVs.</p>
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Abad Torres Jackeline</span></div>
+                    </div>
                     <a href="proyecto-pim-21-01.html" class="btn-ver btn-ver-done">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -1247,14 +1298,18 @@
                                 <line x1="29" y1="34" x2="32" y2="27" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">PIEX-CEDIA-24-99</span>
+                        <span class="pf-visual-code">CEDIA 2024</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_external">External</span></div>
-                    <p class="pf-id">PIEX-CEDIA-24-99</p>
+                    <span class="pf-id-badge">CEDIA 2024</span>
                     <h3 class="pf-title" data-i18n="title_cedia24">Web3 Platform for Potato Crop Traceability</h3>
                     <p class="pf-desc" data-i18n="desc_cedia24">Development of a web3 platform for the study of toxicological traceability in potato crops using remote sensing and blockchain.</p>
+                    <div class="pf-personnel">
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Venegas Toro William Ricardo</span></div>
+                    </div>
                     <a href="proyecto-piex-cedia-24-99.html" class="btn-ver btn-ver-done">
                         <span data-i18n="btn_view_project">View Project</span>
                         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
