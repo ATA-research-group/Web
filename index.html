@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <script>(function(){var l=localStorage.getItem('lang');if(!l){localStorage.setItem('lang','en');}else if(l==='es'){document.documentElement.style.visibility='hidden';}})()</script>
@@ -155,36 +155,36 @@
 
         /* ─── HERO ────────────────────────────────── */
         .hero {
-            background: var(--hero-bg);
+            background: linear-gradient(160deg, #030f1e 0%, #0A2540 55%, #041929 100%);
             min-height: 91vh;
-            display: flex; align-items: center;
+            display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 55%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cpolygon points='30,0 60,15 60,37 30,52 0,37 0,15' fill='none' stroke='rgba(0%2C180%2C216%2C0.13)' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 60px 52px;
+            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to left, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
         }
 
         .hero-glow {
             position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 65% 55% at 72% 50%, rgba(0,180,216,0.07) 0%, transparent 68%),
-                radial-gradient(ellipse 38% 55% at 8% 80%, rgba(10,37,64,0.55) 0%, transparent 68%);
+            background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(0,180,216,0.06) 0%, transparent 70%);
             pointer-events: none;
         }
 
-        .hex-deco {
-            position: absolute; right: 7%; top: 50%;
-            transform: translateY(-50%);
-            display: grid; grid-template-columns: repeat(5, 1fr); gap: 11px;
-            opacity: 0.05; pointer-events: none;
-        }
-        .hex-deco-item {
-            width: 64px; height: 64px;
-            background: var(--cyan);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-
         .hero-content {
-            max-width: 1240px; margin: 0 auto;
+            max-width: 860px; margin: 0 auto;
             padding: 80px 32px;
             position: relative; z-index: 2;
+            display: flex; flex-direction: column;
+            align-items: center; text-align: center;
         }
 
         .hero-badge {
@@ -206,22 +206,31 @@
             50% { opacity:0.4; transform:scale(1.3); }
         }
 
-        .hero h1 {
-            font-size: clamp(46px, 6.8vw, 88px);
-            font-weight: 900; color: var(--hero-h1);
-            line-height: 1.0; letter-spacing: -3.5px;
-            margin-bottom: 28px; max-width: 730px;
+        .hero-title {
+            display: flex; flex-direction: column;
+            font-size: clamp(52px, 10.5vw, 144px);
+            font-weight: 900;
+            line-height: 0.92; letter-spacing: -3px;
+            margin-bottom: 20px;
         }
-        .hero h1 .accent { color: var(--cyan); }
+        .hero-t-white { color: #ffffff; }
+        .hero-t-cyan  { color: var(--cyan); }
+
+        .hero-discipline {
+            font-size: clamp(10px, 1.1vw, 13px);
+            font-weight: 700; letter-spacing: 3.5px;
+            color: var(--cyan); text-transform: uppercase;
+            margin-bottom: 28px; opacity: 0.85;
+        }
 
         .hero-sub {
-            font-size: clamp(15px, 1.8vw, 18px);
-            color: var(--hero-sub);
-            max-width: 510px; margin-bottom: 44px;
+            font-size: clamp(15px, 1.8vw, 17.5px);
+            color: rgba(255,255,255,0.58);
+            max-width: 660px; margin-bottom: 44px;
             line-height: 1.78; font-weight: 400;
         }
 
-        .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
         .btn-primary {
             display: inline-flex; align-items: center; gap: 8px;
@@ -246,6 +255,16 @@
             transition: var(--t); white-space: nowrap;
         }
         .btn-ghost:hover { background: var(--hero-ghost-hbg); color: var(--hero-ghost-hc); border-color: var(--hero-ghost-hb); }
+
+        .hero .btn-ghost {
+            color: #ffffff;
+            border-color: rgba(255,255,255,0.55);
+        }
+        .hero .btn-ghost:hover {
+            background: rgba(255,255,255,0.09);
+            color: #ffffff;
+            border-color: rgba(255,255,255,0.85);
+        }
 
         /* ─── MISSION ─────────────────────────────── */
         .mission-section { padding: 104px 32px; background: var(--white); }
@@ -387,7 +406,7 @@
         @media (max-width: 768px) {
             .main-nav { display: none; }
             .hamburger { display: flex; }
-            .hex-deco { display: none; }
+            .hero::before { display: none; }
             .footer-grid { grid-template-columns: 1fr; gap: 36px; }
             .pillars-grid { grid-template-columns: 1fr; }
             .header-inner { padding: 0 20px; }
@@ -401,6 +420,7 @@
             .stat-num { font-size: 48px; }
             .hero-ctas { flex-direction: column; }
             .btn-primary, .btn-ghost { justify-content: center; }
+            .hero-title { letter-spacing: -1.5px; }
         }
 
         /* ─── HEADER CONTROLS ─────────────────────────── */
@@ -500,6 +520,215 @@
         body.dark-theme .stats-head .sec-title { color: #E4EEF8; }
         body.dark-theme .stat-card { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.06); }
         body.dark-theme .stat-card:hover { background: rgba(255,255,255,0.06); }
+
+        /* ─── PILLAR LIST ─────────────────────────────── */
+        .pillar-list {
+            list-style: none;
+            margin-top: 9px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .pillar-list li {
+            font-size: 12px;
+            color: var(--gray-text);
+            line-height: 1.55;
+            padding-left: 15px;
+            position: relative;
+        }
+        .pillar-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 5px; height: 5px;
+            background: var(--cyan);
+            border-radius: 1px;
+        }
+
+        /* ─── BENTO GRID ──────────────────────────────── */
+        .bento-section {
+            padding: 0 32px 80px;
+            background: var(--white);
+        }
+        .bento-inner { max-width: 1240px; margin: 0 auto; }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 300px 300px;
+            gap: 14px;
+        }
+        .bento-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.32s ease, box-shadow 0.32s ease;
+            cursor: pointer;
+        }
+        .bento-item:hover {
+            transform: scale(1.012);
+            box-shadow: 0 22px 44px rgba(0,0,0,0.18);
+        }
+        .bento-item img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+            transition: transform 0.55s ease;
+        }
+        .bento-item:hover img { transform: scale(1.06); }
+
+        /* Positions */
+        .bento-1 { grid-column: 1;     grid-row: 1 / 3; background: linear-gradient(160deg, #0A2540 0%, #1a4570 100%); }
+        .bento-2 { grid-column: 2 / 4; grid-row: 1;     background: linear-gradient(135deg, #0096c7 0%, #0A2540 100%); }
+        .bento-3 { grid-column: 2;     grid-row: 2;     background: linear-gradient(135deg, #023e8a 0%, #00b4d8 100%); }
+        .bento-4 { grid-column: 3;     grid-row: 2;     background: linear-gradient(135deg, #03045e 0%, #0A2540 100%); }
+
+        .bento-label {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.62));
+            color: #fff; padding: 28px 18px 14px;
+            font-size: 12px; font-weight: 600; letter-spacing: 0.6px;
+            pointer-events: none;
+        }
+        body.dark-theme .bento-section { background: #121212; }
+
+        /* ─── FLIP CARDS (todas las 4 tarjetas) ──────── */
+        .stat-flip-wrapper {
+            perspective: 900px;
+            overflow: visible !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+        .stat-flip-wrapper::after { display: none !important; }
+        .stat-flip-wrapper:hover  { transform: none !important; }
+
+        .stat-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 228px;
+            transition: transform 0.62s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .stat-flip-wrapper:hover .stat-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .stat-flip-front,
+        .stat-flip-back {
+            position: absolute; inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .stat-flip-front {
+            padding: 28px 24px 24px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            gap: 4px;
+        }
+        .stat-flip-front::after {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            transform: translateX(-100%); transition: transform 0.52s ease;
+            border-radius: 16px 16px 0 0;
+        }
+        .stat-flip-wrapper:hover .stat-flip-front::after { transform: translateX(0); }
+        .stat-flip-wrapper:hover .stat-flip-front { background: rgba(255,255,255,0.065); }
+
+        /* ─── FRONT: icono + número + etiqueta ─────── */
+        .stat-icon {
+            width: 32px; height: 32px;
+            color: var(--cyan); opacity: 0.82;
+            margin-bottom: 6px; flex-shrink: 0;
+        }
+        .stat-icon svg { width: 100%; height: 100%; display: block; }
+
+        /* ─── BACK: gradiente con datos ─────────────── */
+        .stat-flip-back {
+            transform: rotateY(180deg);
+            padding: 22px 18px;
+            background: linear-gradient(145deg, rgba(0,180,216,0.20) 0%, rgba(10,37,64,0.90) 100%);
+            border: 1px solid rgba(0,180,216,0.28);
+            gap: 14px;
+        }
+        .stat-flip-row {
+            display: flex; align-items: baseline; gap: 9px;
+        }
+        .stat-flip-num {
+            font-size: 40px; font-weight: 900;
+            color: var(--cyan); letter-spacing: -2px; line-height: 1;
+        }
+        .stat-flip-tag {
+            font-size: 13.5px; font-weight: 600;
+            color: rgba(255,255,255,0.88); letter-spacing: 0.15px;
+        }
+
+        /* variante 3 filas: fuentes reducidas para caber */
+        .stat-flip-back--rows3 { gap: 10px; }
+        .stat-flip-back--rows3 .stat-flip-num { font-size: 32px; letter-spacing: -1.5px; }
+        .stat-flip-back--rows3 .stat-flip-tag { font-size: 12.5px; }
+
+        /* ─── BACK: Pills de códigos (Proyectos) ───── */
+        .stat-flip-back--pills {
+            gap: 0;
+            padding: 20px 16px;
+        }
+        .stat-flip-pills {
+            display: flex; flex-wrap: wrap;
+            gap: 6px; justify-content: center; align-items: center;
+        }
+        .stat-flip-pill {
+            background: rgba(0,180,216,0.14);
+            border: 1px solid rgba(0,180,216,0.30);
+            color: rgba(255,255,255,0.90);
+            border-radius: 100px;
+            padding: 4px 11px;
+            font-size: 10.5px; font-weight: 700;
+            letter-spacing: 0.4px; white-space: nowrap;
+        }
+
+        /* Dark theme overrides for flip */
+        body.dark-theme .stat-flip-front {
+            background: rgba(255,255,255,0.03);
+            border-color: rgba(255,255,255,0.06);
+        }
+        body.dark-theme .stat-flip-wrapper:hover .stat-flip-front {
+            background: rgba(255,255,255,0.055);
+        }
+
+        /* ─── RESPONSIVE (additions) ──────────────────── */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 220px 190px 190px;
+            }
+            .bento-1 { grid-column: 1 / 3; grid-row: 1; }
+            .bento-2 { grid-column: 1;     grid-row: 2; }
+            .bento-3 { grid-column: 2;     grid-row: 2; }
+            .bento-4 { grid-column: 1 / 3; grid-row: 3; }
+            .bento-section { padding: 0 20px 60px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { letter-spacing: -1.5px; }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 220px 200px 200px 200px;
+            }
+            .bento-1 { grid-column: 1; grid-row: 1; }
+            .bento-2 { grid-column: 1; grid-row: 2; }
+            .bento-3 { grid-column: 1; grid-row: 3; }
+            .bento-4 { grid-column: 1; grid-row: 4; }
+        }
     </style>
 </head>
 <body>
@@ -553,24 +782,22 @@
 <!-- ═══ HERO ══════════════════════════════════════════ -->
 <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hex-deco" aria-hidden="true">
-        <div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div>
-        <div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div>
-        <div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div>
-        <div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div><div class="hex-deco-item"></div>
-    </div>
     <div class="hero-content">
-        <div class="hero-badge"></div>
-        <h1>ATA<br><span class="accent">Research</span><br>Group</h1>
-        <p class="hero-sub" data-i18n="idx_hero_sub">Applied aeronautics and thermofluids research group at Escuela Politécnica Nacional dedicated to the study of remote monitoring, vehicle design, mission deployment, and data processing.</p>
+        <h1 class="hero-title">
+            <span class="hero-t-white" data-i18n="hero_line1">ATA</span>
+            <span class="hero-t-cyan" data-i18n="hero_line2">Research</span>
+            <span class="hero-t-white" data-i18n="hero_line3">Group</span>
+        </h1>
+        <p class="hero-discipline" data-i18n="hero_discipline">Aeronáutica &amp; Termofluidos Aplicada.</p>
+        <p class="hero-sub" data-i18n="idx_hero_sub">Grupo de investigación de la Escuela Politécnica Nacional dedicado al estudio de monitoreo remoto, diseño de vehículos, despliegue de misiones y procesamiento de datos.</p>
         <div class="hero-ctas">
             <a href="proyectos.html" class="btn-primary">
-                <span data-i18n="hero_cta_primary">Discover our projects</span>
+                <span data-i18n="hero_cta_primary">Conoce nuestros proyectos</span>
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
             </a>
-            <a href="nosotros.html" class="btn-ghost" data-i18n="hero_cta_secondary">Our team</a>
+            <a href="nosotros.html" class="btn-ghost" data-i18n="hero_cta_secondary">Nuestro equipo</a>
         </div>
     </div>
 </section>
@@ -579,28 +806,44 @@
 <section class="mission-section">
     <div class="mission-inner">
         <div>
-            <p class="eyebrow" data-i18n="mission_eyebrow">Our Mission</p>
-            <h2 class="sec-title" data-i18n="mission_title">Innovation </h2>
-            <p class="sec-body" data-i18n="mission_body1">"Drive the development of unmanned aerial systems through structural design, mission execution, and spatial data processing. We transform academic science into applicable solutions for the agricultural and territorial sector.".</p>
-            <p class="sec-body" style="margin-top:16px" data-i18n="mission_body2">Our group brings together doctors, engineers, and students committed to scientific advancement and the development of cutting-edge technology for Ecuador and the region.</p>
+            <p class="eyebrow" data-i18n="mission_eyebrow">Nuestra Misión</p>
+            <h2 class="sec-title" data-i18n="mission_title">Innovación</h2>
+            <p class="sec-body" data-i18n="mission_body1">"Impulsar el desarrollo de sistemas aéreos no tripulados a través del diseño estructural, la ejecución de misiones y el procesamiento de datos espaciales. Convertimos la ciencia académica en soluciones aplicables para el sector agrícola y territorial.".</p>
+            <p class="sec-body" style="margin-top:16px" data-i18n="mission_body2">Nuestro grupo reúne a PhDs, ingenieros y estudiantes comprometidos con el avance científico y el desarrollo de tecnología de punta para el Ecuador y la región.</p>
         </div>
 
         <div class="pillars-grid">
             <div class="pillar">
-                <h4 data-i18n="pillar1_title">Remote Monitoring</h4>
-                <p data-i18n="pillar1_desc">Crop study including potato, onion, and pitahaya</p>
+                <h4 data-i18n="pillar1_title">Monitoreo Remoto</h4>
+                <ul class="pillar-list">
+                    <li data-i18n="pillar1_li1">Estudio de cultivos generales incluyendo papa, cebolla y pitahaya, etc.</li>
+                    <li data-i18n="pillar1_li2">Análisis de índice de vegetación.</li>
+                </ul>
             </div>
             <div class="pillar">
-                <h4 data-i18n="pillar2_title">Vehicle Design</h4>
-                <p data-i18n="pillar2_desc">Assembly of composite materials for simulation and design.</p>
+                <h4 data-i18n="pillar2_title">Diseño de Vehículos</h4>
+                <p data-i18n="pillar2_desc">Ensamblaje de diseños aeronáuticos para sistemas aéreos no tripulados a base de materiales compuestos incluyendo:</p>
+                <ul class="pillar-list">
+                    <li data-i18n="pillar2_li1">Simulación CFD</li>
+                    <li data-i18n="pillar2_li2">Simulación estructural</li>
+                </ul>
             </div>
             <div class="pillar">
-                <h4 data-i18n="pillar3_title">Mission Deployment</h4>
-                <p data-i18n="pillar3_desc">Flight planning for field reconnaissance.</p>
+                <h4 data-i18n="pillar3_title">Despliegue de Misiones</h4>
+                <p data-i18n="pillar3_desc">Planificación de vuelo para reconocimiento de campo priorizando:</p>
+                <ul class="pillar-list">
+                    <li data-i18n="pillar3_li1">Eficiencia de energía</li>
+                    <li data-i18n="pillar3_li2">Tiempo de vuelo</li>
+                    <li data-i18n="pillar3_li3">Optimización de carga</li>
+                </ul>
             </div>
             <div class="pillar">
-                <h4 data-i18n="pillar4_title">Data Processing</h4>
-                <p data-i18n="pillar4_desc">Map creation, digital surface models with terrain elevation.</p>
+                <h4 data-i18n="pillar4_title">Procesamiento de Datos</h4>
+                <p data-i18n="pillar4_desc">Creación de mapa, modelos digitales de superficie con elevación de terreno.</p>
+                <ul class="pillar-list">
+                    <li data-i18n="pillar4_li1">Visión computacional para entorno bidimensional y tridimensional</li>
+                    <li data-i18n="pillar4_li2">Clasificación, detección y segmentación de datos o imagen con IA</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -613,34 +856,159 @@
     </div>
 </section>
 
+<!-- ═══ BENTO GRID ═════════════════════════════════════ -->
+<section class="bento-section">
+    <div class="bento-inner">
+        <div class="bento-grid">
+            <!-- Tall rectangle — Salidas de Campo -->
+            <div class="bento-item bento-1">
+                <img src="galeria/SALIDASDECAMPO/ANTISANA/salidas_de_campo_ANTISANA_(3).webp"
+                     alt="Salidas de campo Antisana"
+                     onerror="this.style.display='none'">
+                <span class="bento-label">Salidas de Campo</span>
+            </div>
+            <!-- Wide rectangle — Tomas aéreas CEDIA PIEX99 -->
+            <div class="bento-item bento-2">
+                <img src="galeria/CEDIA PIEX99 (TOMAS AÉREAS)/cedia_piex99_monitoreo_parcelas_agricolas_vista_aerea.webp"
+                     alt="Vista aérea parcelas agrícolas CEDIA PIEX99"
+                     onerror="this.style.display='none'">
+                <span class="bento-label">CEDIA · Tomas Aéreas</span>
+            </div>
+            <!-- Square — Laboratorio -->
+            <div class="bento-item bento-3">
+                <img src="galeria/LABORATORIO/laboratorio_01.webp"
+                     alt="Laboratorio ATA"
+                     onerror="this.style.display='none'">
+                <span class="bento-label">Laboratorio</span>
+            </div>
+            <!-- Square — Prototipos -->
+            <div class="bento-item bento-4">
+                <img src="galeria/PROTOTIPOS/prototipos(2).webp"
+                     alt="Prototipos ATA Research Group"
+                     onerror="this.style.display='none'">
+                <span class="bento-label">Prototipos & Proyectos</span>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ═══ STATISTICS ════════════════════════════════════ -->
 <section class="stats-section">
     <div class="stats-inner">
         <div class="stats-head">
-            <p class="eyebrow" data-i18n="stats_eyebrow">Impact and Results</p>
-            <h2 class="sec-title" data-i18n="stats_title">ATA by the Numbers</h2>
+            <p class="eyebrow" data-i18n="stats_eyebrow">Impacto y Resultados</p>
+            <h2 class="sec-title" data-i18n="stats_title">ATA en Números</h2>
         </div>
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-num">10</div>
-                <div class="stat-lbl" data-i18n="stat1_lbl">Published Articles</div>
-                <div class="stat-det" data-i18n="stat1_det">In indexed journals in the last year</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">24</div>
-                <div class="stat-lbl" data-i18n="stat2_lbl">Collaborators</div>
-                <div class="stat-det" data-i18n="stat2_det"> 5 Doctors · 6 Engineers · 13 Thesis Students</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">17</div>
-                <div class="stat-lbl" data-i18n="stat3_lbl">Completed Projects</div>
-                <div class="stat-det" data-i18n="stat3_det">Successfully concluded research</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">6</div>
-                <div class="stat-lbl" data-i18n="stat4_lbl">Projects in Progress</div>
-                <div class="stat-det" data-i18n="stat4_det">Currently active research</div>
-            </div>
+
+            <!-- ① ARTÍCULOS → publicaciones.html ────── -->
+            <a href="publicaciones.html" class="stat-card stat-flip-wrapper">
+                <div class="stat-flip-inner">
+                    <!-- FRENTE -->
+                    <div class="stat-flip-front">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-num">20</div>
+                        <div class="stat-lbl" data-i18n="stat1_lbl">Artículos</div>
+                    </div>
+                    <!-- REVERSO: desglose revistas / conferencias -->
+                    <div class="stat-flip-back">
+                        <div class="stat-flip-row">
+                            <span class="stat-flip-num">15</span>
+                            <span class="stat-flip-tag" data-i18n="stat1_journals">Revistas</span>
+                        </div>
+                        <div class="stat-flip-row">
+                            <span class="stat-flip-num">5</span>
+                            <span class="stat-flip-tag" data-i18n="stat1_confs">Conferencias</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ② MIEMBROS → nosotros.html ─────────── -->
+            <a href="nosotros.html" class="stat-card stat-flip-wrapper">
+                <div class="stat-flip-inner">
+                    <!-- FRENTE -->
+                    <div class="stat-flip-front">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-num">24</div>
+                        <div class="stat-lbl" data-i18n="stat2_lbl">Miembros</div>
+                    </div>
+                    <!-- REVERSO: PhDs / Ingenieros / Tesistas -->
+                    <div class="stat-flip-back stat-flip-back--rows3">
+                        <div class="stat-flip-row">
+                            <span class="stat-flip-num">5</span>
+                            <span class="stat-flip-tag" data-i18n="stat2_phds">PhDs</span>
+                        </div>
+                        <div class="stat-flip-row">
+                            <span class="stat-flip-num">6</span>
+                            <span class="stat-flip-tag" data-i18n="stat2_engineers">Ingenieros</span>
+                        </div>
+                        <div class="stat-flip-row">
+                            <span class="stat-flip-num">13</span>
+                            <span class="stat-flip-tag" data-i18n="stat2_tesistas">Tesistas</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ③ PROYECTOS TERMINADOS → proyectos.html -->
+            <a href="proyectos.html" class="stat-card stat-flip-wrapper">
+                <div class="stat-flip-inner">
+                    <!-- FRENTE -->
+                    <div class="stat-flip-front">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-num">4</div>
+                        <div class="stat-lbl" data-i18n="stat3_lbl">Proyectos Terminados</div>
+                    </div>
+                    <!-- REVERSO: códigos de proyectos -->
+                    <div class="stat-flip-back stat-flip-back--pills">
+                        <div class="stat-flip-pills">
+                            <span class="stat-flip-pill">VLIR 2023</span>
+                            <span class="stat-flip-pill">VLIR 2020</span>
+                            <span class="stat-flip-pill">PIM 2021</span>
+                            <span class="stat-flip-pill">CEDIA 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ④ PROYECTOS EN PROGRESO → proyectos.html -->
+            <a href="proyectos.html" class="stat-card stat-flip-wrapper">
+                <div class="stat-flip-inner">
+                    <!-- FRENTE -->
+                    <div class="stat-flip-front">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-num">4</div>
+                        <div class="stat-lbl" data-i18n="stat4_lbl">Proyectos en Progreso</div>
+                    </div>
+                    <!-- REVERSO: códigos activos -->
+                    <div class="stat-flip-back stat-flip-back--pills">
+                        <div class="stat-flip-pills">
+                            <span class="stat-flip-pill">VLIR 2025</span>
+                            <span class="stat-flip-pill">PIGR 2024</span>
+                            <span class="stat-flip-pill">PIM 2024</span>
+                            <span class="stat-flip-pill">EcoHydro</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
         </div>
     </div>
 </section>
