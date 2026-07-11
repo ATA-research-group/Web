@@ -214,11 +214,13 @@
 
         /* ─── CARD ────────────────────────────────── */
         .pf-card {
+            position: relative;
             background: var(--white);
             border: 1px solid var(--gray-border);
             border-radius: 20px; overflow: hidden;
             transition: var(--t);
             display: flex; flex-direction: column;
+            min-height: 480px;
         }
         .pf-card:hover {
             transform: translateY(-6px);
@@ -272,13 +274,15 @@
 
         /* Card body */
         .pf-body {
-            padding: 26px 28px 28px;
+            padding: 1.75rem 1.75rem 2.75rem;
             display: flex; flex-direction: column; flex-grow: 1;
+            justify-content: space-between;
+            gap: 1rem;
         }
         .pf-status {
             display: inline-flex; align-items: center; gap: 6px;
             font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
-            text-transform: uppercase; margin-bottom: 8px;
+            text-transform: uppercase;
             color: var(--gray-text);
             background: rgba(100,116,139,0.08);
             border: 1px solid rgba(100,116,139,0.15);
@@ -295,13 +299,13 @@
             color: var(--gray-text); text-transform: uppercase; margin-bottom: 9px;
         }
         .pf-title {
-            font-size: 18px; font-weight: 800; color: var(--navy);
-            line-height: 1.28; letter-spacing: -0.5px; margin-bottom: 10px;
+            font-size: 18px; font-weight: 700; color: var(--navy);
+            line-height: 1.28; letter-spacing: -0.5px;
         }
         .pf-desc {
-            font-size: 13.5px; color: var(--gray-text);
-            line-height: 1.72; margin-bottom: 24px;
-            display: -webkit-box; -webkit-line-clamp: 2;
+            font-size: 14.5px; color: var(--gray-text);
+            line-height: 1.72;
+            display: -webkit-box; -webkit-line-clamp: 3;
             -webkit-box-orient: vertical; overflow: hidden;
             flex-grow: 1;
         }
@@ -529,8 +533,23 @@
         body.dark-theme .form-group textarea { background: #121212; border-color: #2A2A2A; color: #C4D4E0; }
 
         /* ─── ODS SECTION ──────────────────────────────────── */
-        .ods-section { padding: 72px 32px 80px; background: var(--gray-bg); }
-        body.dark-theme .ods-section { background: #181818; }
+        .ods-section {
+            padding: 72px 32px 80px;
+            background:
+                linear-gradient(rgba(247, 249, 252, 0.86), rgba(247, 249, 252, 0.86)),
+                url('imag-proyectos/fondo_odg.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        body.dark-theme .ods-section {
+            background:
+                linear-gradient(rgba(24, 24, 24, 0.88), rgba(24, 24, 24, 0.88)),
+                url('imag-proyectos/fondo_odg.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
         .ods-inner { max-width: 1100px; margin: 0 auto; }
         .ods-header { text-align: center; margin-bottom: 52px; }
         .ods-eyebrow {
@@ -611,24 +630,35 @@
         /* ─── PROJECT CODE BADGE (CELESTE) ───────────────── */
         .pf-id-badge {
             display: inline-block;
-            font-size: 10px; font-weight: 700; letter-spacing: 1.8px;
+            font-size: 18px; font-weight: 700; letter-spacing: 1.8px;
             text-transform: uppercase; white-space: nowrap;
             color: #00A3E0;
             background: rgba(0, 163, 224, 0.12);
             border: 1px solid rgba(0, 163, 224, 0.30);
             padding: 3px 11px; border-radius: 100px;
-            margin-bottom: 9px;
+        }
+
+        /* ─── ODS INDICATOR ────────────────────────────── */
+        .ods-indicator {
+            position: absolute; bottom: 15px; right: 15px;
+            width: 16px; height: 16px; border-radius: 4px;
+            opacity: 0.75;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .pf-card:hover .ods-indicator {
+            opacity: 1;
+            transform: scale(1.15);
         }
 
         /* ─── CARD PERSONNEL: DIRECTOR / CO-DIRECTOR ─────── */
-        .pf-personnel { display: flex; flex-direction: column; gap: 3px; margin-bottom: 14px; }
+        .pf-personnel { display: flex; flex-direction: column; gap: 5px; }
         .pf-personnel-row { display: flex; align-items: baseline; gap: 5px; }
         .pf-personnel-lbl {
             font-size: 9px; font-weight: 700; letter-spacing: 0.8px;
             text-transform: uppercase; color: var(--cyan);
             white-space: nowrap; flex-shrink: 0;
         }
-        .pf-personnel-val { font-size: 11.5px; color: var(--gray-text); line-height: 1.3; }
+        .pf-personnel-val { font-size: 14.5px; color: var(--gray-text); line-height: 1.3; }
         body.dark-theme .pf-personnel-val { color: #8FA5BB; }
     </style>
 </head>
@@ -770,6 +800,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="9" style="background: #FD6925;"></div>
                 </div>
             </div>
 
@@ -800,8 +831,8 @@
                     <h3 class="pf-title" data-i18n="pf_pim24_title">Cadmium Analysis in Cacao</h3>
                     <p class="pf-desc" data-i18n="pf_pim24_desc">Use of remote monitoring and multispectral imaging to estimate cadmium content in crops.</p>
                     <div class="pf-personnel">
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val" data-i18n="..">.</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Ruales Jeny</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
                     </div>
                     <a href="proyecto-pim-24-01.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
@@ -809,6 +840,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="2" style="background: #DDA63A;"></div>
                 </div>
             </div>
 
@@ -830,17 +862,17 @@
                                 <path stroke-linecap="round" d="M38 13v4M34 11h2M38 7v2" stroke-width="1" opacity="0.5"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">VLIR 2025</span>
+                        <span class="pf-visual-code">VLIR-2025-SI</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <span class="pf-id-badge">VLIR 2025</span>
+                    <span class="pf-id-badge">VLIR-2025-SI</span>
                     <h3 class="pf-title" data-i18n="pf_vlirteam_title">Data-Driven Conservation in Antisana</h3>
                     <p class="pf-desc" data-i18n="pf_vlirteam_desc">Leveraging artificial intelligence and unmanned aerial systems to safeguard Ecuador's paramo wetlands and volcano glaciers.</p>
                     <div class="pf-personnel">
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Vandewalle Patrick</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_flemish_label">Promotor Flamenco</span><span class="pf-personnel-val">Vandewalle Patrick</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_partner_label">Promotor Asociado</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
                     </div>
                     <a href="proyecto-vlir-team-25.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
@@ -848,6 +880,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="15" style="background: #56C02B;"></div>
                 </div>
             </div>
 
@@ -865,17 +898,17 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M24 22c0 0-5 3-5 8a5 5 0 0010 0c0-5-5-8-5-8z" stroke-width="1.2" opacity="0.8"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">ECOHYDRO</span>
+                        <span class="pf-visual-code">VLIR</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <span class="pf-id-badge">ECOHYDRO</span>
+                    <span class="pf-id-badge">VLIR</span>
                     <h3 class="pf-title" data-i18n="pf_ecohydro_title">EcoHydroShield Wildfire Prevention</h3>
                     <p class="pf-desc" data-i18n="pf_ecohydro_desc">An autonomous climate-adaptive system integrating drones and AI to reduce fire risk and disperse water in protected ecological areas.</p>
                     <div class="pf-personnel">
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val" data-i18n=".">.</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_flemish_label">Promotor Flamenco</span><span class="pf-personnel-val">Goedemé Toon</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_partner_label">Promotor Asociado</span><span class="pf-personnel-val">Almachi Juan Carlos</span></div>
                     </div>
                     <a href="proyecto-ecohydroshield.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
@@ -883,6 +916,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="13" style="background: #3F7E44;"></div>
                 </div>
             </div>
 
@@ -1181,17 +1215,17 @@
                                 <path stroke-linecap="round" d="M14 14l2 2M34 14l-2 2" stroke-width="1" opacity="0.45"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">VLIR 2023</span>
+                        <span class="pf-visual-code">VLIR-2023-SI</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-active"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <span class="pf-id-badge">VLIR 2023</span>
+                    <span class="pf-id-badge">VLIR-2023-SI</span>
                     <h3 class="pf-title" data-i18n="pf_vlir25_title">Smart Farming for Dragon Fruit in the Amazon</h3>
                     <p class="pf-desc" data-i18n="pf_vlir25_desc">Implementation of precision agriculture using remote monitoring and computer vision for the sustainable cultivation of dragon fruit in the Ecuadorian Amazon.</p>
                     <div class="pf-personnel">
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_dir_label">Director</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
-                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_codir_label">Co-Director</span><span class="pf-personnel-val">Abad Torres Jackeline</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_flemish_label">Promotor Flamenco</span><span class="pf-personnel-val">Vandewalle Patrick</span></div>
+                        <div class="pf-personnel-row"><span class="pf-personnel-lbl" data-i18n="proj_partner_label">Promotor Asociado</span><span class="pf-personnel-val">Valencia Torres Esteban Alejandro</span></div>
                     </div>
                     <a href="proyecto-vlir-si-25.html" class="btn-ver">
                         <span data-i18n="btn_view_project">View Project</span>
@@ -1199,6 +1233,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="2" style="background: #DDA63A;"></div>
                 </div>
             </div>
 
@@ -1218,12 +1253,12 @@
                                 <path stroke-linecap="round" d="M36.5 10h4M31.5 10h-4M34 7.5V4M34 12.5v4" stroke-width="1" opacity="0.55"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">VLIR 2020</span>
+                        <span class="pf-visual-code">VLIR-2020-SI</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_international">International</span></div>
-                    <span class="pf-id-badge">VLIR 2020</span>
+                    <span class="pf-id-badge">VLIR-2020-SI</span>
                     <h3 class="pf-title" data-i18n="pf_vlir23_title">Real-time Volcano Monitoring System</h3>
                     <p class="pf-desc" data-i18n="pf_vlir23_desc">Implementation of a real-time monitoring system based on unmanned aerial vehicles (UAVs) and image processing methods for early eruption prediction.</p>
                     <div class="pf-personnel">
@@ -1236,6 +1271,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="13" style="background: #3F7E44;"></div>
                 </div>
             </div>
 
@@ -1275,6 +1311,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="13" style="background: #3F7E44;"></div>
                 </div>
             </div>
 
@@ -1298,12 +1335,12 @@
                                 <line x1="29" y1="34" x2="32" y2="27" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <span class="pf-visual-code">CEDIA 2024</span>
+                        <span class="pf-visual-code">PIEX-CEDIA-24-99</span>
                     </div>
                 </div>
                 <div class="pf-body">
                     <div class="pf-status pf-status-done"><span class="pf-dot"></span> <span data-i18n="status_external">External</span></div>
-                    <span class="pf-id-badge">CEDIA 2024</span>
+                    <span class="pf-id-badge">PIEX-CEDIA-24-99</span>
                     <h3 class="pf-title" data-i18n="title_cedia24">Web3 Platform for Potato Crop Traceability</h3>
                     <p class="pf-desc" data-i18n="desc_cedia24">Development of a web3 platform for the study of toxicological traceability in potato crops using remote sensing and blockchain.</p>
                     <div class="pf-personnel">
@@ -1316,6 +1353,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
+                    <div class="ods-indicator" data-ods-id="9" style="background: #FD6925;"></div>
                 </div>
             </div>
 

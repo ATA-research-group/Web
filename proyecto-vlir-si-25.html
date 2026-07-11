@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,7 +35,7 @@
 
         /* ─── HEADER ─────────────────────────────── */
         header {
-            background: var(--black);
+            background: #FFFFFF;
             position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 1px 0 rgba(0,180,216,0.18);
         }
@@ -52,10 +52,10 @@
         }
         .logo-hex span { color: #000; font-weight: 900; font-size: 12px; letter-spacing: -0.5px; }
         .logo-text { display: flex; flex-direction: column; gap: 3px; line-height: 1; }
-        .logo-name { color: var(--white); font-size: 14.5px; font-weight: 700; }
+        .logo-name { color: var(--navy); font-size: 14.5px; font-weight: 700; }
         .logo-sub  { color: var(--cyan); font-size: 9.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; }
         .header-logos-container { display: flex; align-items: center; gap: 16px; }
-        .logo-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.15); }
+        .logo-divider { width: 1px; height: 42px; background: rgba(10,37,64,0.12); }
         .logo-dark-theme  { display: none !important; }
         .logo-light-theme { display: block !important; }
         body.dark-theme .logo-dark-theme  { display: block !important; }
@@ -63,28 +63,28 @@
 
         .main-nav { display: flex; align-items: center; gap: 4px; }
         .main-nav a {
-            color: rgba(255,255,255,0.62); text-decoration: none;
+            color: rgba(10,37,64,0.55); text-decoration: none;
             font-size: 13.5px; font-weight: 500;
             padding: 7px 15px; border-radius: 7px; transition: var(--t);
         }
-        .main-nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+        .main-nav a:hover { color: var(--navy); background: rgba(10,37,64,0.06); }
         .main-nav a.active { color: var(--cyan); background: rgba(0,180,216,0.1); }
 
         .hamburger {
             display: none; flex-direction: column; gap: 5px;
             cursor: pointer; padding: 6px; background: none; border: none;
         }
-        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--t); }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: var(--t); }
 
         .mobile-nav {
             display: none; flex-direction: column;
-            background: #0D0D0D;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #FFFFFF;
+            border-top: 1px solid rgba(10,37,64,0.08);
             padding: 8px 24px 16px;
         }
         .mobile-nav.open { display: flex; }
         .mobile-nav a {
-            color: rgba(255,255,255,0.62); text-decoration: none;
+            color: rgba(10,37,64,0.55); text-decoration: none;
             font-size: 14px; font-weight: 500;
             padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.04); transition: var(--t);
         }
@@ -283,13 +283,13 @@
         .header-controls { display: flex; align-items: center; gap: 4px; }
         .ctrl-btn {
             display: flex; align-items: center; justify-content: center;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 7px; color: rgba(255,255,255,0.65);
+            background: rgba(10,37,64,0.06);
+            border: 1px solid rgba(10,37,64,0.10);
+            border-radius: 7px; color: rgba(10,37,64,0.55);
             cursor: pointer; transition: var(--t);
             font-family: inherit; line-height: 1;
         }
-        .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.22); }
+        .ctrl-btn:hover { background: rgba(10,37,64,0.10); color: var(--navy); border-color: rgba(10,37,64,0.20); }
         .lang-btn { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; padding: 6px 11px; height: 32px; text-transform: uppercase; }
         .theme-btn { width: 32px; height: 32px; }
         .theme-btn svg { width: 16px; height: 16px; display: block; }
@@ -301,6 +301,16 @@
             --gray-bg: #1E1E1E; --gray-border: #2A2A2A; --gray-text: #8FA5BB;
             background: #121212; color: #C4D4E0;
         }
+        body.dark-theme header { background: #111111; }
+        body.dark-theme .logo-name { color: #FFFFFF; }
+        body.dark-theme .logo-divider { background: rgba(255,255,255,0.15); }
+        body.dark-theme .main-nav a { color: rgba(255,255,255,0.62); }
+        body.dark-theme .main-nav a:hover { color: #FFFFFF; background: rgba(255,255,255,0.07); }
+        body.dark-theme .hamburger span { background: #FFFFFF; }
+        body.dark-theme .mobile-nav { background: #0D0D0D; border-top-color: rgba(255,255,255,0.05); }
+        body.dark-theme .mobile-nav a { color: rgba(255,255,255,0.62); }
+        body.dark-theme .ctrl-btn { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.10); color: rgba(255,255,255,0.65); }
+        body.dark-theme .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.22); }
         body.dark-theme .wp-section h2 { color: #E4EEF8; }
         body.dark-theme .wp-highlight { color: #C4D4E0; }
         body.dark-theme .sidebar-nav a:hover,
@@ -377,13 +387,13 @@
         <h1 data-i18n="vlir25_h1">Smart Farming methodology for efficient and sustainable cultivation of <span>dragon fruit in Ecuador's Amazon</span>: Pilot evaluation of the impact of technology on poverty and inequality reduction</h1>
         <div class="director-row">
             <div class="director-item">
-                <span class="dir-label" data-i18n="proj_dir_label">Director</span>
-                <span class="dir-name">Valencia Torres Esteban Alejandro</span>
+                <span class="dir-label" data-i18n="role_flemish_promoter">Promotor Flamenco:</span>
+                <span class="dir-name">Vandewalle Patrick</span>
             </div>
             <div class="dir-sep" style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
             <div class="director-item">
-                <span class="dir-label" data-i18n="proj_codir_label">Co-Director</span>
-                <span class="dir-name">Abad Torres Jackeline</span>
+                <span class="dir-label" data-i18n="role_partner_promoter">Promotor Contraparte:</span>
+                <span class="dir-name">Valencia Torres Esteban Alejandro</span>
             </div>
         </div>
     </div>

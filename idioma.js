@@ -19,6 +19,12 @@ const translations = {
         sidebar_back:            'Back to Projects',
         proj_dir_label:          'Director',
         proj_codir_label:        'Co-Director',
+        proj_flemish_label:      'Flemish Promoter',
+        proj_partner_label:      'Partner Promoter',
+        role_director:           'Director:',
+        role_codirector:         'Co-Director:',
+        role_flemish_promoter:   'Flemish Promoter:',
+        role_partner_promoter:   'Partner Promoter:',
         proj_status_active:      'In Development',
         proj_status_done:        'Completed',
         proj_sec_01:             '01 · Introduction',
@@ -740,6 +746,12 @@ const translations = {
         sidebar_back:            'Volver a Proyectos',
         proj_dir_label:          'Director',
         proj_codir_label:        'Codirectora',
+        proj_flemish_label:      'Promotor Flamenco',
+        proj_partner_label:      'Promotor Asociado',
+        role_director:           'Director:',
+        role_codirector:         'Co-Director:',
+        role_flemish_promoter:   'Promotor Flamenco:',
+        role_partner_promoter:   'Promotor Contraparte:',
         proj_status_active:      'En Desarrollo',
         proj_status_done:        'Finalizado',
         proj_sec_01:             '01 · Introducción',
@@ -1462,6 +1474,12 @@ function updateDOM() {
         if (translations[currentLang] && translations[currentLang][key]) {
             el.placeholder = translations[currentLang][key];
         }
+    });
+    document.querySelectorAll('[data-ods-id]').forEach(el => {
+        const id = el.getAttribute('data-ods-id');
+        const t  = (translations[currentLang] || translations.en);
+        const prefix = currentLang === 'es' ? 'ODS' : 'SDG';
+        el.title = prefix + ' ' + id + ': ' + (t['ods_name_' + id] || '');
     });
     // Update gallery overlay titles that use data-title/data-title-es on the parent hex-item
     // (items without a data-i18n key on the title span — e.g. VLIR 2025 batch)
