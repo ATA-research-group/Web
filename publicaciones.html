@@ -535,6 +535,59 @@
             .filter-select { width: 100%; min-width: unset; }
             .active-strip { padding: 48px 20px; }
         }
+
+        /* ─── THESIS SECTION ─────────────────────────── */
+        .thesis-section {
+            padding: 80px 32px;
+            background: var(--gray-bg);
+            border-top: 1px solid var(--gray-border);
+        }
+        .thesis-inner { max-width: 1240px; margin: 0 auto; }
+        .thesis-main-title {
+            font-size: clamp(22px, 2.5vw, 32px);
+            font-weight: 800; color: var(--navy);
+            line-height: 1.2; letter-spacing: -0.8px;
+            margin-top: 10px; margin-bottom: 48px;
+        }
+        .thesis-year-group { margin-bottom: 44px; }
+        .thesis-year-group:last-child { margin-bottom: 0; }
+        .thesis-year-label {
+            font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+            text-transform: uppercase; color: var(--cyan);
+            margin-bottom: 4px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0,180,216,0.22);
+        }
+        .thesis-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .thesis-card {
+            display: block;
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 13.5px; font-weight: 500; line-height: 1.55;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+        }
+        .thesis-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: rgba(0,180,216,0.45);
+            color: var(--cyan);
+        }
+        body.dark-theme .thesis-section { background: #181818; border-color: #2A2A2A; }
+        body.dark-theme .thesis-main-title { color: #E4EEF8; }
+        body.dark-theme .thesis-year-label { border-color: rgba(0,180,216,0.28); }
+        body.dark-theme .thesis-card { background: #1E1E1E; border-color: #2A2A2A; color: #C4D4E0; }
+        body.dark-theme .thesis-card:hover { border-color: rgba(0,180,216,0.4); color: var(--cyan); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        @media (max-width: 1024px) { .thesis-cards-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .thesis-section { padding: 48px 20px; } }
+        @media (max-width: 560px) { .thesis-cards-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -613,6 +666,7 @@
                 <label class="filter-label" for="filter-anio" data-i18n="filter_year_lbl">Year</label>
                 <select class="filter-select" id="filter-anio" onchange="applyFilters()">
                     <option value="" data-i18n="filter_year_all">All years</option>
+                    <option value="2026">2026</option>
                     <option value="2025">2025</option>
                     <option value="2024">2024</option>
                     <option value="2023">2023</option>
@@ -651,8 +705,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2025-01.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/397674103_Bridging_Theory_and_Simulation_Parametric_Identification_and_Validation_for_a_Multirotor_UAV_in_PX4-Gazebo" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/engproc2025115012" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -687,8 +741,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2025-02.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/395617569_Design_Optimization_of_a_Pseudo-Rigid-Compliant_Mechanism_for_Large_Continuous_and_Smooth_Morphing_of_Airfoil_Camber" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/aerospace12090825" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -723,8 +777,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2025-03.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/392405088_An_Open-source_UAV_Digital_Twin_framework_A_Case_Study_on_Remote_Sensing_in_the_Andean_Mountains" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.1007/s10846-025-02276-7" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_springer">Ver en Springer</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -759,8 +813,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2025-04.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/392358076_Optimization_of_Flight_Planning_for_Orthomosaic_Generation_Using_Digital_Twins_and_SITL_Simulation" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/drones9060407" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -795,8 +849,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2025-05.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/390597825_Aero-structural_evaluation_of_kraft_paper-reinforced_composites_for_the_manufacturing_of_UAV_fuselages_and_wings_using_a_numerical_approach" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.1007/s10999-025-09748-6" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_springer">Ver en Springer</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -831,8 +885,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2024-02.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/385591525_Experimental_Validation_of_the_Remote_Sensing_Method_for_River_Velocity_Measurement_Using_an_Open-Source_PIV_Scheme-Case_Study_Antisana_River_in_the_Ecuadorian_Andes" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/w16223177" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -867,8 +921,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2024-03.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/385112902_Paving_the_Way_for_Sustainable_UAVs_Using_Distributed_Propulsion_and_Solar-Powered_Systems" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/drones8100604" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -891,8 +945,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2024-04.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/381567256_Open-Source_Software-in-the-Loop_Strategies_for_Realistic_UAV_Monitoring_Applications" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.1109/ICUAS60882.2024.10556936" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_ieee">Ver en IEEE</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -927,8 +981,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2023-01.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/376497132_Modeling_of_Solid_Particle_Erosion_for_a_Water-Sand_Impingement_System_Using_OpenFOAM" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/coatings13122080" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -963,8 +1017,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2023-02.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/375815123_Towards_More_Efficient_Electric_Propulsion_UAV_Systems_Using_Boundary_Layer_Ingestion" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/drones7120686" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -999,8 +1053,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2023-03.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/375040034_Low-Cost_Computer-Vision-Based_Embedded_Systems_for_UAVs" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/robotics12060145" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -1023,8 +1077,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2023-04.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/372115956_Adaptive_Sampling-based_Particle_Filter_for_Visual-inertial_Gimbal_in_the_Wild" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.1109/ICRA48891.2023.10160395" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_ieee">Ver en IEEE</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -1059,8 +1113,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2023-06.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/367481283_Analisis_numerico_del_funcionamiento_de_un_Convertidor_de_Energia_de_las_Olas_WEC_usando_CFD" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.29019/enfoqueute.912" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_ute">Ver en Revista UTE</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -1095,8 +1149,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2022-01.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/359324692_Wetland_monitoring_technification_for_the_Ecuadorian_Andean_region_based_on_a_multi-agent_framework" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.1016/j.heliyon.2022.e09054" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_elsevier">Ver en Elsevier</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -1131,8 +1185,8 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2022-02.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/358122786_Evaluation_of_Series_and_Parallel_Hybrid_Propulsion_Systems_for_UAVs_Implementing_Distributed_Propulsion_Architectures" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.3390/aerospace9020063" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -1167,8 +1221,102 @@
                 <div class="pub-image-wrapper">
                     <img src="img-publicaciones/pub-2022-03.png" alt="Publicación ATA Research Group" loading="lazy">
                 </div>
-                <a href="https://www.researchgate.net/publication/362013770_Object_Detection_and_Tracking_Based_on_Artificial_Vision_for_a_Single_Board_Computer_SBC" class="btn-pub" target="_blank">
-                    <span data-i18n="btn_researchgate">View on ResearchGate</span>
+                <a href="https://doi.org/10.1007/978-3-031-08942-8_12" class="btn-pub" target="_blank">
+                    <span data-i18n="btn_view_springer">Ver en Springer</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- ── NUEVAS PUBLICACIONES ── -->
+            <div class="pub-card" data-tipo="conferencia" data-anio="2024">
+                <span class="pub-type" data-i18n="type_intl_conf">Conferencia Internacional</span>
+                <h3 class="pub-title" data-i18n="pub_t_17">Comprehensive Study of Aerodynamic Forces in a Small Fixed Wing UAV Using Open-Source Software</h3>
+                <p class="pub-authors">Mateo Narváez, <strong>Víctor Alulema</strong>, Edgar Cando, Esteban Valencia.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_17">Diciembre 2024 · Lecture Notes in Networks and Systems</span>
+                    <span class="pub-year">2024</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_cfd">CFD</span>
+                    <span class="pub-tag" data-i18n="tag_fixed_wing_uav">Fixed-Wing UAV</span>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/publicaciones_VA_1.jpg" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://doi.org/10.1007/978-3-031-70760-5_46" class="btn-pub" target="_blank" rel="noopener">
+                    <span data-i18n="btn_view_springer">Ver en Springer</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2025">
+                <span class="pub-type" data-i18n="type_journal">Artículo de Revista</span>
+                <h3 class="pub-title" data-i18n="pub_t_18">Design Optimization of a Pseudo-Rigid-Compliant Mechanism for Large, Continuous, and Smooth Morphing of Airfoil Camber</h3>
+                <p class="pub-authors"><strong>Víctor Alulema</strong>, Víctor Hidalgo, Edgar Cando, Esteban Valencia.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_18">Septiembre 2025 · Aerospace</span>
+                    <span class="pub-year">2025</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_airfoil">Airfoil</span>
+                    <span class="pub-tag" data-i18n="tag_fixed_wing_uav">Fixed-Wing UAV</span>
+                    <span class="pub-tag" data-i18n="tag_flex_mech">Compliant Mechanism</span>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/publicaciones_VA_2.jpg" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://doi.org/10.3390/aerospace12090825" class="btn-pub" target="_blank" rel="noopener">
+                    <span data-i18n="btn_view_mdpi">Ver en MDPI</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2026">
+                <span class="pub-type" data-i18n="type_journal">Artículo de Revista</span>
+                <h3 class="pub-title" data-i18n="pub_t_19">Geometry-aware, CAD-free, and differentiable closed-form surrogates for lifting surface mass estimation</h3>
+                <p class="pub-authors">Kevin Vidal, <strong>Víctor Alulema</strong>, Patrick Vandewalle, Esteban Valencia.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_19">Junio 2026 · Aerospace Science and Technology</span>
+                    <span class="pub-year">2026</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                    <span class="pub-tag" data-i18n="tag_airfoil">Airfoil</span>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/publicaciones_VA_3.jpg" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://doi.org/10.1016/j.ast.2026.113023" class="btn-pub" target="_blank" rel="noopener">
+                    <span data-i18n="btn_view_elsevier">Ver en Elsevier</span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="pub-card" data-tipo="revista" data-anio="2026">
+                <span class="pub-type" data-i18n="type_journal">Artículo de Revista</span>
+                <h3 class="pub-title" data-i18n="pub_t_20">How stakeholder requirements constrain drone-based medical delivery: probabilistic sizing of eVTOL aircraft at high altitude</h3>
+                <p class="pub-authors"><strong>Víctor Alulema</strong>, Gloria Acosta-Vargas, Cesar Guevara, Patricia Acosta-Vargas.</p>
+                <div class="pub-venue">
+                    <span class="pub-venue-name" data-i18n="pub_v_20">Junio 2026 · Scientific Reports</span>
+                    <span class="pub-year">2026</span>
+                </div>
+                <div class="pub-tags">
+                    <span class="pub-tag" data-i18n="tag_uav">UAV</span>
+                </div>
+                <div class="pub-image-wrapper">
+                    <img src="img-publicaciones/publicaciones_VA_4.jpg" alt="Publicación ATA Research Group" loading="lazy">
+                </div>
+                <a href="https://doi.org/10.1038/s41598-026-54743-2" class="btn-pub" target="_blank" rel="noopener">
+                    <span data-i18n="btn_view_nature">Ver en Nature</span>
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
@@ -1179,20 +1327,47 @@
     </div>
 </section>
 
-<section class="active-strip">
-    <div class="strip-inner">
-        <div class="strip-left">
-            <h3 class="strip-title" data-i18n="strip_title">Completed Thesis Projects</h3>
+<section class="thesis-section">
+    <div class="thesis-inner">
+        <p class="eyebrow" data-i18n="strip_eyebrow">Tesis Culminadas</p>
+        <h2 class="thesis-main-title" data-i18n="strip_title">Proyectos de Titulación Culminados</h2>
+
+        <div class="thesis-year-group">
+            <p class="thesis-year-label">2026</p>
+            <div class="thesis-cards-grid">
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/27225" class="thesis-card" target="_blank" rel="noopener">Análisis y optimización aerodinámica de un UAV tipo eVTOL</a>
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/27221" class="thesis-card" target="_blank" rel="noopener">Análisis energético y optimización de rutas para UAV eVTOL</a>
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/27227" class="thesis-card" target="_blank" rel="noopener">Diseño conceptual de aeronave eVTOL mediante redes neuronales</a>
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/27232" class="thesis-card" target="_blank" rel="noopener">Diseño conceptual de sistema híbrido de propulsión para VTOL</a>
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/27254" class="thesis-card" target="_blank" rel="noopener">Simulación aerodinámica CFD y parametrización de ala eVTOL</a>
+            </div>
         </div>
-        <div class="strip-pills">
-            <span class="strip-pill"><strong>01</strong> <span data-i18n="strip_pill_01">Autonomous flight control</span></span>
-            <span class="strip-pill"><strong>02</strong> <span data-i18n="strip_pill_02">Forest fire detection</span></span>
-            <span class="strip-pill"><strong>03</strong> <span data-i18n="strip_pill_03">Optimized wing design</span></span>
-            <span class="strip-pill"><strong>04</strong> <span data-i18n="strip_pill_04">UAV mesh communications</span></span>
-            <span class="strip-pill"><strong>05</strong> <span data-i18n="strip_pill_05">Hybrid propulsion</span></span>
-            <span class="strip-pill"><strong>06</strong> <span data-i18n="strip_pill_06">CFD airfoil analysis</span></span>
-            <span class="strip-pill"><strong>07</strong> <span data-i18n="strip_pill_07">Composite materials</span></span>
-            <span class="strip-pill"><strong>08</strong> <span data-i18n="strip_pill_08">Precision landing</span></span>
+
+        <div class="thesis-year-group">
+            <p class="thesis-year-label">2025</p>
+            <div class="thesis-cards-grid">
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/27042" class="thesis-card" target="_blank" rel="noopener">Diseño y optimización de UAV multirrotor para aplicaciones agrícolas</a>
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/26751" class="thesis-card" target="_blank" rel="noopener">Diseño y simulación aero-estructural de UAV tipo VTOL</a>
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/26746" class="thesis-card" target="_blank" rel="noopener">Diseño, simulación y manufactura de UAV VTOL eléctrico de 2kg</a>
+                <a href="https://bibdigital.epn.edu.ec/handle/15000/26756" class="thesis-card" target="_blank" rel="noopener">Modelo de orden reducido para predecir parámetros de hélices e-VTOL</a>
+            </div>
+        </div>
+
+        <div class="thesis-year-group">
+            <p class="thesis-year-label">2024</p>
+            <div class="thesis-cards-grid">
+                <a href="http://bibdigital.epn.edu.ec/handle/15000/25387" class="thesis-card" target="_blank" rel="noopener">Evaluación técnico-económica de propulsión eléctrica para UAV VTOL</a>
+                <a href="http://bibdigital.epn.edu.ec/handle/15000/26067" class="thesis-card" target="_blank" rel="noopener">Diseño de propulsión VTOL embebida en alas o fuselaje</a>
+                <a href="http://bibdigital.epn.edu.ec/handle/15000/26568" class="thesis-card" target="_blank" rel="noopener">Evaluación de sistemas de propulsión para UAV tipo BWB</a>
+                <a href="http://bibdigital.epn.edu.ec/handle/15000/25721" class="thesis-card" target="_blank" rel="noopener">Diseño de mecanismo rígido-elástico para perfiles de geometría variable</a>
+            </div>
+        </div>
+
+        <div class="thesis-year-group">
+            <p class="thesis-year-label">2023</p>
+            <div class="thesis-cards-grid">
+                <a href="http://bibdigital.epn.edu.ec/handle/15000/25068" class="thesis-card" target="_blank" rel="noopener">Diseño y ensamblaje de sistema de propulsión para UAV VTOL tricóptero</a>
+            </div>
         </div>
     </div>
 </section>
